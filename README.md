@@ -313,7 +313,6 @@ The [acceptance report](docs/JUDGE-ACCEPTANCE-REPORT.md) records test totals and
 | Non-circular analysis and read-only replay | [analysis.py](backend/evi/analysis.py), [replay.py](backend/evi/replay.py) |
 | PDF coordinates and evidence highlights | [PdfViewer.tsx](src/PdfViewer.tsx) |
 | Reference review and its remaining work | [reviewer instructions](docs/REVIEWER-INSTRUCTIONS.md) |
-| Original specifications and handoff | [HANDOFF.md](HANDOFF.md), [agent instructions](CLAUDE.md) |
 | Historical README before the judge-facing rewrite | [Archived README](docs/archive/README-2026-11-16-before-rewrite.md) |
 
 ## Acknowledgements

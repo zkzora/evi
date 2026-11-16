@@ -21,3 +21,9 @@ data/_snap_tmp/
 !artifacts/**/*.log
 
 .vercel
+
+# Local agent instructions and task prompts (kept locally, not published)
+AGENTS.md
+CLAUDE.md
+HANDOFF.md
+CLAUDE-CODE-*.md
