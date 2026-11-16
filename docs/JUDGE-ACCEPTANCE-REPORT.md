@@ -31,9 +31,9 @@ Evidence levels:
 | Docker image build | done (Railway remote build) | Railway deployment `04b6a10`+ SUCCESS; API + worker running; Docling installed |
 | Independent human reference review | **pending** | 0/48 (`data/references/review/review-sheet-references-v1.json`) |
 
-Test totals in this release: backend **140 passed**; frontend **18 passed**; production build OK; public judge-e2e **26/26** (`artifacts/judge-release/judge-e2e-evi-lovat_vercel_app.json`).
+Test totals in this release: backend **141 passed**; frontend **18 passed**; production build OK; public judge-e2e **26/26** (`artifacts/judge-release/judge-e2e-evi-lovat_vercel_app.json`).
 
-Holdout: `holdout-2026-11-16-c` is the current freeze (a and b superseded by code changes before any source was acquired; see `artifacts/holdout/*/SUPERSEDED.md` and `exposure-addendum.md`).
+Holdout: `holdout-2026-11-16-d` is the current freeze (a, b and c superseded by code changes before any source was acquired; see `artifacts/holdout/*/SUPERSEDED.md` and `exposure-addendum.md`).
 
 ## Update — Railway backend (2026-11-16)
 
