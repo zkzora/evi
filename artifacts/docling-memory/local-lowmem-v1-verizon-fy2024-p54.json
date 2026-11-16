@@ -1,0 +1,2241 @@
+{
+ "profile": "lowmem-v1",
+ "document_copy_of": "verizon-fy2024",
+ "physical_page": 54,
+ "source_sha256": "05ad83ec2279c04683b50878f8aa8ff8c868aad481b205f52e316df63c403318",
+ "cache_hit": false,
+ "python": "3.12.4",
+ "platform": "win32",
+ "cpu_count": 16,
+ "torch": "2.15.0+cpu",
+ "torch_threads": 1,
+ "env": {
+  "OMP_NUM_THREADS": "1",
+  "MKL_NUM_THREADS": "1",
+  "DOCLING_NUM_THREADS": "1"
+ },
+ "effective_settings": {
+  "do_cell_matching": true,
+  "do_ocr": false,
+  "do_table_structure": true,
+  "execution": {
+   "layout_batch_size": 1,
+   "num_threads": 1,
+   "queue_max_size": 1,
+   "table_batch_size": 1
+  },
+  "profile": "lowmem-v1",
+  "table_mode": "accurate"
+ },
+ "parse_seconds": 132.08,
+ "process_seconds_total": 154.02,
+ "rss_after_imports_mb": 228.0,
+ "rss_after_parse_mb": 952.2,
+ "peak_rss_sampled_mb": 1077.7,
+ "peak_os": {
+  "kind": "windows_peak_working_set",
+  "mb": 1079.5
+ },
+ "tables": 1,
+ "evidence_items": 106,
+ "cells": [
+  {
+   "text": "(dollars in millions, except per share amounts)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 0,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 3,
+   "is_column_header": 1,
+   "bbox": {
+    "bottom": 85.12374999999997,
+    "left": 367.51000000000005,
+    "origin": "TOPLEFT",
+    "right": 551.0650000000002,
+    "top": 76.66600000000005
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Years Ended December 31,",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 1,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 97.12074999999993,
+    "left": 43.132,
+    "origin": "TOPLEFT",
+    "right": 153.36400000000003,
+    "top": 88.66300000000001
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "2024",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 1,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 1,
+   "bbox": {
+    "bottom": 96.60274292948588,
+    "left": 401.87200000000007,
+    "origin": "TOPLEFT",
+    "right": 421.88800000000015,
+    "top": 88.71735153999998
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "2023",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 1,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 1,
+   "bbox": {
+    "bottom": 97.12074999999993,
+    "left": 465.6190000000001,
+    "origin": "TOPLEFT",
+    "right": 485.63500000000016,
+    "top": 88.66300000000001
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "2022",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 1,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 1,
+   "bbox": {
+    "bottom": 97.12074999999993,
+    "left": 530.8690000000001,
+    "origin": "TOPLEFT",
+    "right": 550.8850000000002,
+    "top": 88.66300000000001
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Operating Revenues",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 2,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 122.28874292948592,
+    "left": 43.132000000000176,
+    "origin": "TOPLEFT",
+    "right": 130.65700000000018,
+    "top": 114.40335154000002
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Service revenues and other",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 3,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 133.12074999999993,
+    "left": 52.132000000000176,
+    "origin": "TOPLEFT",
+    "right": 162.1840000000002,
+    "top": 124.66300000000001
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 111,571",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 3,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 132.60274292948588,
+    "left": 367.1320000000002,
+    "origin": "TOPLEFT",
+    "right": 420.7900000000003,
+    "top": 124.71735153999998
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 109,652",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 3,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 133.12074999999993,
+    "left": 430.8790000000002,
+    "origin": "TOPLEFT",
+    "right": 484.5370000000003,
+    "top": 124.66300000000001
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 109,625",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 3,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 133.12074999999993,
+    "left": 494.6260000000002,
+    "origin": "TOPLEFT",
+    "right": 549.7780000000002,
+    "top": 124.66300000000001
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Wireless equipment revenues",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 4,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 145.1177499999999,
+    "left": 52.12300000000016,
+    "origin": "TOPLEFT",
+    "right": 170.66200000000018,
+    "top": 136.65999999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "23,217",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 4,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 144.59974292948584,
+    "left": 393.25000000000017,
+    "origin": "TOPLEFT",
+    "right": 420.7720000000003,
+    "top": 136.71435153999994
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "24,322",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 4,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 145.1177499999999,
+    "left": 456.9970000000002,
+    "origin": "TOPLEFT",
+    "right": 484.5190000000003,
+    "top": 136.65999999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "27,210",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 4,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 145.1177499999999,
+    "left": 522.2470000000002,
+    "origin": "TOPLEFT",
+    "right": 549.7690000000002,
+    "top": 136.65999999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Total Operating Revenues",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 5,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 158.2887429294858,
+    "left": 43.114000000000146,
+    "origin": "TOPLEFT",
+    "right": 154.64200000000008,
+    "top": 150.4033515399999
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "134,788",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 5,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 156.5967429294858,
+    "left": 388.23700000000014,
+    "origin": "TOPLEFT",
+    "right": 420.76300000000026,
+    "top": 148.7113515399999
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "133,974",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 5,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 157.11474999999984,
+    "left": 451.98400000000015,
+    "origin": "TOPLEFT",
+    "right": 484.5100000000003,
+    "top": 148.65699999999993
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "136,835",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 5,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 157.11474999999984,
+    "left": 517.2340000000002,
+    "origin": "TOPLEFT",
+    "right": 549.7600000000002,
+    "top": 148.65699999999993
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Operating Expenses",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 6,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 182.28274292948583,
+    "left": 43.10500000000019,
+    "origin": "TOPLEFT",
+    "right": 130.13500000000016,
+    "top": 174.39735153999993
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Cost of services (exclusive of items shown below)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 7,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 193.11474999999984,
+    "left": 52.10500000000019,
+    "origin": "TOPLEFT",
+    "right": 250.1590000000001,
+    "top": 184.65699999999993
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "27,997",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 7,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 192.5967429294858,
+    "left": 393.2320000000002,
+    "origin": "TOPLEFT",
+    "right": 420.7540000000003,
+    "top": 184.7113515399999
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "28,100",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 7,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 193.11474999999984,
+    "left": 456.9790000000002,
+    "origin": "TOPLEFT",
+    "right": 484.5010000000003,
+    "top": 184.65699999999993
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "28,637",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 7,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 193.11474999999984,
+    "left": 522.2290000000003,
+    "origin": "TOPLEFT",
+    "right": 549.7510000000003,
+    "top": 184.65699999999993
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Cost of wireless equipment",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 8,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 205.1117499999998,
+    "left": 52.09600000000023,
+    "origin": "TOPLEFT",
+    "right": 160.13200000000018,
+    "top": 196.65399999999988
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "26,100",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 8,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 204.59374292948576,
+    "left": 393.22300000000024,
+    "origin": "TOPLEFT",
+    "right": 420.74500000000035,
+    "top": 196.70835153999985
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "26,787",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 8,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 205.1117499999998,
+    "left": 456.97000000000025,
+    "origin": "TOPLEFT",
+    "right": 484.49200000000036,
+    "top": 196.65399999999988
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "30,496",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 8,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 205.1117499999998,
+    "left": 522.2200000000003,
+    "origin": "TOPLEFT",
+    "right": 549.7420000000003,
+    "top": 196.65399999999988
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Selling, general and administrative expense",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 9,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 217.10874999999976,
+    "left": 52.08700000000022,
+    "origin": "TOPLEFT",
+    "right": 226.1650000000002,
+    "top": 208.65099999999984
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "34,113",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 9,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 216.5907429294857,
+    "left": 393.2140000000002,
+    "origin": "TOPLEFT",
+    "right": 420.73600000000033,
+    "top": 208.7053515399998
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "32,745",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 9,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 217.10874999999976,
+    "left": 456.96100000000024,
+    "origin": "TOPLEFT",
+    "right": 484.48300000000035,
+    "top": 208.65099999999984
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "30,136",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 9,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 217.10874999999976,
+    "left": 522.2110000000002,
+    "origin": "TOPLEFT",
+    "right": 549.7330000000003,
+    "top": 208.65099999999984
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Depreciation and amortization expense",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 10,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 229.10574999999972,
+    "left": 52.0780000000002,
+    "origin": "TOPLEFT",
+    "right": 208.1470000000002,
+    "top": 220.6479999999998
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "17,892",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 10,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 228.58774292948567,
+    "left": 393.2050000000002,
+    "origin": "TOPLEFT",
+    "right": 420.7270000000003,
+    "top": 220.70235153999977
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "17,624",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 10,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 229.10574999999972,
+    "left": 456.9520000000002,
+    "origin": "TOPLEFT",
+    "right": 484.47400000000033,
+    "top": 220.6479999999998
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "17,099",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 10,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 229.10574999999972,
+    "left": 522.2020000000002,
+    "origin": "TOPLEFT",
+    "right": 549.7240000000003,
+    "top": 220.6479999999998
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Verizon Business Group goodwill impairment",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 11,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 241.10274999999967,
+    "left": 52.06900000000019,
+    "origin": "TOPLEFT",
+    "right": 230.63800000000015,
+    "top": 232.64499999999975
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "-",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 11,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 240.58474292948563,
+    "left": 411.69100000000014,
+    "origin": "TOPLEFT",
+    "right": 420.69100000000014,
+    "top": 232.69935153999972
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "5,841",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 11,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 241.10274999999967,
+    "left": 461.93800000000016,
+    "origin": "TOPLEFT",
+    "right": 484.45600000000024,
+    "top": 232.64499999999975
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "-",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 11,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 241.10274999999967,
+    "left": 540.6880000000001,
+    "origin": "TOPLEFT",
+    "right": 549.6880000000001,
+    "top": 232.64499999999975
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Total Operating Expenses",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 12,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 254.2737429294856,
+    "left": 43.06000000000006,
+    "origin": "TOPLEFT",
+    "right": 154.093,
+    "top": 246.3883515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "106,102",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 12,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 252.58174292948559,
+    "left": 388.18300000000005,
+    "origin": "TOPLEFT",
+    "right": 420.7090000000002,
+    "top": 244.69635153999968
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "111,097",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 12,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 253.09974999999963,
+    "left": 451.93000000000006,
+    "origin": "TOPLEFT",
+    "right": 484.4560000000002,
+    "top": 244.6419999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "106,368",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 12,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 253.09974999999963,
+    "left": 517.1800000000001,
+    "origin": "TOPLEFT",
+    "right": 549.7060000000001,
+    "top": 244.6419999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Operating Income",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 13,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 278.2677429294855,
+    "left": 43.0510000000001,
+    "origin": "TOPLEFT",
+    "right": 119.5690000000001,
+    "top": 270.38235153999966
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "28,686",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 13,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 276.5757429294855,
+    "left": 393.1780000000001,
+    "origin": "TOPLEFT",
+    "right": 420.7000000000002,
+    "top": 268.69035153999965
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "22,877",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 13,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 277.09374999999966,
+    "left": 456.9250000000001,
+    "origin": "TOPLEFT",
+    "right": 484.44700000000023,
+    "top": 268.6359999999996
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "30,467",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 13,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 277.09374999999966,
+    "left": 522.1750000000002,
+    "origin": "TOPLEFT",
+    "right": 549.6970000000002,
+    "top": 268.6359999999996
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Equity in earnings (losses) of unconsolidated businesses",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 14,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 290.7827499999997,
+    "left": 43.051000000000215,
+    "origin": "TOPLEFT",
+    "right": 269.14900000000017,
+    "top": 282.32499999999965
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(53)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 14,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 288.5727429294855,
+    "left": 407.6860000000002,
+    "origin": "TOPLEFT",
+    "right": 423.6880000000003,
+    "top": 280.68735153999967
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(53)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 14,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 289.0907499999997,
+    "left": 471.4330000000002,
+    "origin": "TOPLEFT",
+    "right": 487.4350000000003,
+    "top": 280.63299999999964
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "44",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 14,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 289.0907499999997,
+    "left": 539.6710000000003,
+    "origin": "TOPLEFT",
+    "right": 549.6790000000003,
+    "top": 280.63299999999964
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Other income (expense), net",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 15,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 302.7797499999997,
+    "left": 43.042000000000314,
+    "origin": "TOPLEFT",
+    "right": 157.09000000000034,
+    "top": 294.32199999999966
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "995",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 15,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 300.5697429294855,
+    "left": 405.67000000000036,
+    "origin": "TOPLEFT",
+    "right": 420.6820000000004,
+    "top": 292.6843515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(313)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 15,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 301.0877499999997,
+    "left": 466.42900000000037,
+    "origin": "TOPLEFT",
+    "right": 487.43500000000046,
+    "top": 292.62999999999965
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "1,373",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 15,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 301.0877499999997,
+    "left": 527.1610000000004,
+    "origin": "TOPLEFT",
+    "right": 549.6790000000004,
+    "top": 292.62999999999965
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Interest expense",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 16,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 314.7767499999997,
+    "left": 43.03300000000036,
+    "origin": "TOPLEFT",
+    "right": 109.57000000000038,
+    "top": 306.3189999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(6,649)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 16,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 312.56674292948554,
+    "left": 395.1670000000003,
+    "origin": "TOPLEFT",
+    "right": 423.6790000000004,
+    "top": 304.6813515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(5,524)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 16,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 313.0847499999997,
+    "left": 458.9140000000003,
+    "origin": "TOPLEFT",
+    "right": 487.42600000000044,
+    "top": 304.62699999999967
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(3,613)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 16,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 313.0847499999997,
+    "left": 524.1640000000003,
+    "origin": "TOPLEFT",
+    "right": 552.6760000000003,
+    "top": 304.62699999999967
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Income Before Provision For Income Taxes",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 17,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 326.25574292948556,
+    "left": 43.02400000000034,
+    "origin": "TOPLEFT",
+    "right": 228.08200000000033,
+    "top": 318.3703515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "22,979",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 17,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 324.56374292948556,
+    "left": 393.15100000000035,
+    "origin": "TOPLEFT",
+    "right": 420.67300000000046,
+    "top": 316.6783515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "16,987",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 17,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 325.0817499999997,
+    "left": 456.89800000000037,
+    "origin": "TOPLEFT",
+    "right": 484.42000000000047,
+    "top": 316.6239999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "28,271",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 17,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 325.0817499999997,
+    "left": 522.1480000000004,
+    "origin": "TOPLEFT",
+    "right": 549.6700000000004,
+    "top": 316.6239999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Provision for income taxes",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 18,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 338.77074999999974,
+    "left": 43.01500000000033,
+    "origin": "TOPLEFT",
+    "right": 148.54900000000035,
+    "top": 330.3129999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(5,030)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 18,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 336.56074292948557,
+    "left": 395.1490000000003,
+    "origin": "TOPLEFT",
+    "right": 423.6610000000004,
+    "top": 328.6753515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(4,892)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 18,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 337.07874999999973,
+    "left": 458.8960000000003,
+    "origin": "TOPLEFT",
+    "right": 487.4080000000004,
+    "top": 328.6209999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "(6,523)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 18,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 337.07874999999973,
+    "left": 524.1460000000003,
+    "origin": "TOPLEFT",
+    "right": 552.6580000000002,
+    "top": 328.6209999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Net Income",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 19,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 350.2497429294856,
+    "left": 43.00600000000031,
+    "origin": "TOPLEFT",
+    "right": 91.5160000000003,
+    "top": 342.36435153999975
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 17,949",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 19,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 348.5577429294856,
+    "left": 367.0060000000003,
+    "origin": "TOPLEFT",
+    "right": 420.6550000000004,
+    "top": 340.67235153999974
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 12,095",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 19,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 349.07574999999974,
+    "left": 430.7530000000003,
+    "origin": "TOPLEFT",
+    "right": 484.40200000000044,
+    "top": 340.6179999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 21,748",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 19,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 349.07574999999974,
+    "left": 494.50000000000034,
+    "origin": "TOPLEFT",
+    "right": 549.6520000000004,
+    "top": 340.6179999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Net income attributable to noncontrolling interests",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 20,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 374.7617499999997,
+    "left": 42.9970000000003,
+    "origin": "TOPLEFT",
+    "right": 240.58300000000023,
+    "top": 366.3039999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 443",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 20,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 372.55174292948556,
+    "left": 366.9970000000003,
+    "origin": "TOPLEFT",
+    "right": 420.6370000000004,
+    "top": 364.6663515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 481",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 20,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 373.0697499999997,
+    "left": 430.7440000000003,
+    "origin": "TOPLEFT",
+    "right": 484.3840000000004,
+    "top": 364.6119999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 492",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 20,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 373.0697499999997,
+    "left": 494.4910000000003,
+    "origin": "TOPLEFT",
+    "right": 549.6340000000004,
+    "top": 364.6119999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Net income attributable to Verizon",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 21,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 386.75874999999974,
+    "left": 42.988000000000284,
+    "origin": "TOPLEFT",
+    "right": 178.06000000000026,
+    "top": 378.3009999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "17,506",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 21,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 384.54874292948557,
+    "left": 393.1150000000003,
+    "origin": "TOPLEFT",
+    "right": 420.6370000000004,
+    "top": 376.6633515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "11,614",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 21,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 385.06674999999973,
+    "left": 456.8620000000003,
+    "origin": "TOPLEFT",
+    "right": 484.3840000000004,
+    "top": 376.6089999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "21,256",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 21,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 385.06674999999973,
+    "left": 522.1120000000003,
+    "origin": "TOPLEFT",
+    "right": 549.6340000000004,
+    "top": 376.6089999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Net Income",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 22,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 398.2377429294856,
+    "left": 42.97900000000027,
+    "origin": "TOPLEFT",
+    "right": 91.48900000000026,
+    "top": 390.35235153999975
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 17,949",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 22,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 396.5457429294856,
+    "left": 366.97900000000027,
+    "origin": "TOPLEFT",
+    "right": 420.6280000000004,
+    "top": 388.66035153999974
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 12,095",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 22,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 397.06374999999974,
+    "left": 430.7260000000003,
+    "origin": "TOPLEFT",
+    "right": 484.3750000000004,
+    "top": 388.6059999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 21,748",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 22,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 397.06374999999974,
+    "left": 494.4730000000003,
+    "origin": "TOPLEFT",
+    "right": 549.6250000000003,
+    "top": 388.6059999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Basic Earnings Per Common Share",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 23,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 422.23174292948556,
+    "left": 42.970000000000255,
+    "origin": "TOPLEFT",
+    "right": 194.01700000000022,
+    "top": 414.3463515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Net income attributable to Verizon",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 24,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 434.74674999999974,
+    "left": 42.970000000000255,
+    "origin": "TOPLEFT",
+    "right": 178.04200000000023,
+    "top": 426.2889999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 4.15",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 24,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 432.53674292948557,
+    "left": 366.97000000000025,
+    "origin": "TOPLEFT",
+    "right": 420.61000000000035,
+    "top": 424.6513515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 2.76",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 24,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 433.05474999999973,
+    "left": 430.71700000000027,
+    "origin": "TOPLEFT",
+    "right": 484.35700000000037,
+    "top": 424.5969999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 5.06",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 24,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 433.05474999999973,
+    "left": 494.4640000000003,
+    "origin": "TOPLEFT",
+    "right": 549.6070000000003,
+    "top": 424.5969999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Weighted-average shares outstanding (in millions)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 25,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 446.74374999999975,
+    "left": 42.96100000000024,
+    "origin": "TOPLEFT",
+    "right": 242.8690000000002,
+    "top": 438.2859999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "4,218",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 25,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 444.5337429294856,
+    "left": 398.0830000000002,
+    "origin": "TOPLEFT",
+    "right": 420.6010000000003,
+    "top": 436.64835153999974
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "4,211",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 25,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 445.05174999999974,
+    "left": 461.8300000000002,
+    "origin": "TOPLEFT",
+    "right": 484.3480000000003,
+    "top": 436.5939999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "4,202",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 25,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 445.05174999999974,
+    "left": 527.0800000000002,
+    "origin": "TOPLEFT",
+    "right": 549.5980000000002,
+    "top": 436.5939999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Diluted Earnings Per Common Share",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 26,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 470.21974292948556,
+    "left": 42.95200000000011,
+    "origin": "TOPLEFT",
+    "right": 200.4880000000001,
+    "top": 462.3343515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Net income attributable to Verizon",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 27,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 482.73474999999974,
+    "left": 42.95200000000011,
+    "origin": "TOPLEFT",
+    "right": 178.0240000000001,
+    "top": 474.2769999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 4.14",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 27,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 480.52474292948557,
+    "left": 366.9520000000001,
+    "origin": "TOPLEFT",
+    "right": 420.5920000000002,
+    "top": 472.6393515399997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 2.75",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 27,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 481.0427499999997,
+    "left": 430.6990000000001,
+    "origin": "TOPLEFT",
+    "right": 484.3390000000002,
+    "top": 472.5849999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "$ 5.06",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 27,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 481.0427499999997,
+    "left": 494.44600000000014,
+    "origin": "TOPLEFT",
+    "right": 549.5890000000002,
+    "top": 472.5849999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "Weighted-average shares outstanding (in millions)",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 28,
+   "col_index": 0,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 494.73174999999975,
+    "left": 42.9430000000001,
+    "origin": "TOPLEFT",
+    "right": 242.85100000000006,
+    "top": 486.2739999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "4,223",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 28,
+   "col_index": 1,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 492.5217429294856,
+    "left": 398.06500000000005,
+    "origin": "TOPLEFT",
+    "right": 420.58300000000014,
+    "top": 484.63635153999974
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "4,215",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 28,
+   "col_index": 2,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 493.03974999999974,
+    "left": 461.81200000000007,
+    "origin": "TOPLEFT",
+    "right": 484.33000000000015,
+    "top": 484.5819999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  },
+  {
+   "text": "4,204",
+   "page_number": 54,
+   "table_index": 0,
+   "row_index": 28,
+   "col_index": 3,
+   "row_span": 1,
+   "col_span": 1,
+   "is_column_header": 0,
+   "bbox": {
+    "bottom": 493.03974999999974,
+    "left": 527.0620000000001,
+    "origin": "TOPLEFT",
+    "right": 549.5800000000002,
+    "top": 484.5819999999997
+   },
+   "page": [
+    594.0,
+    774.0
+   ]
+  }
+ ],
+ "texts": [
+  {
+   "text": "See Notes to Consolidated Financial Statements",
+   "page": 54,
+   "bbox": {
+    "bottom": 261.93625,
+    "left": 200.29,
+    "origin": "BOTTOMLEFT",
+    "right": 393.88000000000034,
+    "top": 270.394
+   }
+  },
+  {
+   "text": "54",
+   "page": 54,
+   "bbox": {
+    "bottom": 17.77724999999998,
+    "left": 295.17300000000034,
+    "origin": "BOTTOMLEFT",
+    "right": 305.1810000000004,
+    "top": 26.235000000000014
+   }
+  },
+  {
+   "text": "Verizon 2024 Annual Report on Form 10-K",
+   "page": 54,
+   "bbox": {
+    "bottom": 17.77724999999998,
+    "left": 40.5,
+    "origin": "BOTTOMLEFT",
+    "right": 210.10500000000002,
+    "top": 26.235000000000014
+   }
+  },
+  {
+   "text": "Verizon Communications Inc. and Subsidiaries",
+   "page": 54,
+   "bbox": {
+    "bottom": 713.6442570705141,
+    "left": 43.13,
+    "origin": "BOTTOMLEFT",
+    "right": 243.68599999999998,
+    "top": 721.52964846
+   }
+  },
+  {
+   "text": "Consolidated Statements of Income",
+   "page": 54,
+   "bbox": {
+    "bottom": 727.5580634116824,
+    "left": 43.13,
+    "origin": "BOTTOMLEFT",
+    "right": 213.0000000000001,
+    "top": 736.3196094
+   }
+  }
+ ],
+ "derived_columns": [
+  [
+   12,
+   2024
+  ],
+  [
+   12,
+   2023
+  ]
+ ],
+ "derivation": {
+  "derivation": "upload-columns-v1",
+  "tables": 1,
+  "metric_row_cells": 15,
+  "column_observations": {
+   "12M:2022": 5,
+   "12M:2023": 5,
+   "12M:2024": 5
+  }
+ }
+}

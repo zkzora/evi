@@ -1,0 +1,32 @@
+[
+ {
+  "stage": "start",
+  "rss_mb": 17.8,
+  "peak_mb": 17.8,
+  "t": 0.0
+ },
+ {
+  "stage": "imports",
+  "rss_mb": 258.9,
+  "peak_mb": 258.9,
+  "t": 6.8
+ },
+ {
+  "stage": "models_loaded",
+  "rss_mb": 853.1,
+  "peak_mb": 1056.0,
+  "t": 24.6
+ },
+ {
+  "stage": "converted",
+  "rss_mb": 985.1,
+  "peak_mb": 1056.0,
+  "t": 36.9
+ },
+ {
+  "stage": "after_gc",
+  "rss_mb": 988.7,
+  "peak_mb": 1056.0,
+  "t": 37.1
+ }
+]

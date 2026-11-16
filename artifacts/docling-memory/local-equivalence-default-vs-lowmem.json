@@ -1,0 +1,14 @@
+{
+ "same_cell_keys": true,
+ "cells": [
+  101,
+  101
+ ],
+ "cell_text_and_spans_identical": true,
+ "max_bbox_delta_pt": 0.0,
+ "texts": [
+  5,
+  5
+ ],
+ "derived_columns_equal": true
+}
