@@ -10,7 +10,7 @@ data/runs
 data/raw
 data/references/review
 data/references/reviewed
-artifacts
+/artifacts
 **/__pycache__
 .git
 deploy/production.env

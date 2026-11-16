@@ -19,3 +19,5 @@ __pycache__/
 *.sqlite3-shm
 data/_snap_tmp/
 !artifacts/**/*.log
+
+.vercel
