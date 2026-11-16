@@ -8,9 +8,11 @@
 
 Evi helps financial analysts check whether an extracted figure means what they intend to use it for. It combines Docling table structure, SERV interpretation and a deterministic source-binding engine, then lets the reviewer inspect the original PDF cells behind the result.
 
-[**Open Evi**](https://evi-lovat.vercel.app) · [Guided walkthrough](docs/JUDGE-WALKTHROUGH.md) · [Measured results](https://evi-lovat.vercel.app/benchmark) · [Technical implementation](docs/TECHNICAL-DEPTH-IMPLEMENTATION.md)
+[**Open Evi**](https://evi-lovat.vercel.app) · [**▶ Demo video**](https://youtu.be/K24nZH__pcI) · [Guided walkthrough](docs/JUDGE-WALKTHROUGH.md) · [Measured results](https://evi-lovat.vercel.app/benchmark) · [Technical implementation](docs/TECHNICAL-DEPTH-IMPLEMENTATION.md)
 
 Built for **SERV Hackathon Edition 02**, using **SERV Reasoning** for extraction/revision and **Reppo** for external evaluation. Public access requires no account or reviewer API key.
+
+[![Evi demo video](https://img.youtube.com/vi/K24nZH__pcI/hqdefault.jpg)](https://youtu.be/K24nZH__pcI)
 
 ## Reviewer overview
 
