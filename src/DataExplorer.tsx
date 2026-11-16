@@ -52,6 +52,7 @@ export default function DataExplorer() {
     if (caseRow && q.get('expect_period') && selected[2] === caseRow.start && selected[3] === caseRow.end) {
       setExpectedPeriod(q.get('expect_period')!); setExpectedUnit(q.get('expect_unit') || selected[1]); setChecked(q.get('check') === '1')
       urlCheck.current = new URLSearchParams()
+      setTimeout(() => document.querySelector('.context-check')?.scrollIntoView({ block: 'center' }), 300)
       return
     }
     setExpectedPeriod(selected[2] ? '12' : 'instant'); setExpectedUnit(selected[1]); setChecked(false)

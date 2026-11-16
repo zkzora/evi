@@ -29,7 +29,7 @@
   },
   {
    "check": "Try Evi opens a real nine-month observation checked as Full year -> mismatch",
-   "pass": false,
+   "pass": true,
    "detail": "The source reports 9 months, while you selected a full year."
   },
   {
@@ -44,13 +44,13 @@
   },
   {
    "check": "archive state is explicit; Process disabled with inline reason",
-   "pass": false,
-   "detail": "Checking availability | Checking availability. The processing service is not connected."
+   "pass": true,
+   "detail": "Archive \u00b7 stored results | Archive \u00b7 stored results. This public deployment is a read-only archive: it has no Docling worker and no provider keys, "
   },
   {
    "check": "stored result labelled with original timestamps",
    "pass": true,
-   "detail": "Stored result \u00b7 run created 16 Nov, 05:59 \u00b7 version ver_3f60316ec62f_5 created 16 Nov, 06:10 \u00b7 serv revision (arm D). Shown as recorded, not re-run."
+   "detail": "Stored result \u00b7 run created 2026-11-15 22:59 UTC \u00b7 version ver_3f60316ec62f_5 created 2026-11-15 23:10 UTC \u00b7 serv revision (arm D). Shown as recorded, not re-run."
   },
   {
    "check": "certificate re-verifies from registered source on the server",

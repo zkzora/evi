@@ -565,3 +565,9 @@ del { color: #995442; }
   .tour-card { left: 16px; right: 16px; bottom: 12px; width: auto; max-height: 55vh; overflow-y: auto; }
   .heading-actions { flex-wrap: wrap; }
 }
+
+.tour-card.left { right: auto; left: 20px; }
+.tour-head > span:last-child { display: flex; gap: 2px; }
+.tour-pill { position: fixed; bottom: 20px; right: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; border: 1px solid #d8e1ef; background: #fff; color: #2b4f8a; font-size: 12px; font-weight: 600; box-shadow: 0 8px 20px rgba(16, 32, 64, .14); cursor: pointer; }
+.tour-pill.left { right: auto; left: 20px; }
+@media (max-width: 640px) { .tour-card.left { left: 16px; right: 16px; } }

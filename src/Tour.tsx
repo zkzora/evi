@@ -1,4 +1,5 @@
-import { ArrowLeft, ArrowRight, RotateCcw, X } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, RotateCcw, X } from 'lucide-react'
 import type { Capabilities } from './api'
 import { sourceManifest } from './source-data'
 
@@ -41,11 +42,13 @@ const steps: Step[] = [
     links: [['Open published experiments', tourLinks.benchmark]] },
 ]
 
-export default function Tour({ step, caps, close }: { step: number; caps?: Capabilities; close: () => void }) {
+export default function Tour({ step, caps, close, side = 'right' }: { step: number; caps?: Capabilities; close: () => void; side?: 'left' | 'right' }) {
+  const [min, setMin] = useState(false)
   const s = steps[step - 1]
   if (!s) return null
-  return <aside className="tour-card" role="dialog" aria-label={`Try Evi, step ${step} of ${steps.length}`}>
-    <div className="tour-head"><span>TRY EVI · STEP {step} / {steps.length}</span><button className="icon-button" aria-label="Close walkthrough" onClick={close}><X size={15}/></button></div>
+  if (min) return <button className={`tour-pill ${side}`} onClick={() => setMin(false)}><ChevronUp size={14}/> Try Evi · step {step} / {steps.length}</button>
+  return <aside className={`tour-card ${side}`} role="dialog" aria-label={`Try Evi, step ${step} of ${steps.length}`}>
+    <div className="tour-head"><span>TRY EVI · STEP {step} / {steps.length}</span><span><button className="icon-button" aria-label="Minimize walkthrough" onClick={() => setMin(true)}><ChevronDown size={15}/></button><button className="icon-button" aria-label="Close walkthrough" onClick={close}><X size={15}/></button></span></div>
     <h3>{s.title}</h3>
     <p>{s.body(caps)}</p>
     <div className="tour-links">{s.links.map(([label, href]) => <a key={href} className="button small" href={withTour(href, step)}>{label}</a>)}</div>
