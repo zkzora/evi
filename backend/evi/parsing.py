@@ -48,6 +48,24 @@ def doc_cache_key(doc, pages: list[int]) -> str:
     return cache_key(doc["sha256"], pages)
 
 
+def _converter():
+    """The single Docling configuration used for every parse (PARSER_CONFIG)."""
+    from docling.datamodel.base_models import InputFormat
+    from docling.datamodel.pipeline_options import PdfPipelineOptions, TableFormerMode
+    from docling.document_converter import DocumentConverter, PdfFormatOption
+
+    opts = PdfPipelineOptions(do_ocr=PARSER_CONFIG["do_ocr"], do_table_structure=True)
+    opts.table_structure_options.mode = TableFormerMode.ACCURATE
+    opts.table_structure_options.do_cell_matching = True
+    return DocumentConverter(format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=opts)})
+
+
+def warm_models() -> None:
+    """Download/load exactly the models this configuration needs (used at image build time, into HF_HOME)."""
+    from docling.datamodel.base_models import InputFormat
+    _converter().initialize_pipeline(InputFormat.PDF)
+
+
 def parse_document(conn: sqlite3.Connection, document_id: str, pages: list[int] | None = None) -> str:
     """Return parse_id. Reuses a complete parse with the same hash/parser/config/page coverage (and, for uploads, owner).
     pages: explicit physical pages (uploads: exactly the selected page); default the registered statement pages."""
@@ -62,15 +80,7 @@ def parse_document(conn: sqlite3.Connection, document_id: str, pages: list[int] 
     if cached:
         return cached["parse_id"]
     verify_bytes(doc)
-
-    from docling.datamodel.base_models import InputFormat
-    from docling.datamodel.pipeline_options import PdfPipelineOptions, TableFormerMode
-    from docling.document_converter import DocumentConverter, PdfFormatOption
-
-    opts = PdfPipelineOptions(do_ocr=PARSER_CONFIG["do_ocr"], do_table_structure=True)
-    opts.table_structure_options.mode = TableFormerMode.ACCURATE
-    opts.table_structure_options.do_cell_matching = True
-    converter = DocumentConverter(format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=opts)})
+    converter = _converter()
     started = time.monotonic()
     result = converter.convert(str(source_path(doc)), page_range=(min(pages), max(pages)))
     duration_ms = int((time.monotonic() - started) * 1000)

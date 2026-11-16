@@ -27,6 +27,10 @@ COPY backend/requirements.lock ./requirements.lock
 # CPU-only torch wheels (the default PyPI Linux wheels bundle CUDA and are several GB larger).
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.lock
 COPY backend/evi ./evi
+# Docling layout + TableFormer models baked into the image (2026-11-16): the first real parse on the 500 MB volume failed
+# because the model download did not fit. HF_HOME stays OUTSIDE the data volume; a cold container parses immediately.
+RUN mkdir -p /models/huggingface && HF_HOME=/models/huggingface python -c "from evi.parsing import warm_models; warm_models()" \
+    && du -sh /models/huggingface
 COPY --from=web /app/dist /app/dist
 # Registered public sources are seeded into the volume on first start (see deploy/entrypoint.sh); hashes are verified.
 COPY public/sources /app/seed-sources

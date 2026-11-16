@@ -123,6 +123,11 @@ def check_quotas(conn, session_id: str, incoming: int) -> None:
     if recent >= settings.upload_per_session_per_hour:
         raise UploadRejected(429, "upload_rate_limited", f"This browser session uploaded {recent} PDFs in the last hour "
                              f"(limit {settings.upload_per_session_per_hour}).")
+    import shutil
+    free = shutil.disk_usage(settings.uploads_dir).free
+    if free - incoming < settings.upload_min_free_bytes:   # never let uploads fill the volume the database lives on
+        raise UploadRejected(507, "upload_storage_full", "Upload storage on this server is full right now. "
+                             "Uploads expire automatically; try again later. Registered reports remain available.")
     tot = db.row(conn, "SELECT COUNT(*) n, COALESCE(SUM(byte_size),0) b FROM documents WHERE source_kind=?", SOURCE_KIND)
     if tot["n"] >= settings.upload_global_files or tot["b"] + incoming > settings.upload_global_bytes:
         raise UploadRejected(507, "upload_storage_full", "Upload storage on this server is full right now. "

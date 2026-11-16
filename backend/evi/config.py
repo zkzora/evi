@@ -59,7 +59,8 @@ class Settings:
     upload_per_session_active: int = _int("EVI_UPLOAD_PER_SESSION_ACTIVE", 3)
     upload_per_session_per_hour: int = _int("EVI_UPLOAD_PER_SESSION_PER_HOUR", 5)
     upload_global_files: int = _int("EVI_UPLOAD_GLOBAL_FILES", 100)
-    upload_global_bytes: int = _int("EVI_UPLOAD_GLOBAL_BYTES", 500 * 1024 * 1024)
+    upload_global_bytes: int = _int("EVI_UPLOAD_GLOBAL_BYTES", 100 * 1024 * 1024)
+    upload_min_free_bytes: int = _int("EVI_UPLOAD_MIN_FREE_BYTES", 64 * 1024 * 1024)
     allowed_origins: tuple[str, ...] = tuple(o for o in os.environ.get(
         "EVI_ALLOWED_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:4173").split(",") if o)
 
