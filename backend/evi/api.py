@@ -12,7 +12,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from . import db, jobs
+from . import db, jobs, uploads
 from .config import settings
 from .corpus import register_all, source_path, verify_bytes
 from .extraction import METRICS, POLICY_VERSION
@@ -20,6 +20,11 @@ from .extraction import METRICS, POLICY_VERSION
 app = FastAPI(title="Evi API", version="0.1.0", docs_url="/api/v1/docs", openapi_url="/api/v1/openapi.json")
 P = "/api/v1"
 SESSION_COOKIE = "evi_session"
+UPLOAD_PATH = f"{P}/uploads"
+
+
+def _upload_body_cap() -> int:
+    return settings.upload_max_bytes + 64 * 1024   # multipart framing + small text fields
 
 
 class ApiFailure(Exception):
@@ -65,10 +70,22 @@ async def session_and_origin(request: Request, call_next):
         origin = request.headers.get("origin")
         if origin and origin not in settings.allowed_origins:
             return err(403, "Cross-origin writes are not permitted.", "forbidden_origin")
-        if request.headers.get("content-type", "").split(";")[0] != "application/json":
-            return err(415, "Write requests must be JSON.", "unsupported_media_type")
-        if int(request.headers.get("content-length") or 0) > 4096:
-            return err(413, "Request body is too large.", "payload_too_large")
+        ctype = request.headers.get("content-type", "").split(";")[0].strip().lower()
+        try:
+            declared = int(request.headers.get("content-length") or 0)
+        except ValueError:
+            return err(400, "Invalid Content-Length.", "invalid_request")
+        if request.method == "POST" and request.url.path == UPLOAD_PATH:
+            # The ONLY non-JSON write: multipart PDF upload. The route itself bounds the bytes actually read.
+            if ctype != "multipart/form-data":
+                return err(415, "Upload a PDF as multipart/form-data.", "unsupported_media_type")
+            if declared > _upload_body_cap():
+                return err(413, f"The PDF is larger than {settings.upload_max_bytes // (1024 * 1024)} MiB.", "payload_too_large")
+        else:
+            if ctype != "application/json":
+                return err(415, "Write requests must be JSON.", "unsupported_media_type")
+            if declared > 4096:
+                return err(413, "Request body is too large.", "payload_too_large")
     sid = request.cookies.get(SESSION_COOKIE)
     new = not sid or len(sid) != 43
     if new:
@@ -78,6 +95,10 @@ async def session_and_origin(request: Request, call_next):
     response.headers.setdefault("X-Content-Type-Options", "nosniff")
     response.headers.setdefault("Referrer-Policy", "same-origin")
     response.headers.setdefault("X-Frame-Options", "DENY")
+    if request.url.path.startswith(P + "/"):
+        # API responses may be session-owned (uploads); never let a shared cache keep them. Routes serving the public
+        # immutable corpus set their own Cache-Control.
+        response.headers.setdefault("Cache-Control", "private, no-store")
     if new:
         response.set_cookie(SESSION_COOKIE, sid, httponly=True, samesite="strict", secure=request.url.scheme == "https",
                             max_age=60 * 60 * 24 * 30, path="/")
@@ -116,47 +137,76 @@ def health():
             "limits": {"session_jobs_per_hour": settings.session_jobs_per_hour,
                        "global_serv_calls_per_day": settings.global_serv_calls_per_day,
                        "global_reppo_evals_per_day": settings.global_reppo_evals_per_day,
-                       "max_revisions_per_run": settings.max_revisions_per_run},
+                       "max_revisions_per_run": settings.max_revisions_per_run,
+                       "upload": {"max_bytes": settings.upload_max_bytes, "max_pages": settings.upload_max_pages,
+                                  "retention_hours": settings.upload_retention_hours,
+                                  "per_session_active": settings.upload_per_session_active}},
             "capabilities": compute(c)}
 
 
 def _doc_view(c, d) -> dict:
     p = db.row(c, "SELECT * FROM parses WHERE document_id=? AND document_sha256=? ORDER BY created_at DESC LIMIT 1",
                d["document_id"], d["sha256"])
-    return {"document_id": d["document_id"], "issuer_name": d["issuer_name"], "title": d["title"], "source_url": d["source_url"],
+    up = d["source_kind"] == uploads.SOURCE_KIND
+    extra = {"source_kind": d["source_kind"]}
+    if up:
+        extra.update(expires_at=d["expires_at"], original_name=d["original_name"], label_is_user_supplied=True,
+                     retention_hours=settings.upload_retention_hours)
+    return {**extra, "document_id": d["document_id"], "issuer_name": d["issuer_name"], "title": d["title"],
+            "source_url": None if up else d["source_url"],
             "sha256": d["sha256"], "page_count": d["page_count"], "source_page": d["source_page"], "period_label": d["period_label"],
             "currency": d["currency"], "source_version": d["source_version"], "byte_size": d["byte_size"],
             "parse_status": "parsed" if p else "not_started", "parse_id": p["parse_id"] if p else None,
             "parse_coverage": p["coverage_note"] if p else None, "parser": f"docling {p['parser_version']}" if p else None,
-            "availability": "registered"}
+            "availability": "uploaded" if up else "registered"}
 
 
 @app.get(f"{P}/documents")
-def documents():
+def documents(request: Request):
+    """Registered public corpus, plus this browser session's own unexpired uploads (never anyone else's)."""
     c = conn()
-    return {"items": [_doc_view(c, d) for d in db.rows(c, "SELECT * FROM documents ORDER BY document_id DESC")]}
+    sid = request.state.session_id
+    items = [_doc_view(c, d) for d in db.rows(c, "SELECT * FROM documents WHERE source_kind='registered' ORDER BY document_id DESC")]
+    mine = [_doc_view(c, d) for d in db.rows(c, "SELECT * FROM documents WHERE source_kind=? AND owner_session=? AND expires_at>? "
+                                                "ORDER BY registered_at DESC", uploads.SOURCE_KIND, sid, db.now())]
+    return {"items": mine + items}
 
 
-def _doc(c, document_id):
+def _doc(c, document_id, request: Request | None = None):
     d = db.row(c, "SELECT * FROM documents WHERE document_id=?", document_id)
+    if d and d["source_kind"] == uploads.SOURCE_KIND:
+        if request is None or d["owner_session"] != request.state.session_id:
+            d = None
+        elif uploads.expired(d):
+            raise ApiFailure(410, f"This uploaded PDF expired ({settings.upload_retention_hours} h retention) and is being removed. "
+                             "Upload it again to continue.", "upload_expired")
     if not d:
-        raise ApiFailure(404, "This document is not in the registered public corpus.", "not_found")
+        raise ApiFailure(404, "Document not found.", "not_found")
     return d
 
 
+def _visible(c, request: Request, document_id: str | None, what: str = "Item") -> None:
+    """404 for any derivative of an upload owned by another session (or expired)."""
+    if document_id and uploads.is_upload_id(document_id) and not uploads.doc_visible(c, document_id, request.state.session_id):
+        raise ApiFailure(404, f"{what} not found.", "not_found")
+
+
 @app.get(f"{P}/documents/{{document_id}}/source")
-def document_source(document_id: str):
+def document_source(document_id: str, request: Request):
     c = conn()
-    d = _doc(c, document_id)
+    d = _doc(c, document_id, request)
     verify_bytes(d)
-    return FileResponse(source_path(d), media_type="application/pdf", filename=d["file_name"],
-                        headers={"X-Source-SHA256": d["sha256"], "Cache-Control": "public, max-age=86400, immutable"})
+    up = d["source_kind"] == uploads.SOURCE_KIND
+    return FileResponse(source_path(d), media_type="application/pdf", filename=(d["original_name"] if up else d["file_name"]),
+                        content_disposition_type="inline",
+                        headers={"X-Source-SHA256": d["sha256"],
+                                 "Cache-Control": "private, no-store" if up else "public, max-age=86400, immutable"})
 
 
 @app.get(f"{P}/documents/{{document_id}}/parses")
-def document_parses(document_id: str):
+def document_parses(document_id: str, request: Request):
     c = conn()
-    _doc(c, document_id)
+    _doc(c, document_id, request)
     return {"items": [dict(r) for r in db.rows(c, "SELECT parse_id, document_id, document_sha256, parser, parser_version, config_json, "
                                                    "pages_json, coverage_note, table_count, evidence_count, duration_ms, created_at "
                                                    "FROM parses WHERE document_id=?", document_id)]}
@@ -201,7 +251,9 @@ def _require_worker(c, need_serv=True):
 def parse(document_id: str, request: Request, _: Empty):
     """Process report: Docling parse (cached by hash/parser/config/pages) then automatic SERV extraction."""
     c = conn()
-    _doc(c, document_id)
+    d = _doc(c, document_id, request)
+    if d["source_kind"] == uploads.SOURCE_KIND:
+        raise ApiFailure(409, "Uploaded PDFs are processed with an explicitly selected page (POST /uploads/{id}/process).", "page_required")
     # One in-flight process per session+document; a reload or double click returns the same job (checked BEFORE any
     # capability refusal so a busy queue never hides the visitor's own running job).
     active = db.row(c, "SELECT j.* FROM jobs j WHERE j.kind='process_document' AND j.session_id=? AND "
@@ -227,7 +279,7 @@ class RunRequest(BaseModel):
 @app.post(f"{P}/runs", status_code=202)
 def create_run(body: RunRequest, request: Request):
     c = conn()
-    _doc(c, body.document_id)
+    _doc(c, body.document_id, request)
     if body.mode != "live" or body.policy_version != POLICY_VERSION or sorted(body.metrics) != sorted(METRICS):
         raise ApiFailure(400, "Only the live period-unit-v1 extraction of the three core metrics is supported.", "invalid_request")
     p = db.row(c, "SELECT * FROM parses WHERE parse_id=? AND document_id=?", body.parse_id, body.document_id)
@@ -253,11 +305,87 @@ def get_job(job_id: str, request: Request):
     return jobs.public_view(c, j)
 
 
+# ---------------------------------------------------------------- judge PDF upload (session-owned)
+
+async def _read_bounded(request: Request, cap: int) -> bytes:
+    """Read at most cap bytes of the actual stream (chunked or false Content-Length cannot exceed it)."""
+    buf = bytearray()
+    async for chunk in request.stream():
+        buf += chunk
+        if len(buf) > cap:
+            raise ApiFailure(413, f"The PDF is larger than {settings.upload_max_bytes // (1024 * 1024)} MiB.", "payload_too_large")
+    return bytes(buf)
+
+
+def _multipart_file(body: bytes, content_type: str) -> tuple[bytes, str, str | None]:
+    """Extract the 'file' part (and optional 'label') with the standard library; no extra dependency."""
+    from email.parser import BytesParser
+    from email.policy import HTTP
+    msg = BytesParser(policy=HTTP).parsebytes(b"Content-Type: " + content_type.encode("latin-1") + b"\r\n\r\n" + body)
+    if not msg.is_multipart():
+        raise ApiFailure(400, "Malformed multipart upload.", "invalid_request")
+    data, name, label = None, "upload.pdf", None
+    for part in msg.iter_parts():
+        field = part.get_param("name", header="content-disposition")
+        if field == "file" and data is None:
+            data = part.get_payload(decode=True) or b""
+            name = part.get_filename() or name
+        elif field == "label":
+            label = (part.get_payload(decode=True) or b"").decode("utf-8", "replace")[:80]
+    if data is None:
+        raise ApiFailure(400, "No file field in the upload.", "invalid_request")
+    return data, name, label
+
+
+@app.post(UPLOAD_PATH, status_code=201)
+async def upload_pdf(request: Request):
+    """Register ONE PDF for this browser session. Reads the page count; enqueues nothing and calls no provider."""
+    body = await _read_bounded(request, _upload_body_cap())
+    data, name, label = _multipart_file(body, request.headers.get("content-type", ""))
+    c = conn()
+    sid = _session(request, c)
+    try:
+        d = uploads.store(c, data=data, original_name=name, session_id=sid, label=label)
+    except uploads.UploadRejected as e:
+        raise ApiFailure(e.status, e.message, e.code)
+    return _doc_view(c, d)
+
+
+class ProcessUpload(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    page: int = Field(ge=1, le=100000)
+    confirmed: bool
+
+
+@app.post(f"{UPLOAD_PATH}/{{document_id}}/process", status_code=202)
+def process_upload(document_id: str, body: ProcessUpload, request: Request):
+    """Docling (exactly the confirmed physical page) -> SERV -> checks -> certificates. Same budget and gates as all
+    paid work. A reload or double click returns the same job."""
+    c = conn()
+    d = _doc(c, document_id, request)
+    if d["source_kind"] != uploads.SOURCE_KIND:
+        raise ApiFailure(409, "This route processes uploaded PDFs only.", "invalid_request")
+    if not body.confirmed:
+        raise ApiFailure(400, "Confirm the selected physical page before processing.", "page_not_confirmed")
+    if body.page > d["page_count"]:
+        raise ApiFailure(422, f"Page {body.page} does not exist; this PDF has {d['page_count']} physical pages.", "invalid_page")
+    sid = request.state.session_id
+    key = f"upload:{sid}:{document_id}:p{body.page}"
+    existing = db.row(c, "SELECT * FROM jobs WHERE idempotency_key=? AND status NOT IN ('failed','cancelled')", key)
+    if existing:                      # reload / double click: the same job, no new charge
+        return jobs.public_view(c, existing)
+    _require_worker(c)
+    _require_capability(c, "extraction")
+    return _start(request, c, "process_document", {"document_id": document_id, "pages": [body.page]}, key,
+                  f"Queued for Docling parsing of physical page {body.page}.")
+
+
 # ---------------------------------------------------------------- runs / versions / evidence (public immutable)
 
 @app.get(f"{P}/runs")
-def list_runs(document_id: str):
+def list_runs(document_id: str, request: Request):
     c = conn()
+    _visible(c, request, document_id, "Document")
     out = []
     for r in db.rows(c, "SELECT * FROM runs WHERE document_id=? ORDER BY created_at DESC LIMIT 50", document_id):
         vids = [v["version_id"] for v in db.rows(c, "SELECT version_id FROM versions WHERE run_id=? ORDER BY seq", r["run_id"])]
@@ -270,9 +398,11 @@ def list_runs(document_id: str):
 
 
 @app.get(f"{P}/versions/{{version_id}}")
-def get_version(version_id: str):
+def get_version(version_id: str, request: Request):
     c = conn()
     v = db.row(c, "SELECT * FROM versions WHERE version_id=?", version_id)
+    if v:
+        _visible(c, request, uploads.version_document(c, version_id), "Version")
     if not v:
         raise ApiFailure(404, "Version not found.", "not_found")
     body = json.loads(v["body_json"])
@@ -285,15 +415,22 @@ def get_version(version_id: str):
     for f in body["facts"]:
         if f["fact_id"] in newest:
             f["context_coverage"] = {**coverage_view(json.loads(newest[f["fact_id"]][1])), "policy_version": newest[f["fact_id"]][0]}
+    # Additive provenance for exports: physical page coverage of the parse and the source kind (registered/user_upload).
+    pr = db.row(c, "SELECT p.pages_json, d.source_kind FROM runs r JOIN parses p ON p.parse_id=r.parse_id "
+                   "JOIN documents d ON d.document_id=r.document_id WHERE r.run_id=?", v["run_id"])
+    if pr:
+        body["source_pages"], body["source_kind"] = json.loads(pr["pages_json"]), pr["source_kind"]
     body["content_sha256"] = v["content_sha256"]
     body["created_at"] = v["created_at"]
     return body
 
 
 @app.get(f"{P}/evidence/{{evidence_id}}")
-def get_evidence(evidence_id: str):
+def get_evidence(evidence_id: str, request: Request):
     c = conn()
     e = db.row(c, "SELECT * FROM evidence WHERE evidence_id=?", evidence_id)
+    if e:
+        _visible(c, request, e["document_id"], "Evidence")
     if not e:
         raise ApiFailure(404, "Evidence not found.", "not_found")
     out = {k: e[k] for k in ("evidence_id", "parse_id", "document_id", "document_sha256", "kind", "page_number", "text",
@@ -326,15 +463,24 @@ def _eval_view(e, c=None) -> dict:
 
 
 @app.get(f"{P}/evaluations")
-def list_evaluations():
+def list_evaluations(request: Request):
     c = conn()
-    return {"items": [_eval_view(e, c) for e in db.rows(c, "SELECT * FROM evaluations ORDER BY created_at DESC LIMIT 100")]}
+    sid = request.state.session_id
+    out = []
+    for e in db.rows(c, "SELECT * FROM evaluations ORDER BY created_at DESC LIMIT 200"):
+        did = uploads.version_document(c, e["version_id"])
+        if uploads.is_upload_id(did) and not uploads.doc_visible(c, did, sid):
+            continue
+        out.append(_eval_view(e, c))
+    return {"items": out[:100]}
 
 
 @app.post(f"{P}/versions/{{version_id}}/evaluations", status_code=202)
 def evaluate(version_id: str, request: Request, _: Empty):
     c = conn()
     v = db.row(c, "SELECT * FROM versions WHERE version_id=?", version_id)
+    if v:
+        _visible(c, request, uploads.version_document(c, version_id), "Version")
     if not v:
         raise ApiFailure(404, "Version not found.", "not_found")
     _require_worker(c, need_serv=False)
@@ -371,6 +517,8 @@ def evaluate(version_id: str, request: Request, _: Empty):
 def refresh_evaluation(evaluation_id: str, request: Request, _: Empty):
     c = conn()
     e = db.row(c, "SELECT * FROM evaluations WHERE evaluation_id=?", evaluation_id)
+    if e:
+        _visible(c, request, uploads.version_document(c, e["version_id"]), "Evaluation")
     if not e:
         raise ApiFailure(404, "Evaluation not found.", "not_found")
     if not e["eval_id"]:
@@ -396,6 +544,8 @@ def revise(version_id: str, body: ReviseRequest, request: Request):
     Arm C: no external feedback. Both use the same field-aware gate (revision-v2)."""
     c = conn()
     v = db.row(c, "SELECT * FROM versions WHERE version_id=?", version_id)
+    if v:
+        _visible(c, request, uploads.version_document(c, version_id), "Version")
     if not v:
         raise ApiFailure(404, "Version not found.", "not_found")
     if json.loads(v["body_json"]).get("policy_version") != "period-unit-v2":
@@ -423,8 +573,9 @@ def revise(version_id: str, body: ReviseRequest, request: Request):
 
 
 @app.get(f"{P}/versions/{{version_id}}/certificates")
-def version_certificates(version_id: str):
+def version_certificates(version_id: str, request: Request):
     c = conn()
+    _visible(c, request, uploads.version_document(c, version_id), "Version")
     from .binding import coverage_view
     rows = db.rows(c, "SELECT certificate_id, fact_id, target_key, policy_version, claim_outcome, resolution_outcome, content_sha256, "
                       "check_run_id, created_at, body_json FROM certificates WHERE version_id=? ORDER BY created_at", version_id)
@@ -437,9 +588,11 @@ def version_certificates(version_id: str):
 
 
 @app.get(f"{P}/certificates/{{certificate_id}}")
-def get_certificate(certificate_id: str):
+def get_certificate(certificate_id: str, request: Request):
     c = conn()
-    r = db.row(c, "SELECT body_json FROM certificates WHERE certificate_id=?", certificate_id)
+    r = db.row(c, "SELECT body_json, document_id FROM certificates WHERE certificate_id=?", certificate_id)
+    if r:
+        _visible(c, request, r["document_id"], "Certificate")
     if not r:
         raise ApiFailure(404, "Certificate not found.", "not_found")
     from .binding import coverage_view
@@ -448,11 +601,13 @@ def get_certificate(certificate_id: str):
 
 
 @app.get(f"{P}/certificates/{{certificate_id}}/verification")
-def verify_certificate(certificate_id: str):
+def verify_certificate(certificate_id: str, request: Request):
     """Recompute from the registered source bytes + Docling artifact (no provider call)."""
     from .binding import verify_certificate as verify
     c = conn()
-    r = db.row(c, "SELECT body_json FROM certificates WHERE certificate_id=?", certificate_id)
+    r = db.row(c, "SELECT body_json, document_id FROM certificates WHERE certificate_id=?", certificate_id)
+    if r:
+        _visible(c, request, r["document_id"], "Certificate")
     if not r:
         raise ApiFailure(404, "Certificate not found.", "not_found")
     ok, problems = verify(c, json.loads(r["body_json"]))
@@ -460,8 +615,9 @@ def verify_certificate(certificate_id: str):
 
 
 @app.get(f"{P}/versions/{{version_id}}/receipt")
-def version_receipt(version_id: str):
+def version_receipt(version_id: str, request: Request):
     c = conn()
+    _visible(c, request, uploads.version_document(c, version_id), "Version")
     r = db.row(c, "SELECT body_json FROM revision_receipts WHERE child_version_id=?", version_id)
     if not r:
         raise ApiFailure(404, "No revision receipt names this version as its child.", "not_found")
@@ -499,7 +655,7 @@ def ready():
     try:
         c = conn()
         c.execute("SELECT 1").fetchone()
-        docs = db.rows(c, "SELECT * FROM documents")
+        docs = db.rows(c, "SELECT * FROM documents WHERE source_kind='registered'")
         checks["database"] = "ok"
         checks["sources"] = "ok" if docs and all(source_path(d).exists() for d in docs) else "missing"
         checks["worker"] = "alive" if _worker_alive(c) else "not_running"

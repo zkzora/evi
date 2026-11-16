@@ -42,7 +42,14 @@ def key(document_id: str, metric: str, months: int, year: int) -> str:
     return f"{document_id}:{metric}:{months}M:{year}"
 
 
-def targets_for(document_id: str) -> list[dict]:
+def targets_for(document_id: str, parse_id: str | None = None) -> list[dict]:
+    """Registered documents: frozen COLUMNS (parse_id ignored). Uploaded documents: columns derived from the parsed
+    page (upload-columns-v1); with parse_id only that page's columns, else the union for key lookups."""
+    if document_id.startswith("upl_"):
+        from .uploads import columns_for
+        return [{"target_key": key(document_id, m, d, y), "document_id": document_id, "metric": m,
+                 "duration_months": d, "fiscal_year": y, "policy": "upload-columns-v1"}
+                for (d, y) in columns_for(document_id, parse_id) for m in METRICS]
     return [{"target_key": key(document_id, m, d, y), "document_id": document_id, "metric": m,
              "duration_months": d, "fiscal_year": y, "policy": TARGET_POLICY_VERSION}
             for (d, y) in {**COLUMNS, **_extra_columns()}.get(document_id, []) for m in METRICS]

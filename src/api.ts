@@ -9,7 +9,8 @@ export async function request<T>(path: string, schema: z.ZodType<T>, init?: Requ
   let response: Response
   try {
     response = await fetch(`${base}${path}`, { ...init, credentials: 'same-origin',
-      headers: { Accept: 'application/json', ...(init?.body ? { 'Content-Type': 'application/json' } : {}), ...init?.headers },
+      // FormData (PDF upload) sets its own multipart boundary; every other write is JSON.
+      headers: { Accept: 'application/json', ...(init?.body && !(init.body instanceof FormData) ? { 'Content-Type': 'application/json' } : {}), ...init?.headers },
       signal: init?.signal ?? AbortSignal.timeout(15000) })
   } catch { throw new ApiError('The processing service is unavailable. Your source documents are still accessible.') }
   if (!response.headers.get('content-type')?.includes('application/json')) {
@@ -42,6 +43,12 @@ export const api = {
   extract: (id: string, parseId: string) => request('/runs', jobSchema, post({ document_id: id, parse_id: parseId,
     policy_version: 'period-unit-v1', metrics: ['revenue', 'operating_profit', 'profit_attributable_to_owners'], mode: 'live' })),
   job: (id: string) => request(`/jobs/${encodeURIComponent(id)}`, jobSchema),
+  upload: (file: File, label: string) => {
+    const form = new FormData(); form.append('file', file, file.name); if (label.trim()) form.append('label', label.trim())
+    return request('/uploads', documentSchema, { method: 'POST', body: form, signal: AbortSignal.timeout(120000) })
+  },
+  processUpload: (id: string, page: number) => request(`/uploads/${encodeURIComponent(id)}/process`, jobSchema,
+    post({ page, confirmed: true })),
   evaluations: () => request('/evaluations', items(evaluationSchema)),
   evaluate: (id: string) => request(`/versions/${encodeURIComponent(id)}/evaluations`, jobSchema, post({ mode: 'reppo_live' })),
   refreshEvaluation: (id: string) => request(`/evaluations/${encodeURIComponent(id)}/refresh`, jobSchema, post({})),

@@ -21,6 +21,17 @@ describe('Exact analyst exports', () => {
     expect(csv).toContain('https://issuer.example/report.pdf')
     expect(csv).toContain('source-hash')
     expect(csv.split('\r\n')).toHaveLength(2)
+    expect(csv.split('\r\n')[0]).toContain('"source_kind","physical_pages","policy_version"')
+  })
+  it('marks an uploaded source and its physical page coverage, with no invented publisher URL', () => {
+    const version = versionSchema.parse({ version_id: 'v2', run_id: 'r2', origin: 'serv_initial', policy_version: 'period-unit-v2', facts: [{
+      fact_id: 'f', document_id: 'upl_x', metric: 'revenue', metric_label: 'Revenue', scope: 'consolidated',
+      reported_value: '1', currency: 'USD', unit_scale: '1000000', normalized_value: '1000000', origin: 'serv_initial',
+      period: { start_date: null, end_date: null, duration_months: 12, kind: 'annual', label: 'FY' },
+      evidence: { value_ids: [], metric_ids: [], period_ids: [], unit_ids: [] },
+    }] })
+    const csv = versionCSV(version, '', 'abc', 'user_upload', '7')
+    expect(csv).toContain('"","abc","user_upload","7","period-unit-v2"')
   })
   it('escapes spreadsheet command text rather than executing source text on open', () => {
     const version = versionSchema.parse({ version_id: '=HYPERLINK("x")', run_id: 'r', origin: 'serv_initial', facts: [{

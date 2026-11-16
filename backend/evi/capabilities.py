@@ -41,8 +41,8 @@ def active_jobs(c) -> int:
 
 
 def compute(c) -> dict:
-    docs = db.rows(c, "SELECT * FROM documents")
-    parses = db.rows(c, "SELECT artifact_path FROM parses")
+    docs = db.rows(c, "SELECT * FROM documents WHERE source_kind='registered'")
+    parses = db.rows(c, "SELECT p.artifact_path FROM parses p JOIN documents d ON d.document_id=p.document_id WHERE d.source_kind='registered'")
     sources_ok = bool(docs) and all(source_path(d).exists() for d in docs)
     artifacts_ok = bool(parses) and all(Path(p["artifact_path"]).exists() for p in parses)
     versions = db.row(c, "SELECT COUNT(*) n FROM versions")["n"]

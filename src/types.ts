@@ -8,10 +8,14 @@ export const metricNames = {
 export type Metric = keyof typeof metricNames
 export const metricSchema = z.enum(['revenue', 'operating_profit', 'profit_attributable_to_owners'])
 export const documentSchema = z.object({
-  document_id: z.string(), issuer_name: z.string(), title: z.string(), source_url: z.string(),
+  document_id: z.string(), issuer_name: z.string(), title: z.string(),
+  // Uploaded PDFs have no publisher URL (null); never invent one.
+  source_url: z.string().nullable().transform(v => v ?? ''),
+  source_kind: z.enum(['registered', 'user_upload']).optional(),
+  expires_at: z.string().nullable().optional(), original_name: z.string().nullable().optional(),
   sha256: z.string(), page_count: z.number().int().positive(),
   source_page: z.number().int().positive().default(1),
-  source_path: z.string().optional(), period_label: z.string().optional(),
+  source_path: z.string().optional(), period_label: z.string().nullable().optional(),
   parse_status: z.string().default('not_started'), parse_id: z.string().nullable().optional(),
   availability: z.string().default('downloaded'),
 }).passthrough()

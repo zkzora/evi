@@ -35,10 +35,14 @@ def handle(conn, job) -> None:
     jid = job["job_id"]
 
     if kind == "process_document":
-        from .parsing import cache_key
-        drow = db.row(conn, "SELECT sha256, parse_pages FROM documents WHERE document_id=?", payload["document_id"])
-        pages = json.loads(drow["parse_pages"])
-        reused = db.row(conn, "SELECT parse_id FROM parses WHERE cache_key=?", cache_key(drow["sha256"], pages)) is not None
+        from .parsing import doc_cache_key
+        drow = db.row(conn, "SELECT * FROM documents WHERE document_id=?", payload["document_id"])
+        if drow is None:
+            jobs.finish(conn, jid, "failed", "This uploaded PDF has expired or was removed.", error={"code": "upload_expired",
+                        "message": "This uploaded PDF has expired or was removed."})
+            return
+        pages = payload.get("pages") or json.loads(drow["parse_pages"])
+        reused = db.row(conn, "SELECT parse_id FROM parses WHERE cache_key=?", doc_cache_key(drow, pages)) is not None
         jobs.heartbeat(conn, jid, f"Reusing the existing Docling parse of physical page(s) {pages}." if reused
                        else f"Parsing physical page(s) {pages} with Docling.")
         stop = threading.Event()
@@ -51,10 +55,23 @@ def handle(conn, job) -> None:
         t = threading.Thread(target=keep_alive, daemon=True)
         t.start()
         try:
-            parse_id = parse_document(conn, payload["document_id"])
+            parse_id = parse_document(conn, payload["document_id"], pages)
         finally:
             stop.set()
         p = db.row(conn, "SELECT * FROM parses WHERE parse_id=?", parse_id)
+        if payload["document_id"].startswith("upl_"):
+            from .uploads import derive_columns, save_targets
+            cols, derivation = derive_columns(conn, payload["document_id"], parse_id)
+            with db.tx(conn):
+                save_targets(conn, payload["document_id"], parse_id, cols, derivation)
+            if not cols:   # deterministic stop BEFORE SERV: nothing on this page the checker could bind
+                msg = (f"Docling parsed physical page {pages[0]} ({p['table_count']} tables, {p['evidence_count']} evidence items), "
+                       "but no revenue / operating income / net income attributable row with a readable interval and year was "
+                       "found. Unsupported layout or wrong page: no SERV call was made. Try the income-statement page.")
+                jobs.finish(conn, jid, "failed", msg, error={"code": "unsupported_layout", "message": msg},
+                            result={"parse_id": parse_id, "parse_reused": reused, "pages": pages, "document_id": payload["document_id"],
+                                    "derivation": derivation})
+                return
         with db.tx(conn):
             nxt = _create_run_and_job(conn, payload["document_id"], parse_id, job["session_id"], parent=jid)
             jobs.finish(conn, jid, "succeeded", (f"Reused Docling parse {parse_id}" if reused else f"Fresh Docling parse {parse_id}")
@@ -74,7 +91,8 @@ def handle(conn, job) -> None:
         jobs.heartbeat(conn, jid, f"Calling SERV ({settings.serv_model}) with the Docling evidence packet.")
         from .targets import targets_for
         run_doc = db.row(conn, "SELECT document_id FROM runs WHERE run_id=?", payload["run_id"])["document_id"]
-        if targets_for(run_doc):
+        run_parse = db.row(conn, "SELECT parse_id FROM runs WHERE run_id=?", payload["run_id"])["parse_id"]
+        if targets_for(run_doc, run_parse):
             vid = run_extraction_v2(conn, run_id=payload["run_id"], job_id=jid)
         else:
             vid = run_extraction(conn, run_id=payload["run_id"], job_id=jid)
@@ -218,8 +236,18 @@ def main() -> None:
     for sig in (signal.SIGINT, signal.SIGTERM):
         signal.signal(sig, lambda *_: STOP.set())
     log.info("worker %s started (db=%s)", worker_id, settings.db_path)
+    last_cleanup = 0.0
     while not STOP.is_set():
         _beat(conn, worker_id)
+        if time.monotonic() - last_cleanup > 300:   # startup + every 5 min: bounded, upload-scoped retention
+            last_cleanup = time.monotonic()
+            try:
+                from .uploads import cleanup
+                gone = cleanup(conn)
+                if gone:
+                    log.info("expired uploads removed: %s", gone)
+            except Exception:  # noqa: BLE001 - retention must never stop the worker
+                log.exception("upload cleanup failed")
         if not run_one(conn, worker_id):
             STOP.wait(2)
     log.info("worker stopped")

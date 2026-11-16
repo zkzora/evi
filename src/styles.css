@@ -571,3 +571,20 @@ del { color: #995442; }
 .tour-pill { position: fixed; bottom: 20px; right: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; border: 1px solid #d8e1ef; background: #fff; color: #2b4f8a; font-size: 12px; font-weight: 600; box-shadow: 0 8px 20px rgba(16, 32, 64, .14); cursor: pointer; }
 .tour-pill.left { right: auto; left: 20px; }
 @media (max-width: 640px) { .tour-card.left { left: 16px; right: 16px; } }
+
+/* Judge PDF upload (2026-11-16) */
+.context-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.upload-form { display: grid; gap: 14px; }
+.upload-rules { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+.upload-rules strong { color: var(--text); }
+.upload-field { display: grid; gap: 6px; font-size: 13px; }
+.upload-field span { color: var(--muted); }
+.upload-field input[type="text"], .upload-field input[type="number"] { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; background: var(--surface); color: var(--text); }
+.upload-field.compact input { width: 110px; }
+.upload-error { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--amber-bg); color: var(--text); font-size: 13px; }
+.upload-bar { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; padding: 16px 20px; margin: 12px 0; }
+.upload-bar-copy { font-size: 13.5px; line-height: 1.6; min-width: 0; overflow-wrap: anywhere; }
+.upload-bar-copy small { color: var(--muted); }
+.upload-page-controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.upload-confirm { display: flex; gap: 6px; align-items: center; font-size: 13px; }
+.upload-hint { flex-basis: 100%; margin: 0; display: flex; gap: 6px; align-items: center; color: var(--muted); font-size: 12px; }

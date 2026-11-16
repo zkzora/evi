@@ -68,10 +68,18 @@ def sha256_file(path) -> str:
     return h.hexdigest()
 
 
+def source_kind(doc) -> str:
+    try:
+        return doc["source_kind"] or "registered"
+    except (IndexError, KeyError):
+        return "registered"
+
+
 def source_path(doc: sqlite3.Row | dict):
-    path = (settings.sources_dir / doc["file_name"]).resolve()
-    if path.parent != settings.sources_dir.resolve():
-        raise SourceIntegrityError("Source path escapes the registered source directory.")
+    base = settings.uploads_dir if source_kind(doc) == "user_upload" else settings.sources_dir
+    path = (base / doc["file_name"]).resolve()
+    if path.parent != base.resolve():
+        raise SourceIntegrityError("Source path escapes its source directory.")
     return path
 
 
@@ -96,7 +104,8 @@ def register_all(conn: sqlite3.Connection) -> None:
             continue
         verify_bytes(entry)
         conn.execute(
-            "INSERT INTO documents VALUES (?,?,?,?,?,?,?,?,?,?,?,1,?,?)",
+            "INSERT INTO documents (document_id, issuer_name, title, source_url, sha256, page_count, source_page, period_label, "
+            "currency, file_name, byte_size, source_version, parse_pages, registered_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,1,?,?)",
             (entry["document_id"], entry["issuer_name"], entry["title"], entry["source_url"], entry["sha256"],
              entry["page_count"], entry["source_page"], entry["period_label"], entry["currency"], entry["file_name"],
              path.stat().st_size, db.dumps(entry["parse_pages"]), db.now()))

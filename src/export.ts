@@ -8,13 +8,16 @@ const csvCell = (value: unknown) => {
   if (/^[=+@\t\r]/.test(text) || (/^-/.test(text) && !/^-\d/.test(text))) text = `'${text}`
   return `"${text.replace(/"/g, '""')}"`
 }
-export function versionCSV(version: FactVersion, sourceUrl: string, sourceHash: string): string {
+export function versionCSV(version: FactVersion, sourceUrl: string, sourceHash: string, sourceKind = 'registered', pages = ''): string {
   const headers = ['version_id','origin','fact_id','metric','reported_value','currency','unit_scale','normalized_value',
-    'start_date','end_date','duration_months','period_label','context_coverage','exact_interval','evidence_ids','checks','source_url','source_sha256']
+    'start_date','end_date','duration_months','period_label','context_coverage','exact_interval','evidence_ids','checks','source_url','source_sha256',
+    'source_kind','physical_pages','policy_version']
+  const policy = String((version as unknown as { policy_version?: string }).policy_version ?? '')
   const rows = version.facts.map(f => [version.version_id, f.origin, f.fact_id, f.metric, f.reported_value, f.currency,
     f.unit_scale, f.normalized_value, f.period.start_date, f.period.end_date, f.period.duration_months,
     f.period.label, coverage(f)?.label ?? 'not assessed', coverage(f)?.exact_interval ?? 'not assessed', Object.values(f.evidence).flat().join(';'),
-    version.checks.filter(c => c.fact_id === f.fact_id).map(c => `${c.check_type}:${c.status}`).join(';'), sourceUrl, sourceHash])
+    version.checks.filter(c => c.fact_id === f.fact_id).map(c => `${c.check_type}:${c.status}`).join(';'), sourceUrl, sourceHash,
+    sourceKind, pages, policy])
   return [headers, ...rows].map(row => row.map(csvCell).join(',')).join('\r\n')
 }
 export function download(content: string, filename: string, type: string) {

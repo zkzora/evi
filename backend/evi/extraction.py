@@ -430,7 +430,7 @@ def certificate_checks(conn, *, document_id: str, parse_id: str, facts: list[dic
     """Checks for the UI/wire contract, derived from the binding certificate of each fact."""
     from . import binding
     from .targets import targets_for
-    tmap = {t["target_key"]: t for t in targets_for(document_id)}
+    tmap = {t["target_key"]: t for t in targets_for(document_id, parse_id)}
     checks, certs = [], {}
     for f in facts:
         t = tmap.get(f.get("target_key"))
@@ -478,7 +478,7 @@ def run_extraction_v2(conn, *, run_id: str, job_id: str | None) -> str:
     from .targets import TARGET_POLICY_VERSION, targets_for
     run = db.row(conn, "SELECT * FROM runs WHERE run_id=?", run_id)
     doc = db.row(conn, "SELECT * FROM documents WHERE document_id=?", run["document_id"])
-    targets = targets_for(doc["document_id"])
+    targets = targets_for(doc["document_id"], run["parse_id"])
     if not targets:
         raise OutputRejected("no_targets", "This document has no frozen targets.")
     evidence = load_evidence(conn, run["parse_id"])

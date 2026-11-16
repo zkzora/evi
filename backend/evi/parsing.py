@@ -19,8 +19,11 @@ def parser_version() -> str:
     return importlib.metadata.version("docling")
 
 
-def cache_key(sha256: str, pages: list[int]) -> str:
-    material = json.dumps({"sha": sha256, "parser": parser_version(), "config": PARSER_CONFIG, "pages": pages}, sort_keys=True)
+def cache_key(sha256: str, pages: list[int], scope: str | None = None) -> str:
+    m = {"sha": sha256, "parser": parser_version(), "config": PARSER_CONFIG, "pages": pages}
+    if scope:   # added for uploads; registered keys are unchanged
+        m["scope"] = scope
+    material = json.dumps(m, sort_keys=True)
     return hashlib.sha256(material.encode()).hexdigest()
 
 
@@ -36,13 +39,25 @@ def _bbox(b) -> dict | None:
     return {"left": float(b.l), "top": float(b.t), "right": float(b.r), "bottom": float(b.b), "origin": origin}
 
 
-def parse_document(conn: sqlite3.Connection, document_id: str) -> str:
-    """Return parse_id. Reuses a complete parse with the same hash/parser/config/page coverage."""
+def doc_cache_key(doc, pages: list[int]) -> str:
+    """Registered corpus: hash/parser/config/pages (shared public parse). Uploads additionally include the upload's own
+    document_id, so identical bytes uploaded by another session never reuse (or reveal) its parse."""
+    from .corpus import source_kind
+    if source_kind(doc) == "user_upload":
+        return cache_key(doc["sha256"], pages, scope=doc["document_id"])
+    return cache_key(doc["sha256"], pages)
+
+
+def parse_document(conn: sqlite3.Connection, document_id: str, pages: list[int] | None = None) -> str:
+    """Return parse_id. Reuses a complete parse with the same hash/parser/config/page coverage (and, for uploads, owner).
+    pages: explicit physical pages (uploads: exactly the selected page); default the registered statement pages."""
     doc = db.row(conn, "SELECT * FROM documents WHERE document_id=?", document_id)
     if doc is None:
         raise KeyError(document_id)
-    pages: list[int] = json.loads(doc["parse_pages"])
-    key = cache_key(doc["sha256"], pages)
+    pages = list(pages) if pages else json.loads(doc["parse_pages"])
+    if not pages or any(not isinstance(p, int) or p < 1 or p > doc["page_count"] for p in pages):
+        raise ValueError(f"invalid physical page selection {pages}")
+    key = doc_cache_key(doc, pages)
     cached = db.row(conn, "SELECT parse_id FROM parses WHERE cache_key=?", key)
     if cached:
         return cached["parse_id"]

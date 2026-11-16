@@ -21,6 +21,14 @@ if [ -f /app/seed-snapshot/MANIFEST.json ]; then
 fi
 # Every boot: repair parse artifact paths recorded on another OS/location (idempotent; only fixes missing files).
 python -m evi.backup rebase "$EVI_DATA_DIR" || true
+
+# One-time backup before the first boot of a schema change (2026-11-16 upload migration is additive; this is the
+# rollback point). Runs before the API/worker start, so the copy is taken from the pre-migration database.
+PRE_UPLOAD_MARK="$(dirname "$EVI_DATA_DIR")/backups/.pre-upload-migration"
+if [ -f "$EVI_DATA_DIR/evi.sqlite3" ] && [ ! -f "$PRE_UPLOAD_MARK" ]; then
+  mkdir -p "$(dirname "$PRE_UPLOAD_MARK")"
+  if python -m evi.backup create "$(dirname "$PRE_UPLOAD_MARK")"; then touch "$PRE_UPLOAD_MARK"; else echo "pre-migration backup failed" >&2; exit 1; fi
+fi
 case "${1:-all}" in
   api)    exec python -m uvicorn evi.api:app --host 0.0.0.0 --port "${PORT:-8000}" --proxy-headers --forwarded-allow-ips='*' --timeout-graceful-shutdown 20 ;;
   worker) exec python -m evi.worker ;;

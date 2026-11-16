@@ -52,12 +52,24 @@ class Settings:
     global_reppo_evals_per_day: int = _int("EVI_GLOBAL_REPPO_EVALS_PER_DAY", 10)
     worker_lease_s: int = _int("EVI_WORKER_LEASE_S", 120)
     job_max_attempts: int = _int("EVI_JOB_MAX_ATTEMPTS", 3)
+    # Judge PDF upload (2026-11-16). Non-secret limits; see docs/JUDGE-UPLOAD.md.
+    upload_max_bytes: int = _int("EVI_UPLOAD_MAX_BYTES", 10 * 1024 * 1024)
+    upload_max_pages: int = _int("EVI_UPLOAD_MAX_PAGES", 250)
+    upload_retention_hours: int = _int("EVI_UPLOAD_RETENTION_HOURS", 24)
+    upload_per_session_active: int = _int("EVI_UPLOAD_PER_SESSION_ACTIVE", 3)
+    upload_per_session_per_hour: int = _int("EVI_UPLOAD_PER_SESSION_PER_HOUR", 5)
+    upload_global_files: int = _int("EVI_UPLOAD_GLOBAL_FILES", 100)
+    upload_global_bytes: int = _int("EVI_UPLOAD_GLOBAL_BYTES", 500 * 1024 * 1024)
     allowed_origins: tuple[str, ...] = tuple(o for o in os.environ.get(
         "EVI_ALLOWED_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:4173").split(",") if o)
 
     @property
     def db_path(self) -> Path:
         return self.data_dir / "evi.sqlite3"
+
+    @property
+    def uploads_dir(self) -> Path:
+        return self.data_dir / "uploads"   # on the persistent volume, outside every web root
 
     @property
     def artifacts_dir(self) -> Path:

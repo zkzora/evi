@@ -1,0 +1,72 @@
+{
+ "source_copy_of": "verizon-3q2025",
+ "selected_physical_page": 1,
+ "provider_calls_before": 0,
+ "upload_status": 201,
+ "jobs_after_upload": 0,
+ "uploaded_document_id_prefix": "upl_",
+ "sha256_matches_registered_source": true,
+ "page_count": 10,
+ "registered_page_count": 10,
+ "parse_pages": [
+  1
+ ],
+ "parse_fresh": true,
+ "parse_duration_ms": 214280,
+ "tables": 1,
+ "evidence_items": 166,
+ "evidence_pages": [
+  1
+ ],
+ "evidence_bboxes_inside_page": true,
+ "derived_columns": [
+  [
+   3,
+   2025
+  ],
+  [
+   3,
+   2024
+  ],
+  [
+   9,
+   2025
+  ],
+  [
+   9,
+   2024
+  ]
+ ],
+ "frozen_columns_for_this_report": [
+  [
+   3,
+   2025
+  ],
+  [
+   3,
+   2024
+  ],
+  [
+   9,
+   2025
+  ],
+  [
+   9,
+   2024
+  ]
+ ],
+ "derived_equals_frozen": true,
+ "derivation": {
+  "derivation": "upload-columns-v1",
+  "tables": 1,
+  "metric_row_cells": 30,
+  "column_observations": {
+   "3M:2024": 5,
+   "3M:2025": 5,
+   "9M:2024": 5,
+   "9M:2025": 5
+  }
+ },
+ "provider_calls_after": 0,
+ "other_session_source_status": 404
+}

@@ -12,6 +12,7 @@ export const tourLinks = {
   periodNine: data({ expect_period: '9', expect_unit: 'USD', check: '1' }),
   unitMismatch: data({ expect_period: '9', expect_unit: 'USD millions', check: '1' }),
   process: '/workspace?document=verizon-3q2025',
+  upload: '/workspace?upload=1',
   verizon3q: ws('verizon-3q2025', 'run_3f60316ec62f4d0bb449', 'ver_3f60316ec62f_5', 'run_3f60316ec62f4d0bb449:r5:verizon-3q2025:revenue:3M:2025'),
   verizonFy2024: ws('verizon-fy2024', 'run_b15ed73528114efe9b3e', 'ver_b15ed7352811_5', 'run_b15ed73528114efe9b3e:verizon-fy2024:revenue:12M:2024'),
   att2q: ws('att-2q2025', 'run_325e06e62b8c46e58b4d', 'ver_325e06e62b8c_5', 'run_325e06e62b8c46e58b4d:att-2q2025:revenue:3M:2025'),
@@ -30,7 +31,7 @@ const steps: Step[] = [
     body: caps => caps?.extraction.state === 'available'
       ? 'Processing is available on this server. Choose a report and press "Process report": the job runs Docling (or reuses a cached parse, which is labelled), then one SERV extraction, then the source checks. Stages appear as they actually happen.'
       : `New processing is not available here: ${caps?.extraction.reason ?? 'the processing service is not connected.'} The workspace shows stored results from earlier real runs with their original timestamps. Nothing is re-run.`,
-    links: [['Open the workspace', tourLinks.process]] },
+    links: [['Open the workspace', tourLinks.process], ['Or upload your own PDF', tourLinks.upload]] },
   { title: 'Inspect the evidence',
     body: () => 'Open a fact: the Value, Metric, Period and Unit tabs highlight the cells on the original PDF page. "Re-verify from source" recomputes the certificate on the server from the registered PDF bytes and Docling output (no AI call). AT&T statements print no end date, so Evi shows "dates not printed" instead of guessing.',
     links: [['Verizon 3Q 2025 (complete context)', tourLinks.verizon3q], ['Verizon FY2024 (offset page coordinates)', tourLinks.verizonFy2024], ['AT&T 2Q 2025 (partial context)', tourLinks.att2q]] },

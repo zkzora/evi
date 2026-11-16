@@ -93,6 +93,29 @@ def connect(path: Path | None = None) -> sqlite3.Connection:
 
 def init(conn: sqlite3.Connection) -> None:
     conn.executescript(SCHEMA)
+    migrate(conn)
+
+
+# Additive, idempotent migrations (2026-11-16, judge PDF upload). Existing rows default to the registered corpus.
+DOCUMENT_COLUMNS = {"source_kind": "TEXT NOT NULL DEFAULT 'registered'", "owner_session": "TEXT", "expires_at": "TEXT",
+                    "original_name": "TEXT"}
+
+
+def migrate(conn: sqlite3.Connection) -> None:
+    have = {r[1] for r in conn.execute("PRAGMA table_info(documents)")}
+    for col, decl in DOCUMENT_COLUMNS.items():
+        if col not in have:
+            try:
+                conn.execute(f"ALTER TABLE documents ADD COLUMN {col} {decl}")
+            except sqlite3.OperationalError as e:   # a concurrent process added it first
+                if "duplicate column" not in str(e):
+                    raise
+    conn.executescript("""
+CREATE TABLE IF NOT EXISTS upload_targets (
+  document_id TEXT NOT NULL, parse_id TEXT NOT NULL, columns_json TEXT NOT NULL, derivation_json TEXT NOT NULL,
+  created_at TEXT NOT NULL, PRIMARY KEY (document_id, parse_id));
+CREATE INDEX IF NOT EXISTS documents_owner ON documents(owner_session) WHERE owner_session IS NOT NULL;
+""")
 
 
 @contextmanager

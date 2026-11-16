@@ -19,7 +19,7 @@ SHA = "c" * 64
 def conn(tmp_path):
     c = db.connect(tmp_path / "t.sqlite3")
     db.init(c)
-    c.execute("INSERT INTO documents VALUES ('d1','Issuer','T','https://example.org/r.pdf',?,10,1,'FY','USD','r.pdf',1,1,'[1]',?)",
+    c.execute("INSERT INTO documents (document_id, issuer_name, title, source_url, sha256, page_count, source_page, period_label, currency, file_name, byte_size, source_version, parse_pages, registered_at) VALUES ('d1','Issuer','T','https://example.org/r.pdf',?,10,1,'FY','USD','r.pdf',1,1,'[1]',?)",
               (SHA, db.now()))
     c.execute("INSERT INTO parses VALUES ('p1','d1',?,'k','docling','x','{}','[1]','n','a',1,6,1,?)", (SHA, db.now()))
     cells = [("unit", "text", "(dollars in millions, except per share amounts)", None, None, None, 1, 0),
