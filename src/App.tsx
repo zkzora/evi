@@ -201,6 +201,27 @@ export default function App() {
     }).catch(e => { if (active) { setError(messageOf(e)); clearInterval(interval) } }), 4000)
     return () => { active = false; clearInterval(interval) }
   }, [job?.job_id, job?.status])
+  // Reload recovery: remember this tab's in-flight job ID (no secrets; ownership is still checked by the session cookie).
+  useEffect(() => {
+    try {
+      if (job && !terminalJobs.includes(job.status)) sessionStorage.setItem('evi.activeJob', job.job_id)
+      else if (job) sessionStorage.removeItem('evi.activeJob')
+    } catch { /* storage unavailable: recovery is best-effort */ }
+  }, [job?.job_id, job?.status])
+  useEffect(() => {
+    if (connection !== 'connected' || job) return
+    let stored: string | null = null
+    try { stored = sessionStorage.getItem('evi.activeJob') } catch { return }
+    if (!stored) return
+    let active = true
+    api.job(stored).then(next => {
+      if (!active) return
+      setJob(next)
+      if (next.status === 'succeeded') setRefresh(n => n + 1)
+    }).catch(() => { try { sessionStorage.removeItem('evi.activeJob') } catch { /* ignore */ } })
+    return () => { active = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [connection])
   const pending = busy || Boolean(job && !terminalJobs.includes(job.status))
   const canProcess = connection === 'connected' && (caps ? caps.extraction.state === 'available' : processing)
   const canEvaluate = connection === 'connected' && (caps ? caps.evaluation.state === 'available' : execution)
