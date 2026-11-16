@@ -1,0 +1,4 @@
+# Hash-pinned evidence: store exact bytes (no line-ending conversion), so manifests and replay verify on any OS.
+data/** -text
+artifacts/** -text
+public/evidence/** -text
