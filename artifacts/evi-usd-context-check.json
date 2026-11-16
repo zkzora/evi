@@ -1,0 +1,31 @@
+{
+  "company": "Verizon",
+  "cik": "732712",
+  "taxonomy": "us-gaap",
+  "concept": "Revenues",
+  "label": "Revenues",
+  "value": "138191000000",
+  "unit": "USD",
+  "start": "2025-01-01",
+  "end": "2025-12-31",
+  "accession": "0000732712-26-000007",
+  "filed": "2026-02-17",
+  "form": "10-K",
+  "source": {
+    "publisher": "U.S. Securities and Exchange Commission",
+    "retrieved_on": "2026-11-15",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000732712.json",
+    "sha256": "2c96d7090f7f3461177ad2d2dc84806d057380b1efe87a3129e1de9a845b6422",
+    "json_pointer": "/facts/us-gaap/Revenues/units/USD/341"
+  },
+  "context_check": {
+    "engine": "source-metadata-v1",
+    "expected_period": "12",
+    "expected_unit": "USD millions",
+    "period": "pass",
+    "unit": "fail",
+    "days": 365,
+    "months": 12
+  },
+  "provenance": "SEC published source snapshot; not a SERV extraction or Reppo evaluation"
+}

@@ -1,0 +1,28 @@
+# Single-host deployment: API + worker + Caddy (TLS, same-origin). One persistent volume shared by API and worker.
+# Do NOT scale api/worker to multiple replicas or hosts: SQLite + WAL on a single local volume is the supported design.
+services:
+  api:
+    build: { context: .., dockerfile: Dockerfile }
+    image: evi:local
+    command: ["api"]
+    env_file: production.env          # copy from production.env.example; secrets only on the server
+    volumes: [evi-data:/data, evi-models:/models]
+    restart: unless-stopped
+    stop_grace_period: 30s
+  worker:
+    image: evi:local
+    command: ["worker"]
+    env_file: production.env
+    volumes: [evi-data:/data, evi-models:/models]
+    depends_on: [api]
+    restart: unless-stopped
+    stop_grace_period: 60s            # worker finishes/abandons its lease; a crashed lease is reclaimed after EVI_WORKER_LEASE_S
+    deploy: { resources: { limits: { memory: 6g } } }
+  caddy:
+    image: caddy:2
+    ports: ["80:80", "443:443"]
+    volumes: [./Caddyfile:/etc/caddy/Caddyfile:ro, caddy-data:/data]
+    environment: { EVI_DOMAIN: "${EVI_DOMAIN:?set EVI_DOMAIN}" }
+    depends_on: [api]
+    restart: unless-stopped
+volumes: { evi-data: {}, evi-models: {}, caddy-data: {} }

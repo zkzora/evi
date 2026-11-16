@@ -1,0 +1,23 @@
+{
+ "taken_at": "2026-11-16",
+ "purpose": "hashes before proof-integrity repair; originals must not change",
+ "files": {
+  "artifacts/technical-proof/exp-2026-11-16-a/certificate-backfill.json": "2ecf858033c52cf7ab07553d261313ccd8fe74452410ed739a98da01d12d1018",
+  "artifacts/technical-proof/exp-2026-11-16-a/ledger.jsonl": "6df718071c17af08530ee12d3dc7b1306a54b08963d72080ffb3d9b2c5fe2eef",
+  "artifacts/technical-proof/exp-2026-11-16-a/manifest.json": "9e1b451166bc355f2c4070320b04894d69151952a549bbfdcb7f4a136438d2d6",
+  "artifacts/technical-proof/exp-2026-11-16-a/outcomes.jsonl": "0c688c87aad61c2f17fc2f65cf4a3b2651edfdd613e4eee3b2e04c0d0a27cd11",
+  "artifacts/technical-proof/exp-2026-11-16-a/report.md": "c3990bc1c818c738365c5d76081ab7e1b70399d96fbeafd7058a5604f2c28d77",
+  "artifacts/technical-proof/exp-2026-11-16-a/run.log": "7c07fa1974fcf6dc9a7fe70ab9b3b7791ca797a912d8a12f0927abc5931569b3",
+  "artifacts/technical-proof/exp-2026-11-16-a/summary.json": "5dd106ce083446efa058c749155a42500778081fc67895b3ec0a876548ffbd5e",
+  "artifacts/technical-proof/exp-2026-11-16-b/ledger.jsonl": "311f5df633abf8f98aafcaaf120691ce0f3923af3f6b6b1c00289883d1b21903",
+  "artifacts/technical-proof/exp-2026-11-16-b/manifest.json": "6f048c685012f6a538021a0634cdb4fffa7a712e7f5ee5203f5b4823aa2e7d78",
+  "artifacts/technical-proof/exp-2026-11-16-b/outcomes.jsonl": "0d88bf9511e13c63b4798e891d563f93186661d907bdf9e9738a24c956ada3e2",
+  "artifacts/technical-proof/exp-2026-11-16-b/report.md": "57e529c7be9be4a9a2249e3f46c78844cdf7f3c793b5c2b55a75b8e3025a1e34",
+  "artifacts/technical-proof/exp-2026-11-16-b/run.log": "62de6e0a9b28ce12ad4ea5a0b682fc831785e874242351f6f7a24b6601445882",
+  "artifacts/technical-proof/exp-2026-11-16-b/summary.json": "f9febbc1bf818b00adeeeb1e637c6b1e9a1a921e64fdaf88ac9b38a2654ae5dd",
+  "data/references/references-v1.json": "cb02c74f4f3b0c195f10379c7990482fc90590f0587d2bd7bb1218db22841942",
+  "docs/DECISIONS.md": "8cbbc8d19844a7ca33df4403998c319eeb8c1461e77de9bf585e3c3afd2d526e",
+  "docs/PROOF-REPORT.md": "b63d513bda34ee41a1c630fcc97a47ca45ca4df494662bd1c69620987b62733d",
+  "docs/TECHNICAL-DEPTH-IMPLEMENTATION.md": "012ebc84e81ca463ce5213f7345982630599edce0fb00b862b717b582d5ad65a"
+ }
+}

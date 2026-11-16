@@ -1,0 +1,39 @@
+{
+ "request_sha256": "e39d091e417b3f03b35a92c4ee55ea73d6a57976753761bb255d65e7b725dc09",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdFNBdQch8nC6SQSnhMCJOihwOJq",
+  "object": "chat.completion",
+  "created": 1794782661,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5694,
+   "completion_tokens": 25,
+   "total_tokens": 5719,
+   "prompt_tokens_details": {
+    "cached_tokens": 2304,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

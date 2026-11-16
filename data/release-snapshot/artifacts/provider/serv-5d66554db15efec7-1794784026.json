@@ -1,0 +1,39 @@
+{
+ "request_sha256": "5d66554db15efec71bec7407d0091cd32afa0e7b832b4c6f9fac92382e01ae6c",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdbLZG5Ps5ZapZQ1zqpcTcDrxsOF",
+  "object": "chat.completion",
+  "created": 1794784023,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2025\",\"field\":\"amount_text\",\"new_value\":\"$ 4,500\",\"evidence_ids\":[\"ev_e79ecac5880f86042e20\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table shows Net Income Attributable to AT&T for Second Quarter 2025 as $4,500, not the parent fact value $4,464.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2025\",\"field\":\"value_cell\",\"new_value\":\"ev_e79ecac5880f86042e20\",\"evidence_ids\":[\"ev_e79ecac5880f86042e20\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The correct value cell for this target is the Second Quarter 2025 AT&T net income cell.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2024\",\"field\":\"amount_text\",\"new_value\":\"$ 3,597\",\"evidence_ids\":[\"ev_ddb90a8a3d8fbe14c041\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table shows Net Income Attributable to AT&T for Second Quarter 2024 as $3,597, not the parent fact value $3,546.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2024\",\"field\":\"value_cell\",\"new_value\":\"ev_ddb90a8a3d8fbe14c041\",\"evidence_ids\":[\"ev_ddb90a8a3d8fbe14c041\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The correct value cell for this target is the Second Quarter 2024 AT&T net income cell.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"field\":\"amount_text\",\"new_value\":\"$ 8,851\",\"evidence_ids\":[\"ev_6b03f897f910bfd37919\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table shows Six-Month Period 2025 Net Income Attributable to AT&T as $8,851, not the parent fact value $8,859.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"field\":\"value_cell\",\"new_value\":\"ev_6b03f897f910bfd37919\",\"evidence_ids\":[\"ev_6b03f897f910bfd37919\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The correct value cell for this target is the Six-Month Period 2025 AT&T net income cell.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"field\":\"amount_text\",\"new_value\":\"$ 7,042\",\"evidence_ids\":[\"ev_af894945608718026662\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table shows Six-Month Period 2024 Net Income Attributable to AT&T as $7,042, not the parent fact value $6,941.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"field\":\"value_cell\",\"new_value\":\"ev_af894945608718026662\",\"evidence_ids\":[\"ev_af894945608718026662\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The correct value cell for this target is the Six-Month Period 2024 AT&T net income cell.\"}],\"mark_unresolved\":[],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 9384,
+   "completion_tokens": 809,
+   "total_tokens": 10193,
+   "prompt_tokens_details": {
+    "cached_tokens": 2816,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

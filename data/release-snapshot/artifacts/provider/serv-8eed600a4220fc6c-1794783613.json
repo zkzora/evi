@@ -1,0 +1,39 @@
+{
+ "request_sha256": "8eed600a4220fc6cf7ba433057d2c5ac8cfc7f1ba6b3017cac6fd9ebcef7c885",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdUimgnWZuHtgYJSR48ZrUljV86v",
+  "object": "chat.completion",
+  "created": 1794783612,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[],\"rejected_feedback\":[\"The evaluator feedback is rejected because it asserts all four evaluators achieved perfect scores and that the extraction matched every requested metric/period/unit, but the provided deterministic diagnostics contain multiple failures for every listed fact (currency and support_certificate), indicating the claims are not fully supported as-is. The feedback is untrusted and contradicted by the diagnostics.\"]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 9932,
+   "completion_tokens": 93,
+   "total_tokens": 10025,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

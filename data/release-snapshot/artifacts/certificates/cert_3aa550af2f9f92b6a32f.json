@@ -1,0 +1,530 @@
+{
+ "schema": "evi.support-certificate/1",
+ "policy_version": "binding-v3",
+ "source": {
+  "document_id": "att-2q2025",
+  "sha256": "0065aa98bd90d5f59d9b6c05c6921397c97e3fba5f49b3b53e1f6ae3a522450b",
+  "source_url": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/quarterly-earnings/2025/2Q-2025/2Q25_ATT_Financial_and_Operational_Schedules_and_Non_GAAP_Reconciliations.pdf",
+  "bytes_verified": true
+ },
+ "parse": {
+  "parse_id": "parse_3ce51ca5af220a046506",
+  "cache_key": "3ce51ca5af220a0465065535d72067582efa50f344d629d218d70a4a2c52f07b",
+  "docling_artifact_sha256": "ed6a14030cdaf5dd36e1dcf8cf243c444df9e571775589501bff7acf2d1637ef",
+  "physical_pages": [
+   2
+  ],
+  "page_numbering": "docling page_no == physical 1-based page (validated)"
+ },
+ "target": {
+  "target_key": "att-2q2025:operating_profit:6M:2024",
+  "document_id": "att-2q2025",
+  "metric": "operating_profit",
+  "duration_months": 6,
+  "fiscal_year": 2024,
+  "policy": "targets-v1"
+ },
+ "fact_ref": {
+  "version_id": "ver_63c7ce8b5e69_1",
+  "fact_id": "run_63c7ce8b5e6944d7bd2e:att-2q2025:operating_profit:6M:2024",
+  "fact_sha256": "7daf2144cb8d8c847b72418911f2243244cc70e0654eeaf1a4ee1cde5b7cc19e",
+  "version_content_sha256": "26ae072af6d0ba30f10449b5f6b6970216f012761b525a34f4d4c95249de26b0"
+ },
+ "claim": {
+  "metric": "operating_profit",
+  "value_cell": "ev_b6985619ecb60acbab41",
+  "amount": "11607",
+  "currency": "USD",
+  "unit_scale": "1000000",
+  "duration_months": 6,
+  "fiscal_year": 2024,
+  "end_date": null,
+  "start_date": null,
+  "cited": {
+   "metric_ids": [
+    "ev_cf18a4dc2b0330fbb3c3"
+   ],
+   "period_ids": [
+    "ev_23d06e2157af7b2fbe60",
+    "ev_ba6df5af2986186b4bbf"
+   ],
+   "unit_ids": [
+    "ev_931f3d3faea6cd50a176"
+   ],
+   "value_ids": [
+    "ev_b6985619ecb60acbab41"
+   ]
+  }
+ },
+ "claim_outcome": "supported",
+ "field_verdicts": [
+  {
+   "field": "amount",
+   "status": "pass",
+   "reason": "claimed_amount_vs_value_cell"
+  },
+  {
+   "field": "currency",
+   "status": "pass",
+   "reason": "claimed_currency_vs_applicable_context"
+  },
+  {
+   "field": "unit_scale",
+   "status": "pass",
+   "reason": "claimed_unit_scale_vs_applicable_context"
+  },
+  {
+   "field": "duration_months",
+   "status": "pass",
+   "reason": "claimed_duration_months_vs_applicable_context"
+  },
+  {
+   "field": "fiscal_year",
+   "status": "pass",
+   "reason": "claimed_fiscal_year_vs_applicable_context"
+  },
+  {
+   "field": "start_date",
+   "status": "unknown",
+   "reason": "start_date_not_stated"
+  },
+  {
+   "field": "end_date",
+   "status": "unknown",
+   "reason": "end_date_not_stated"
+  },
+  {
+   "field": "period_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "unit_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "metric_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  }
+ ],
+ "claim_cell_reading": {
+  "value_cell": "ev_b6985619ecb60acbab41",
+  "row_label": "Operating Income",
+  "table": 0,
+  "page": 2,
+  "row": 15,
+  "col": 5,
+  "tuple": {
+   "metric": "operating_profit",
+   "scope": "consolidated",
+   "amount_text": "11,607",
+   "amount": "11607",
+   "currency": "USD",
+   "unit_scale": "1000000",
+   "normalized_value": "11607000000",
+   "duration_months": 6,
+   "fiscal_year": 2024,
+   "end_date": null,
+   "start_date": null
+  },
+  "edges": [
+   {
+    "rel": "in_table",
+    "src": "ev_b6985619ecb60acbab41",
+    "dst": "table:0",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "on_page",
+    "src": "ev_b6985619ecb60acbab41",
+    "dst": "page:2",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "row_label_for",
+    "src": "ev_cf18a4dc2b0330fbb3c3",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-ROW-LEFTMOST",
+    "note": "Operating Income"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_f9818cedc50bd701513c",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-SECTION-PRECEDING",
+    "note": "Cost of revenues"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_c000c581881c666544aa",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-SCOPE-TITLE",
+    "note": "Consolidated Statements of Income"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_ba6df5af2986186b4bbf",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-HDR-SPAN",
+    "note": "span [5,6) covers column 5"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_23d06e2157af7b2fbe60",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-HDR-SPAN",
+    "note": "span [4,6) covers column 5"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_c000c581881c666544aa",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-HDR-SPAN",
+    "note": "span [0,7) covers column 5"
+   },
+   {
+    "rel": "duration_heading_for",
+    "src": "ev_23d06e2157af7b2fbe60",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-DUR-COLUMN",
+    "note": "Six-Month Period"
+   },
+   {
+    "rel": "year_header_for",
+    "src": "ev_ba6df5af2986186b4bbf",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-YEAR-SPECIFIC",
+    "note": "2024"
+   },
+   {
+    "rel": "unit_applies_to",
+    "src": "ev_931f3d3faea6cd50a176",
+    "dst": "ev_b6985619ecb60acbab41",
+    "rule": "R-UNIT-TABLE",
+    "note": "Dollars in millions except per share amounts Unaudited"
+   }
+  ],
+  "obligations": [
+   {
+    "id": "S1",
+    "status": "pass",
+    "reason": "source_hash_and_parse_ownership",
+    "evidence": []
+   },
+   {
+    "id": "S2",
+    "status": "pass",
+    "reason": "value_cell_amount_readable",
+    "evidence": [
+     "ev_b6985619ecb60acbab41"
+    ]
+   },
+   {
+    "id": "M1",
+    "status": "pass",
+    "reason": "row_label_matches_metric_definition",
+    "evidence": [
+     "ev_cf18a4dc2b0330fbb3c3"
+    ]
+   },
+   {
+    "id": "M2",
+    "status": "pass",
+    "reason": "consolidated_statement",
+    "evidence": [
+     "ev_c000c581881c666544aa",
+     "ev_cf18a4dc2b0330fbb3c3"
+    ]
+   },
+   {
+    "id": "P1",
+    "status": "pass",
+    "reason": "year_header_covers_column",
+    "evidence": [
+     "ev_ba6df5af2986186b4bbf"
+    ]
+   },
+   {
+    "id": "P2",
+    "status": "pass",
+    "reason": "R-DUR-COLUMN",
+    "evidence": [
+     "ev_23d06e2157af7b2fbe60"
+    ]
+   },
+   {
+    "id": "P3",
+    "status": "unknown",
+    "reason": "end_date_not_stated",
+    "evidence": []
+   },
+   {
+    "id": "U1",
+    "status": "pass",
+    "reason": "usd_stated_in_governing_unit_statement",
+    "evidence": [
+     "ev_931f3d3faea6cd50a176"
+    ]
+   },
+   {
+    "id": "U2",
+    "status": "pass",
+    "reason": "R-UNIT-TABLE",
+    "evidence": [
+     "ev_931f3d3faea6cd50a176"
+    ]
+   },
+   {
+    "id": "N1",
+    "status": "pass",
+    "reason": "en_US_separators_parentheses_negative",
+    "evidence": [
+     "ev_b6985619ecb60acbab41"
+    ]
+   },
+   {
+    "id": "N2",
+    "status": "pass",
+    "reason": "decimal_multiplication_no_fx_no_annualization",
+    "evidence": [
+     "ev_b6985619ecb60acbab41",
+     "ev_931f3d3faea6cd50a176"
+    ]
+   },
+   {
+    "id": "C1",
+    "status": "pass",
+    "reason": "no_incompatible_applicable_evidence",
+    "evidence": []
+   }
+  ]
+ },
+ "resolution": {
+  "target_key": "att-2q2025:operating_profit:6M:2024",
+  "outcome": "supported",
+  "reason": "unique_supported_semantic_class",
+  "classes": [
+   {
+    "tuple": {
+     "metric": "operating_profit",
+     "scope": "consolidated",
+     "amount_text": "11,607",
+     "amount": "11607",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "11607000000",
+     "duration_months": 6,
+     "fiscal_year": 2024,
+     "end_date": null,
+     "start_date": null
+    },
+    "value_cells": [
+     "ev_b6985619ecb60acbab41"
+    ]
+   }
+  ],
+  "candidates": [
+   {
+    "value_cell": "ev_b6985619ecb60acbab41",
+    "row_label": "Operating Income",
+    "table": 0,
+    "page": 2,
+    "row": 15,
+    "col": 5,
+    "tuple": {
+     "metric": "operating_profit",
+     "scope": "consolidated",
+     "amount_text": "11,607",
+     "amount": "11607",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "11607000000",
+     "duration_months": 6,
+     "fiscal_year": 2024,
+     "end_date": null,
+     "start_date": null
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_b6985619ecb60acbab41",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_b6985619ecb60acbab41",
+      "dst": "page:2",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_cf18a4dc2b0330fbb3c3",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Operating Income"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_f9818cedc50bd701513c",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Cost of revenues"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_c000c581881c666544aa",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_ba6df5af2986186b4bbf",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-HDR-SPAN",
+      "note": "span [5,6) covers column 5"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_23d06e2157af7b2fbe60",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-HDR-SPAN",
+      "note": "span [4,6) covers column 5"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_c000c581881c666544aa",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-HDR-SPAN",
+      "note": "span [0,7) covers column 5"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_23d06e2157af7b2fbe60",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-DUR-COLUMN",
+      "note": "Six-Month Period"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_ba6df5af2986186b4bbf",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "2024"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_931f3d3faea6cd50a176",
+      "dst": "ev_b6985619ecb60acbab41",
+      "rule": "R-UNIT-TABLE",
+      "note": "Dollars in millions except per share amounts Unaudited"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_b6985619ecb60acbab41"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_cf18a4dc2b0330fbb3c3"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "pass",
+      "reason": "consolidated_statement",
+      "evidence": [
+       "ev_c000c581881c666544aa",
+       "ev_cf18a4dc2b0330fbb3c3"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_ba6df5af2986186b4bbf"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-COLUMN",
+      "evidence": [
+       "ev_23d06e2157af7b2fbe60"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "unknown",
+      "reason": "end_date_not_stated",
+      "evidence": []
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_931f3d3faea6cd50a176"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "pass",
+      "reason": "R-UNIT-TABLE",
+      "evidence": [
+       "ev_931f3d3faea6cd50a176"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_b6985619ecb60acbab41"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "pass",
+      "reason": "decimal_multiplication_no_fx_no_annualization",
+      "evidence": [
+       "ev_b6985619ecb60acbab41",
+       "ev_931f3d3faea6cd50a176"
+      ]
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   }
+  ],
+  "coverage": []
+ },
+ "boundary": "Certifies satisfaction of documented applicability rules over the registered source; not issuer accounting truth, not a signature.",
+ "content_sha256": "3aa550af2f9f92b6a32f245dfa433c3e64bdb065ddfe2c47241818b8e57a9aac"
+}

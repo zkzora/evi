@@ -1,0 +1,39 @@
+{
+ "request_sha256": "38d8ee18e2af4752c4a118cb54c1f8d84509c9550e2dbf40aeff376823bebfa7",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdN93BFBWTorRPWx6lADnlyg6rIg",
+  "object": "chat.completion",
+  "created": 1794783143,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[{\"target_key\":\"verizon-fy2024:revenue:12M:2024\",\"reason\":\"No supported change needed; evidence matches reported text for total operating revenues in the 2024 column of the consolidated statements of income.\",\"evidence_ids\":[\"ev_221b8f5873e3ec5fc880\",\"ev_9128f2ba78bfa8dee71d\",\"ev_9aec441a8e9eda22b4d7\",\"ev_924ffa921576c38ca7a5\",\"ev_d4612d30abffca7692f1\"]},{\"target_key\":\"verizon-fy2024:operating_profit:12M:2024\",\"reason\":\"No supported change needed; evidence matches reported text for operating income in the 2024 column of the consolidated statements of income.\",\"evidence_ids\":[\"ev_bf0cd40695705a8750af\",\"ev_cf42277ea28288a02ea3\",\"ev_9aec441a8e9eda22b4d7\",\"ev_924ffa921576c38ca7a5\",\"ev_d4612d30abffca7692f1\"]},{\"target_key\":\"verizon-fy2024:profit_attributable_to_owners:12M:2024\",\"reason\":\"No supported change needed; evidence matches reported text for net income attributable to Verizon in the 2024 column of the consolidated statements of income.\",\"evidence_ids\":[\"ev_813be7acf0e05af3f94e\",\"ev_308df74ed673608c1026\",\"ev_9aec441a8e9eda22b4d7\",\"ev_924ffa921576c38ca7a5\",\"ev_d4612d30abffca7692f1\"]},{\"target_key\":\"verizon-fy2024:revenue:12M:2023\",\"reason\":\"No supported change needed; evidence matches reported text for total operating revenues in the 2023 column of the consolidated statements of income.\",\"evidence_ids\":[\"ev_221b8f5873e3ec5fc880\",\"ev_51ce4d35a518ee44991b\",\"ev_9aec441a8e9eda22b4d7\",\"ev_56039621619fcf6125cf\",\"ev_d4612d30abffca7692f1\"]},{\"target_key\":\"verizon-fy2024:operating_profit:12M:2023\",\"reason\":\"No supported change needed; evidence matches reported text for operating income in the 2023 column of the consolidated statements of income.\",\"evidence_ids\":[\"ev_bf0cd40695705a8750af\",\"ev_d94d485853afd546b39c\",\"ev_9aec441a8e9eda22b4d7\",\"ev_56039621619fcf6125cf\",\"ev_d4612d30abffca7692f1\"]},{\"target_key\":\"verizon-fy2024:profit_attributable_to_owners:12M:2023\",\"reason\":\"No supported change needed; evidence matches reported text for net income attributable to Verizon in the 2023 column of the consolidated statements of income.\",\"evidence_ids\":[\"ev_813be7acf0e05af3f94e\",\"ev_c8cedb15635bd19d2569\",\"ev_9aec441a8e9eda22b4d7\",\"ev_56039621619fcf6125cf\",\"ev_d4612d30abffca7692f1\"]}],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5973,
+   "completion_tokens": 771,
+   "total_tokens": 6744,
+   "prompt_tokens_details": {
+    "cached_tokens": 2816,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

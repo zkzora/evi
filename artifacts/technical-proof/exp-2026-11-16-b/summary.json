@@ -1,0 +1,393 @@
+{
+ "experiment_id": "exp-2026-11-16-b",
+ "reference_provenance": "builder-drafted, source-reviewed, provisional (not independent human gold)",
+ "by_arm": {
+  "A": {
+   "targets": 96,
+   "executed": 96,
+   "strict_correct": 62,
+   "semantic_correct": 62,
+   "covered": 96,
+   "certificate_supported": 62,
+   "unexecuted": 0
+  },
+  "B": {
+   "targets": 96,
+   "executed": 96,
+   "strict_correct": 62,
+   "semantic_correct": 62,
+   "covered": 96,
+   "certificate_supported": 62,
+   "unexecuted": 0
+  },
+  "C": {
+   "targets": 96,
+   "executed": 96,
+   "strict_correct": 74,
+   "semantic_correct": 74,
+   "covered": 96,
+   "certificate_supported": 74,
+   "unexecuted": 0
+  },
+  "D": {
+   "targets": 96,
+   "executed": 96,
+   "strict_correct": 74,
+   "semantic_correct": 74,
+   "covered": 96,
+   "certificate_supported": 74,
+   "unexecuted": 0
+  }
+ },
+ "by_arm_split": {
+  "A": {
+   "development": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 30,
+    "semantic_correct": 30,
+    "covered": 48,
+    "certificate_supported": 30,
+    "unexecuted": 0
+   },
+   "holdout": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 32,
+    "semantic_correct": 32,
+    "covered": 48,
+    "certificate_supported": 32,
+    "unexecuted": 0
+   }
+  },
+  "B": {
+   "development": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 30,
+    "semantic_correct": 30,
+    "covered": 48,
+    "certificate_supported": 30,
+    "unexecuted": 0
+   },
+   "holdout": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 32,
+    "semantic_correct": 32,
+    "covered": 48,
+    "certificate_supported": 32,
+    "unexecuted": 0
+   }
+  },
+  "C": {
+   "development": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 42,
+    "semantic_correct": 42,
+    "covered": 48,
+    "certificate_supported": 42,
+    "unexecuted": 0
+   },
+   "holdout": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 32,
+    "semantic_correct": 32,
+    "covered": 48,
+    "certificate_supported": 32,
+    "unexecuted": 0
+   }
+  },
+  "D": {
+   "development": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 42,
+    "semantic_correct": 42,
+    "covered": 48,
+    "certificate_supported": 42,
+    "unexecuted": 0
+   },
+   "holdout": {
+    "targets": 48,
+    "executed": 48,
+    "strict_correct": 32,
+    "semantic_correct": 32,
+    "covered": 48,
+    "certificate_supported": 32,
+    "unexecuted": 0
+   }
+  }
+ },
+ "by_arm_document": {
+  "A": {
+   "verizon-fy2025": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 12,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "verizon-fy2024": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 6,
+    "semantic_correct": 6,
+    "covered": 12,
+    "certificate_supported": 6,
+    "unexecuted": 0
+   },
+   "verizon-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 24,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "att-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 24,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "att-2q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 20,
+    "semantic_correct": 20,
+    "covered": 24,
+    "certificate_supported": 20,
+    "unexecuted": 0
+   }
+  },
+  "B": {
+   "verizon-fy2025": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 12,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "verizon-fy2024": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 6,
+    "semantic_correct": 6,
+    "covered": 12,
+    "certificate_supported": 6,
+    "unexecuted": 0
+   },
+   "verizon-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 24,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "att-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 24,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "att-2q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 20,
+    "semantic_correct": 20,
+    "covered": 24,
+    "certificate_supported": 20,
+    "unexecuted": 0
+   }
+  },
+  "C": {
+   "verizon-fy2025": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 12,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "verizon-fy2024": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 6,
+    "semantic_correct": 6,
+    "covered": 12,
+    "certificate_supported": 6,
+    "unexecuted": 0
+   },
+   "verizon-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 24,
+    "semantic_correct": 24,
+    "covered": 24,
+    "certificate_supported": 24,
+    "unexecuted": 0
+   },
+   "att-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 24,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "att-2q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 20,
+    "semantic_correct": 20,
+    "covered": 24,
+    "certificate_supported": 20,
+    "unexecuted": 0
+   }
+  },
+  "D": {
+   "verizon-fy2025": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 12,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "verizon-fy2024": {
+    "targets": 12,
+    "executed": 12,
+    "strict_correct": 6,
+    "semantic_correct": 6,
+    "covered": 12,
+    "certificate_supported": 6,
+    "unexecuted": 0
+   },
+   "verizon-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 24,
+    "semantic_correct": 24,
+    "covered": 24,
+    "certificate_supported": 24,
+    "unexecuted": 0
+   },
+   "att-3q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 12,
+    "semantic_correct": 12,
+    "covered": 24,
+    "certificate_supported": 12,
+    "unexecuted": 0
+   },
+   "att-2q2025": {
+    "targets": 24,
+    "executed": 24,
+    "strict_correct": 20,
+    "semantic_correct": 20,
+    "covered": 24,
+    "certificate_supported": 20,
+    "unexecuted": 0
+   }
+  }
+ },
+ "field_errors_by_arm": {
+  "A": {
+   "amount": 4,
+   "currency": 24,
+   "end_date": 6,
+   "start_date": 18
+  },
+  "B": {
+   "amount": 4,
+   "currency": 24,
+   "end_date": 6,
+   "start_date": 18
+  },
+  "C": {
+   "amount": 4,
+   "currency": 12,
+   "end_date": 6,
+   "start_date": 6
+  },
+  "D": {
+   "amount": 4,
+   "currency": 12,
+   "end_date": 6,
+   "start_date": 6
+  }
+ },
+ "paired": {
+  "A->C": {
+   "preserved_correct": 62,
+   "unchanged_incorrect": 22,
+   "improvement": 12
+  },
+  "A->D": {
+   "preserved_correct": 62,
+   "unchanged_incorrect": 22,
+   "improvement": 12
+  },
+  "C->D": {
+   "preserved_correct": 74,
+   "unchanged_incorrect": 22
+  }
+ },
+ "detection_B": {
+  "correct_pass": 62,
+  "true_detection": 34
+ },
+ "costs": {
+  "serv_calls_recorded": 20,
+  "serv_total_tokens": 166431,
+  "serv_usd": "unknown (per-call price not returned; token counts only)",
+  "reppo_credits_charged": 0,
+  "reppo_wait_s": [],
+  "latency_s_by_arm": {
+   "C": [
+    4.3,
+    3.2,
+    3.1,
+    8.1,
+    3.8,
+    3.4,
+    3.1,
+    12.6,
+    98.0,
+    8.0
+   ],
+   "D": [
+    2.7,
+    4.0,
+    4.3,
+    7.1,
+    4.5,
+    5.2,
+    7.3,
+    18.7,
+    17.3,
+    11.1
+   ]
+  }
+ }
+}

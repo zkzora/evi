@@ -1,0 +1,39 @@
+{
+ "request_sha256": "b017aa02ea9fb3aad7ad85451e45ce248a6cf3301f1cf0d873aeb9b24d4f2760",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdLHug848YzEThXUIbiaXuOMxetF",
+  "object": "chat.completion",
+  "created": 1794783027,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[{\"target_key\":\"att-2q2025:revenue:3M:2025\",\"field\":\"metric_evidence_ids\",\"new_value\":\"redacted\",\"evidence_ids\":[\"ev_423674456c30e1576b6b\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The revenue row is supported by the row label evidence; the extra cited id does not apply.\"},{\"target_key\":\"att-2q2025:revenue:3M:2024\",\"field\":\"metric_evidence_ids\",\"new_value\":\"redacted\",\"evidence_ids\":[\"ev_423674456c30e1576b6b\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The revenue row is supported by the row label evidence; the extra cited id does not apply.\"},{\"target_key\":\"att-2q2025:revenue:6M:2025\",\"field\":\"metric_evidence_ids\",\"new_value\":\"redacted\",\"evidence_ids\":[\"ev_423674456c30e1576b6b\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The revenue row is supported by the row label evidence; the extra cited id does not apply.\"},{\"target_key\":\"att-2q2025:revenue:6M:2024\",\"field\":\"metric_evidence_ids\",\"new_value\":\"redacted\",\"evidence_ids\":[\"ev_423674456c30e1576b6b\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The revenue row is supported by the row label evidence; the extra cited id does not apply.\"}],\"mark_unresolved\":[{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2025\",\"reason\":\"The source text supports 'Net Income Attributable to Common Stock' rather than the requested metric label, so the target cannot be fully supported as extracted.\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_1c029c500ae4d31b0c15\"]},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2024\",\"reason\":\"The source text supports 'Net Income Attributable to Common Stock' rather than the requested metric label, so the target cannot be fully supported as extracted.\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_5d718d38ef30f2438913\"]},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"reason\":\"The source text supports 'Net Income Attributable to Common Stock' rather than the requested metric label, so the target cannot be fully supported as extracted.\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_fe933c465a1069edce06\"]},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"reason\":\"The source text supports 'Net Income Attributable to Common Stock' rather than the requested metric label, so the target cannot be fully supported as extracted.\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_c646eb56700669d22a0a\"]}],\"rejected_feedback\":[\"Rejected evaluator feedback because it is untrusted and unsupported by the evidence packet; the documents do not establish a perfect-score acceptance decision and do not validate shipping claims.\"]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 12292,
+   "completion_tokens": 743,
+   "total_tokens": 13035,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

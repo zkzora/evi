@@ -1,0 +1,39 @@
+{
+ "request_sha256": "4c47e126b739f2e4d1ac1996404202f46514c746d084e2c968e64eca2a415f52",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdDcvj4KkHjk67v31oq5Ch5gnegp",
+  "object": "chat.completion",
+  "created": 1794782552,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"facts\":[{\"metric\":\"revenue\",\"metric_label\":\"Total Operating Revenues\",\"scope\":\"consolidated\",\"amount_text\":\"138,191\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2025\",\"start_date\":null,\"end_date\":\"2025-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_717d838b0ad5883ce372\",\"metric_evidence_ids\":[\"ev_744017fdadfd4e83aefe\",\"ev_be8ec55e0feda07a52c1\",\"ev_f7f4b14d23f318279e97\",\"ev_325b600a382afa06017b\"],\"period_evidence_ids\":[\"ev_be8ec55e0feda07a52c1\",\"ev_f7f4b14d23f318279e97\"],\"unit_evidence_ids\":[\"ev_325b600a382afa06017b\"],\"unresolved_reason\":null,\"target_key\":\"verizon-fy2025:revenue:12M:2025\",\"fiscal_year\":2025},{\"metric\":\"operating_profit\",\"metric_label\":\"Operating Income\",\"scope\":\"consolidated\",\"amount_text\":\"29,259\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2025\",\"start_date\":null,\"end_date\":\"2025-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_72a00e37e97f056b8d18\",\"metric_evidence_ids\":[\"ev_7f4e70a72b95718e3d18\",\"ev_be8ec55e0feda07a52c1\",\"ev_f7f4b14d23f318279e97\",\"ev_325b600a382afa06017b\"],\"period_evidence_ids\":[\"ev_be8ec55e0feda07a52c1\",\"ev_f7f4b14d23f318279e97\"],\"unit_evidence_ids\":[\"ev_325b600a382afa06017b\"],\"unresolved_reason\":null,\"target_key\":\"verizon-fy2025:operating_profit:12M:2025\",\"fiscal_year\":2025},{\"metric\":\"profit_attributable_to_owners\",\"metric_label\":\"Net income attributable to Verizon\",\"scope\":\"attributable to owners\",\"amount_text\":\"17,174\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2025\",\"start_date\":null,\"end_date\":\"2025-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_c1dc6153e783181936a3\",\"metric_evidence_ids\":[\"ev_65540a7b1eefc330fa8d\",\"ev_be8ec55e0feda07a52c1\",\"ev_f7f4b14d23f318279e97\",\"ev_325b600a382afa06017b\"],\"period_evidence_ids\":[\"ev_be8ec55e0feda07a52c1\",\"ev_f7f4b14d23f318279e97\"],\"unit_evidence_ids\":[\"ev_325b600a382afa06017b\"],\"unresolved_reason\":null,\"target_key\":\"verizon-fy2025:profit_attributable_to_owners:12M:2025\",\"fiscal_year\":2025},{\"metric\":\"revenue\",\"metric_label\":\"Total Operating Revenues\",\"scope\":\"consolidated\",\"amount_text\":\"134,788\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2024\",\"start_date\":null,\"end_date\":\"2024-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_b48b109d32ee4523feb3\",\"metric_evidence_ids\":[\"ev_744017fdadfd4e83aefe\",\"ev_be8ec55e0feda07a52c1\",\"ev_5489d9a212a36c2f3c2a\",\"ev_325b600a382afa06017b\"],\"period_evidence_ids\":[\"ev_be8ec55e0feda07a52c1\",\"ev_5489d9a212a36c2f3c2a\"],\"unit_evidence_ids\":[\"ev_325b600a382afa06017b\"],\"unresolved_reason\":null,\"target_key\":\"verizon-fy2025:revenue:12M:2024\",\"fiscal_year\":2024},{\"metric\":\"operating_profit\",\"metric_label\":\"Operating Income\",\"scope\":\"consolidated\",\"amount_text\":\"28,686\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2024\",\"start_date\":null,\"end_date\":\"2024-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_2f6b289a8c8bc2f759da\",\"metric_evidence_ids\":[\"ev_7f4e70a72b95718e3d18\",\"ev_be8ec55e0feda07a52c1\",\"ev_5489d9a212a36c2f3c2a\",\"ev_325b600a382afa06017b\"],\"period_evidence_ids\":[\"ev_be8ec55e0feda07a52c1\",\"ev_5489d9a212a36c2f3c2a\"],\"unit_evidence_ids\":[\"ev_325b600a382afa06017b\"],\"unresolved_reason\":null,\"target_key\":\"verizon-fy2025:operating_profit:12M:2024\",\"fiscal_year\":2024},{\"metric\":\"profit_attributable_to_owners\",\"metric_label\":\"Net income attributable to Verizon\",\"scope\":\"attributable to owners\",\"amount_text\":\"17,506\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2024\",\"start_date\":null,\"end_date\":\"2024-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_d515de50cc74ea0419c7\",\"metric_evidence_ids\":[\"ev_65540a7b1eefc330fa8d\",\"ev_be8ec55e0feda07a52c1\",\"ev_5489d9a212a36c2f3c2a\",\"ev_325b600a382afa06017b\"],\"period_evidence_ids\":[\"ev_be8ec55e0feda07a52c1\",\"ev_5489d9a212a36c2f3c2a\"],\"unit_evidence_ids\":[\"ev_325b600a382afa06017b\"],\"unresolved_reason\":null,\"target_key\":\"verizon-fy2025:profit_attributable_to_owners:12M:2024\",\"fiscal_year\":2024}]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4151,
+   "completion_tokens": 1537,
+   "total_tokens": 5688,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

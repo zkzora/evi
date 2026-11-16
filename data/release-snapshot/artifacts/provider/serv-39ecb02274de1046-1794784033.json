@@ -1,0 +1,39 @@
+{
+ "request_sha256": "39ecb02274de10461d0c5ccf532bd82f8494dd1e9e35626bd1af8f069d83e91d",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdbSRYfSpyEHeKg7bP7ss6BUvRFi",
+  "object": "chat.completion",
+  "created": 1794784030,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2025\",\"field\":\"amount_text\",\"new_value\":\"4,500\",\"evidence_ids\":[\"ev_e79ecac5880f86042e20\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table value for Net Income Attributable to AT&T in the Second Quarter 2025 column is 4,500, not the parent fact's 4,464, so the amount text should be corrected to the supported column value.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2025\",\"field\":\"value_cell\",\"new_value\":\"ev_e79ecac5880f86042e20\",\"evidence_ids\":[\"ev_e79ecac5880f86042e20\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The supporting value cell for the 3M 2025 net income attributable to owners fact is the Second Quarter 2025 AT&T row cell.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2024\",\"field\":\"amount_text\",\"new_value\":\"3,597\",\"evidence_ids\":[\"ev_ddb90a8a3d8fbe14c041\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table value for Net Income Attributable to AT&T in the Second Quarter 2024 column is 3,597, not the parent fact's 3,546, so the amount text should be corrected to the supported column value.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2024\",\"field\":\"value_cell\",\"new_value\":\"ev_ddb90a8a3d8fbe14c041\",\"evidence_ids\":[\"ev_ddb90a8a3d8fbe14c041\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The supporting value cell for the 3M 2024 net income attributable to owners fact is the Second Quarter 2024 AT&T row cell.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"field\":\"amount_text\",\"new_value\":\"8,851\",\"evidence_ids\":[\"ev_6b03f897f910bfd37919\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table value for Net Income Attributable to AT&T in the Six-Month Period 2025 column is 8,851, not the parent fact's 8,859, so the amount text should be corrected to the supported column value.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"field\":\"value_cell\",\"new_value\":\"ev_6b03f897f910bfd37919\",\"evidence_ids\":[\"ev_6b03f897f910bfd37919\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The supporting value cell for the 6M 2025 net income attributable to owners fact is the Six-Month Period 2025 AT&T row cell.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"field\":\"amount_text\",\"new_value\":\"7,042\",\"evidence_ids\":[\"ev_af894945608718026662\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The source table value for Net Income Attributable to AT&T in the Six-Month Period 2024 column is 7,042, not the parent fact's 6,941, so the amount text should be corrected to the supported column value.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"field\":\"value_cell\",\"new_value\":\"ev_af894945608718026662\",\"evidence_ids\":[\"ev_af894945608718026662\"],\"rationale_category\":\"wrong_column\",\"rationale\":\"The supporting value cell for the 6M 2024 net income attributable to owners fact is the Six-Month Period 2024 AT&T row cell.\"}],\"mark_unresolved\":[],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 9803,
+   "completion_tokens": 907,
+   "total_tokens": 10710,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

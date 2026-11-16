@@ -1,0 +1,75 @@
+{
+ "base": "http://127.0.0.1:8100",
+ "results": [
+  {
+   "check": "health JSON, execution disabled",
+   "pass": true,
+   "detail": "{\"execution\": \"disabled\", \"database\": \"ok\", \"worker\": \"alive\", \"docling\": \"available\", \"serv\": \"not_configured\", \"reppo\": \"not_configured\", \"serv_model\": \"gpt-5.4-mini\"}"
+  },
+  {
+   "check": "readiness reports storage/sources/worker",
+   "pass": true,
+   "detail": "{\"ready\":true,\"checks\":{\"database\":\"ok\",\"sources\":\"ok\",\"worker\":\"alive\",\"artifact_storage\":\"writable\",\"execution\":\"disabled\"}}"
+  },
+  {
+   "check": "SPA deep link /",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "SPA deep link /workspace?document=att-2q2025",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "SPA deep link /data?company=verizon",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "SPA deep link /benchmark",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "unknown API path is JSON 404, not SPA HTML",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "5 registered USD documents",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "original PDF bytes served",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "new processing refused server-side (execution disabled)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "cross-origin write refused",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "persisted historical version readable with original timestamp",
+   "pass": true,
+   "detail": "created_at 2026-11-15T22:48:52.716+00:00 (original run time, not a fresh run)"
+  },
+  {
+   "check": "persisted Reppo records readable",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no provider calls during smoke test",
+   "pass": true,
+   "detail": "162 -> 162"
+  }
+ ]
+}

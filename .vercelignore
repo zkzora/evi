@@ -1,0 +1,16 @@
+# Never upload secrets, local runtime state or caches to Vercel.
+**/.env
+**/.env.*
+!**/.env.example
+backend/.venv
+backend/tests
+node_modules
+dist
+data/runs
+data/raw
+data/references/review
+data/references/reviewed
+artifacts
+**/__pycache__
+.git
+deploy/production.env

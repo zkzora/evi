@@ -1,0 +1,39 @@
+{
+ "request_sha256": "0f652a7db7a21a3c02ddc3bfa4cf18e675ff10b0ca33dc3f8339320975c581ac",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkXxg7FguEgUbKK3qToylbvz6SpQl",
+  "object": "chat.completion",
+  "created": 1794762344,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"facts\":[{\"metric\":\"revenue\",\"metric_label\":\"Total Operating Revenues\",\"scope\":\"consolidated\",\"amount_text\":\"134,788\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2024\",\"start_date\":\"2024-01-01\",\"end_date\":\"2024-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_9128f2ba78bfa8dee71d\",\"metric_evidence_ids\":[\"ev_221b8f5873e3ec5fc880\"],\"period_evidence_ids\":[\"ev_9aec441a8e9eda22b4d7\",\"ev_924ffa921576c38ca7a5\"],\"unit_evidence_ids\":[\"ev_d4612d30abffca7692f1\"],\"unresolved_reason\":null},{\"metric\":\"operating_profit\",\"metric_label\":\"Operating Income\",\"scope\":\"consolidated\",\"amount_text\":\"28,686\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2024\",\"start_date\":\"2024-01-01\",\"end_date\":\"2024-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_cf42277ea28288a02ea3\",\"metric_evidence_ids\":[\"ev_bf0cd40695705a8750af\"],\"period_evidence_ids\":[\"ev_9aec441a8e9eda22b4d7\",\"ev_924ffa921576c38ca7a5\"],\"unit_evidence_ids\":[\"ev_d4612d30abffca7692f1\"],\"unresolved_reason\":null},{\"metric\":\"profit_attributable_to_owners\",\"metric_label\":\"Net income attributable to Verizon\",\"scope\":\"consolidated\",\"amount_text\":\"17,506\",\"currency\":\"USD\",\"unit_scale\":\"1000000\",\"period_kind\":\"full_year\",\"period_label\":\"Years Ended December 31, 2024\",\"start_date\":\"2024-01-01\",\"end_date\":\"2024-12-31\",\"duration_months\":12,\"value_evidence_id\":\"ev_308df74ed673608c1026\",\"metric_evidence_ids\":[\"ev_813be7acf0e05af3f94e\"],\"period_evidence_ids\":[\"ev_9aec441a8e9eda22b4d7\",\"ev_924ffa921576c38ca7a5\"],\"unit_evidence_ids\":[\"ev_d4612d30abffca7692f1\"],\"unresolved_reason\":null}]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3608,
+   "completion_tokens": 566,
+   "total_tokens": 4174,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

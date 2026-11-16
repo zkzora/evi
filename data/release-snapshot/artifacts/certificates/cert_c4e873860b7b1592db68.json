@@ -1,0 +1,891 @@
+{
+ "schema": "evi.support-certificate/1",
+ "policy_version": "binding-v2",
+ "source": {
+  "document_id": "verizon-fy2024",
+  "sha256": "05ad83ec2279c04683b50878f8aa8ff8c868aad481b205f52e316df63c403318",
+  "source_url": "https://www.verizon.com/about/sites/default/files/2024-Annual-Report-on-Form-10k.pdf",
+  "bytes_verified": true
+ },
+ "parse": {
+  "parse_id": "parse_c8ca25aa4dd29fc48c2c",
+  "cache_key": "c8ca25aa4dd29fc48c2cae545164d50a2f90c239f354f6a054d47c4933ca2ce5",
+  "docling_artifact_sha256": "18938178fefadf07c8226a3b3117f2651ba89db408cd519c0fab9456958f8dc5",
+  "physical_pages": [
+   54
+  ],
+  "page_numbering": "docling page_no == physical 1-based page (validated)"
+ },
+ "target": {
+  "target_key": "verizon-fy2024:profit_attributable_to_owners:12M:2023",
+  "document_id": "verizon-fy2024",
+  "metric": "profit_attributable_to_owners",
+  "duration_months": 12,
+  "fiscal_year": 2023,
+  "policy": "targets-v1"
+ },
+ "fact_ref": null,
+ "claim": {
+  "metric": "profit_attributable_to_owners",
+  "value_cell": "ev_c8cedb15635bd19d2569",
+  "amount": "11614",
+  "currency": "USD",
+  "unit_scale": "1000000",
+  "duration_months": 12,
+  "fiscal_year": 2023,
+  "end_date": "2023-12-31",
+  "start_date": "2023-01-01",
+  "cited": {
+   "metric_ids": [
+    "ev_813be7acf0e05af3f94e",
+    "ev_9aec441a8e9eda22b4d7",
+    "ev_56039621619fcf6125cf"
+   ],
+   "period_ids": [
+    "ev_9aec441a8e9eda22b4d7",
+    "ev_56039621619fcf6125cf"
+   ],
+   "unit_ids": [
+    "ev_d4612d30abffca7692f1"
+   ],
+   "value_ids": [
+    "ev_c8cedb15635bd19d2569"
+   ]
+  }
+ },
+ "claim_outcome": "supported",
+ "field_verdicts": [
+  {
+   "field": "amount",
+   "status": "pass",
+   "reason": "claimed_amount_vs_value_cell"
+  },
+  {
+   "field": "currency",
+   "status": "pass",
+   "reason": "claimed_currency_vs_applicable_context"
+  },
+  {
+   "field": "unit_scale",
+   "status": "pass",
+   "reason": "claimed_unit_scale_vs_applicable_context"
+  },
+  {
+   "field": "duration_months",
+   "status": "pass",
+   "reason": "claimed_duration_months_vs_applicable_context"
+  },
+  {
+   "field": "fiscal_year",
+   "status": "pass",
+   "reason": "claimed_fiscal_year_vs_applicable_context"
+  },
+  {
+   "field": "start_date",
+   "status": "pass",
+   "reason": "claimed_start_date_vs_derived"
+  },
+  {
+   "field": "end_date",
+   "status": "pass",
+   "reason": "claimed_end_date_vs_derived"
+  },
+  {
+   "field": "period_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "unit_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "metric_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  }
+ ],
+ "claim_cell_reading": {
+  "value_cell": "ev_c8cedb15635bd19d2569",
+  "row_label": "Net income attributable to Verizon",
+  "table": 0,
+  "page": 54,
+  "row": 21,
+  "col": 2,
+  "tuple": {
+   "metric": "profit_attributable_to_owners",
+   "scope": "consolidated",
+   "amount_text": "11,614",
+   "amount": "11614",
+   "currency": "USD",
+   "unit_scale": "1000000",
+   "normalized_value": "11614000000",
+   "duration_months": 12,
+   "fiscal_year": 2023,
+   "end_date": "2023-12-31",
+   "start_date": "2023-01-01"
+  },
+  "edges": [
+   {
+    "rel": "in_table",
+    "src": "ev_c8cedb15635bd19d2569",
+    "dst": "table:0",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "on_page",
+    "src": "ev_c8cedb15635bd19d2569",
+    "dst": "page:54",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "row_label_for",
+    "src": "ev_813be7acf0e05af3f94e",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-ROW-LEFTMOST",
+    "note": "Net income attributable to Verizon"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_8def05cced070789d731",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-SECTION-PRECEDING",
+    "note": "Operating Expenses"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_61dceebcb8f964268413",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-SCOPE-TITLE",
+    "note": "Consolidated Statements of Income"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_56039621619fcf6125cf",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-HDR-SPAN",
+    "note": "span [2,3) covers column 2"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_d4612d30abffca7692f1",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-HDR-SPAN",
+    "note": "span [1,4) covers column 2"
+   },
+   {
+    "rel": "duration_heading_for",
+    "src": "ev_9aec441a8e9eda22b4d7",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-DUR-TABLE-ROWLABEL",
+    "note": "header-row label states the table interval: Years Ended December 31,"
+   },
+   {
+    "rel": "year_header_for",
+    "src": "ev_56039621619fcf6125cf",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-YEAR-SPECIFIC",
+    "note": "2023"
+   },
+   {
+    "rel": "unit_applies_to",
+    "src": "ev_d4612d30abffca7692f1",
+    "dst": "ev_c8cedb15635bd19d2569",
+    "rule": "R-UNIT-TABLE",
+    "note": "(dollars in millions, except per share amounts)"
+   }
+  ],
+  "obligations": [
+   {
+    "id": "S1",
+    "status": "pass",
+    "reason": "source_hash_and_parse_ownership",
+    "evidence": []
+   },
+   {
+    "id": "S2",
+    "status": "pass",
+    "reason": "value_cell_amount_readable",
+    "evidence": [
+     "ev_c8cedb15635bd19d2569"
+    ]
+   },
+   {
+    "id": "M1",
+    "status": "pass",
+    "reason": "row_label_matches_metric_definition",
+    "evidence": [
+     "ev_813be7acf0e05af3f94e"
+    ]
+   },
+   {
+    "id": "M2",
+    "status": "pass",
+    "reason": "consolidated_statement_parent_attribution",
+    "evidence": [
+     "ev_61dceebcb8f964268413",
+     "ev_813be7acf0e05af3f94e"
+    ]
+   },
+   {
+    "id": "P1",
+    "status": "pass",
+    "reason": "year_header_covers_column",
+    "evidence": [
+     "ev_56039621619fcf6125cf"
+    ]
+   },
+   {
+    "id": "P2",
+    "status": "pass",
+    "reason": "R-DUR-TABLE-ROWLABEL",
+    "evidence": [
+     "ev_9aec441a8e9eda22b4d7"
+    ]
+   },
+   {
+    "id": "P3",
+    "status": "pass",
+    "reason": "stated_end_date+R-CAL-MONTHEND",
+    "evidence": [
+     "ev_9aec441a8e9eda22b4d7"
+    ]
+   },
+   {
+    "id": "U1",
+    "status": "pass",
+    "reason": "usd_stated_in_governing_unit_statement",
+    "evidence": [
+     "ev_d4612d30abffca7692f1"
+    ]
+   },
+   {
+    "id": "U2",
+    "status": "pass",
+    "reason": "R-UNIT-TABLE",
+    "evidence": [
+     "ev_d4612d30abffca7692f1"
+    ]
+   },
+   {
+    "id": "N1",
+    "status": "pass",
+    "reason": "en_US_separators_parentheses_negative",
+    "evidence": [
+     "ev_c8cedb15635bd19d2569"
+    ]
+   },
+   {
+    "id": "N2",
+    "status": "pass",
+    "reason": "decimal_multiplication_no_fx_no_annualization",
+    "evidence": [
+     "ev_c8cedb15635bd19d2569",
+     "ev_d4612d30abffca7692f1"
+    ]
+   },
+   {
+    "id": "C1",
+    "status": "pass",
+    "reason": "no_incompatible_applicable_evidence",
+    "evidence": []
+   }
+  ]
+ },
+ "resolution": {
+  "target_key": "verizon-fy2024:profit_attributable_to_owners:12M:2023",
+  "outcome": "supported",
+  "reason": "unique_supported_semantic_class",
+  "classes": [
+   {
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "11,614",
+     "amount": "11614",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "11614000000",
+     "duration_months": 12,
+     "fiscal_year": 2023,
+     "end_date": "2023-12-31",
+     "start_date": "2023-01-01"
+    },
+    "value_cells": [
+     "ev_c8cedb15635bd19d2569"
+    ]
+   }
+  ],
+  "candidates": [
+   {
+    "value_cell": "ev_c8cedb15635bd19d2569",
+    "row_label": "Net income attributable to Verizon",
+    "table": 0,
+    "page": 54,
+    "row": 21,
+    "col": 2,
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "11,614",
+     "amount": "11614",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "11614000000",
+     "duration_months": 12,
+     "fiscal_year": 2023,
+     "end_date": "2023-12-31",
+     "start_date": "2023-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_c8cedb15635bd19d2569",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_c8cedb15635bd19d2569",
+      "dst": "page:54",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_813be7acf0e05af3f94e",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Net income attributable to Verizon"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_8def05cced070789d731",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Operating Expenses"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_61dceebcb8f964268413",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_56039621619fcf6125cf",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-HDR-SPAN",
+      "note": "span [2,3) covers column 2"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_d4612d30abffca7692f1",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-HDR-SPAN",
+      "note": "span [1,4) covers column 2"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_9aec441a8e9eda22b4d7",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-DUR-TABLE-ROWLABEL",
+      "note": "header-row label states the table interval: Years Ended December 31,"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_56039621619fcf6125cf",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "2023"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_d4612d30abffca7692f1",
+      "dst": "ev_c8cedb15635bd19d2569",
+      "rule": "R-UNIT-TABLE",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_c8cedb15635bd19d2569"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_813be7acf0e05af3f94e"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "pass",
+      "reason": "consolidated_statement_parent_attribution",
+      "evidence": [
+       "ev_61dceebcb8f964268413",
+       "ev_813be7acf0e05af3f94e"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_56039621619fcf6125cf"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-TABLE-ROWLABEL",
+      "evidence": [
+       "ev_9aec441a8e9eda22b4d7"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_9aec441a8e9eda22b4d7"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_d4612d30abffca7692f1"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "pass",
+      "reason": "R-UNIT-TABLE",
+      "evidence": [
+       "ev_d4612d30abffca7692f1"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_c8cedb15635bd19d2569"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "pass",
+      "reason": "decimal_multiplication_no_fx_no_annualization",
+      "evidence": [
+       "ev_c8cedb15635bd19d2569",
+       "ev_d4612d30abffca7692f1"
+      ]
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   },
+   {
+    "value_cell": "ev_9af2f2c5fe317e588247",
+    "row_label": "Net income attributable to Verizon",
+    "table": 0,
+    "page": 54,
+    "row": 24,
+    "col": 2,
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "$ 2.76",
+     "amount": "2.76",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": null,
+     "duration_months": 12,
+     "fiscal_year": 2023,
+     "end_date": "2023-12-31",
+     "start_date": "2023-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_9af2f2c5fe317e588247",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_9af2f2c5fe317e588247",
+      "dst": "page:54",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_1ee6e555a6cbfce377dc",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Net income attributable to Verizon"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_4579f3f9fac65be43079",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Basic Earnings Per Common Share"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_61dceebcb8f964268413",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_56039621619fcf6125cf",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-HDR-SPAN",
+      "note": "span [2,3) covers column 2"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_d4612d30abffca7692f1",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-HDR-SPAN",
+      "note": "span [1,4) covers column 2"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_9aec441a8e9eda22b4d7",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-DUR-TABLE-ROWLABEL",
+      "note": "header-row label states the table interval: Years Ended December 31,"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_56039621619fcf6125cf",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "2023"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_d4612d30abffca7692f1",
+      "dst": "ev_9af2f2c5fe317e588247",
+      "rule": "R-UNIT-TABLE",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_9af2f2c5fe317e588247"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_1ee6e555a6cbfce377dc"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "fail",
+      "reason": "per_share_section_not_monetary_total",
+      "evidence": [
+       "ev_61dceebcb8f964268413",
+       "ev_4579f3f9fac65be43079"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_56039621619fcf6125cf"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-TABLE-ROWLABEL",
+      "evidence": [
+       "ev_9aec441a8e9eda22b4d7"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_9aec441a8e9eda22b4d7"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_d4612d30abffca7692f1"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "fail",
+      "reason": "per_share_exception_excludes_scale",
+      "evidence": [
+       "ev_d4612d30abffca7692f1",
+       "ev_4579f3f9fac65be43079"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_9af2f2c5fe317e588247"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "unknown",
+      "reason": "operands_not_supported",
+      "evidence": []
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   },
+   {
+    "value_cell": "ev_2cb6d76f072eade830b0",
+    "row_label": "Net income attributable to Verizon",
+    "table": 0,
+    "page": 54,
+    "row": 27,
+    "col": 2,
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "$ 2.75",
+     "amount": "2.75",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": null,
+     "duration_months": 12,
+     "fiscal_year": 2023,
+     "end_date": "2023-12-31",
+     "start_date": "2023-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_2cb6d76f072eade830b0",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_2cb6d76f072eade830b0",
+      "dst": "page:54",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_4e101ca04b26aa6dc937",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Net income attributable to Verizon"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_ca5d9c48bcf052044f47",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Diluted Earnings Per Common Share"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_61dceebcb8f964268413",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_56039621619fcf6125cf",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-HDR-SPAN",
+      "note": "span [2,3) covers column 2"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_d4612d30abffca7692f1",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-HDR-SPAN",
+      "note": "span [1,4) covers column 2"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_9aec441a8e9eda22b4d7",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-DUR-TABLE-ROWLABEL",
+      "note": "header-row label states the table interval: Years Ended December 31,"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_56039621619fcf6125cf",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "2023"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_d4612d30abffca7692f1",
+      "dst": "ev_2cb6d76f072eade830b0",
+      "rule": "R-UNIT-TABLE",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_2cb6d76f072eade830b0"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_4e101ca04b26aa6dc937"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "fail",
+      "reason": "per_share_section_not_monetary_total",
+      "evidence": [
+       "ev_61dceebcb8f964268413",
+       "ev_ca5d9c48bcf052044f47"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_56039621619fcf6125cf"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-TABLE-ROWLABEL",
+      "evidence": [
+       "ev_9aec441a8e9eda22b4d7"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_9aec441a8e9eda22b4d7"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_d4612d30abffca7692f1"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "fail",
+      "reason": "per_share_exception_excludes_scale",
+      "evidence": [
+       "ev_d4612d30abffca7692f1",
+       "ev_ca5d9c48bcf052044f47"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_2cb6d76f072eade830b0"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "unknown",
+      "reason": "operands_not_supported",
+      "evidence": []
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   }
+  ],
+  "coverage": []
+ },
+ "boundary": "Certifies satisfaction of documented applicability rules over the registered source; not issuer accounting truth, not a signature.",
+ "content_sha256": "c4e873860b7b1592db684087fac1b05db4b89020c18e788d9341d1477f3e494f"
+}

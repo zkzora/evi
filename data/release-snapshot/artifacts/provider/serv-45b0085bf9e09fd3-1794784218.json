@@ -1,0 +1,39 @@
+{
+ "request_sha256": "45b0085bf9e09fd385c735619a049ea90c7ba4f6c0c9ca9746960395e817c041",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdeQKlC6ao8t2h0x6ahuL7S45WOc",
+  "object": "chat.completion",
+  "created": 1794784214,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[{\"target_key\":\"verizon-3q2025:revenue:3M:2025\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_3a2a3e40b2032a6a0745\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:operating_profit:3M:2025\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_a8f3a36c4f554a6c7434\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:profit_attributable_to_owners:3M:2025\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_6ec1f7862b64be707c03\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:revenue:3M:2024\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_f104d67c1d93c0de9a86\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:operating_profit:3M:2024\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_b0760c7e916a10306a30\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:profit_attributable_to_owners:3M:2024\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_98ecf4ccc5cfb551e155\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:revenue:9M:2025\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_0a90d5de5d15313c4d45\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:operating_profit:9M:2025\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_48f065b5e0820d461d48\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:profit_attributable_to_owners:9M:2025\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_a52592990e235a6aa830\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:revenue:9M:2024\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_5e37d41e97ab1b210de7\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:operating_profit:9M:2024\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_e3a9d2d74d33165cdabf\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"},{\"target_key\":\"verizon-3q2025:profit_attributable_to_owners:9M:2024\",\"field\":\"currency\",\"new_value\":\"USD\",\"evidence_ids\":[\"ev_4f936dbb4fe07e6200c0\",\"ev_b382dc0bb22987e91e1d\"],\"rationale_category\":\"wrong_currency\",\"rationale\":\"Source context indicates USD in dollars in millions; the parent fact uses '$' while the applicable evidence reads USD.\"}],\"mark_unresolved\":[],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 11360,
+   "completion_tokens": 1230,
+   "total_tokens": 12590,
+   "prompt_tokens_details": {
+    "cached_tokens": 6400,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

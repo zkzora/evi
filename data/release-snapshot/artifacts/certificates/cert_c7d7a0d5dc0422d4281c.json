@@ -1,0 +1,860 @@
+{
+ "schema": "evi.support-certificate/1",
+ "policy_version": "binding-v2",
+ "source": {
+  "document_id": "verizon-3q2025",
+  "sha256": "8b4249c1ca915374587570b79536c9dd9b46fc1b345a11285f51cbd8518697f4",
+  "source_url": "https://www.verizon.com/about/file/76633/download?token=P8wDXRsG",
+  "bytes_verified": true
+ },
+ "parse": {
+  "parse_id": "parse_5f7328dc81b0f5122762",
+  "cache_key": "5f7328dc81b0f512276299707aa719d89e135ca39eab3c310eb47680d773b3e6",
+  "docling_artifact_sha256": "39c0b9cf4a000a0c4dd288a750ecda56f967d828094979c7a5883d591540bad7",
+  "physical_pages": [
+   1
+  ],
+  "page_numbering": "docling page_no == physical 1-based page (validated)"
+ },
+ "target": {
+  "target_key": "verizon-3q2025:profit_attributable_to_owners:9M:2025",
+  "document_id": "verizon-3q2025",
+  "metric": "profit_attributable_to_owners",
+  "duration_months": 9,
+  "fiscal_year": 2025,
+  "policy": "targets-v1"
+ },
+ "fact_ref": null,
+ "claim": {
+  "metric": "profit_attributable_to_owners",
+  "value_cell": "ev_a52592990e235a6aa830",
+  "amount": "14832",
+  "currency": "USD",
+  "unit_scale": "1000000",
+  "duration_months": 9,
+  "fiscal_year": 2025,
+  "end_date": "2025-09-30",
+  "start_date": null,
+  "cited": {
+   "metric_ids": [
+    "ev_e42e7d027a6f509bd4e0"
+   ],
+   "period_ids": [
+    "ev_570c9b95590d992303d8"
+   ],
+   "unit_ids": [
+    "ev_4f936dbb4fe07e6200c0"
+   ],
+   "value_ids": [
+    "ev_a52592990e235a6aa830"
+   ]
+  }
+ },
+ "claim_outcome": "supported",
+ "field_verdicts": [
+  {
+   "field": "amount",
+   "status": "pass",
+   "reason": "claimed_amount_vs_value_cell"
+  },
+  {
+   "field": "currency",
+   "status": "pass",
+   "reason": "claimed_currency_vs_applicable_context"
+  },
+  {
+   "field": "unit_scale",
+   "status": "pass",
+   "reason": "claimed_unit_scale_vs_applicable_context"
+  },
+  {
+   "field": "duration_months",
+   "status": "pass",
+   "reason": "claimed_duration_months_vs_applicable_context"
+  },
+  {
+   "field": "fiscal_year",
+   "status": "pass",
+   "reason": "claimed_fiscal_year_vs_applicable_context"
+  },
+  {
+   "field": "start_date",
+   "status": "pass",
+   "reason": "derived_by_application"
+  },
+  {
+   "field": "end_date",
+   "status": "pass",
+   "reason": "claimed_end_date_vs_derived"
+  },
+  {
+   "field": "period_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "unit_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "metric_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  }
+ ],
+ "claim_cell_reading": {
+  "value_cell": "ev_a52592990e235a6aa830",
+  "row_label": "Net income attributable to Verizon",
+  "table": 0,
+  "page": 1,
+  "row": 19,
+  "col": 4,
+  "tuple": {
+   "metric": "profit_attributable_to_owners",
+   "scope": "consolidated",
+   "amount_text": "14,832",
+   "amount": "14832",
+   "currency": "USD",
+   "unit_scale": "1000000",
+   "normalized_value": "14832000000",
+   "duration_months": 9,
+   "fiscal_year": 2025,
+   "end_date": "2025-09-30",
+   "start_date": "2025-01-01"
+  },
+  "edges": [
+   {
+    "rel": "in_table",
+    "src": "ev_a52592990e235a6aa830",
+    "dst": "table:0",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "on_page",
+    "src": "ev_a52592990e235a6aa830",
+    "dst": "page:1",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "row_label_for",
+    "src": "ev_e42e7d027a6f509bd4e0",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-ROW-LEFTMOST",
+    "note": "Net income attributable to Verizon"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_5d8b676a09e36502cfe5",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-SECTION-PRECEDING",
+    "note": "Operating Expenses"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_b98000075972e6c75830",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-SCOPE-TITLE",
+    "note": "Condensed Consolidated Statements of Income"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_570c9b95590d992303d8",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-HDR-SPAN",
+    "note": "span [4,5) covers column 4"
+   },
+   {
+    "rel": "duration_heading_for",
+    "src": "ev_570c9b95590d992303d8",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-DUR-COLUMN",
+    "note": "9 Mos. Ended 9/30/25"
+   },
+   {
+    "rel": "year_header_for",
+    "src": "ev_570c9b95590d992303d8",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-YEAR-SPECIFIC",
+    "note": "9 Mos. Ended 9/30/25"
+   },
+   {
+    "rel": "unit_applies_to",
+    "src": "ev_4f936dbb4fe07e6200c0",
+    "dst": "ev_a52592990e235a6aa830",
+    "rule": "R-UNIT-CAPTION",
+    "note": "(dollars in millions, except per share amounts)"
+   }
+  ],
+  "obligations": [
+   {
+    "id": "S1",
+    "status": "pass",
+    "reason": "source_hash_and_parse_ownership",
+    "evidence": []
+   },
+   {
+    "id": "S2",
+    "status": "pass",
+    "reason": "value_cell_amount_readable",
+    "evidence": [
+     "ev_a52592990e235a6aa830"
+    ]
+   },
+   {
+    "id": "M1",
+    "status": "pass",
+    "reason": "row_label_matches_metric_definition",
+    "evidence": [
+     "ev_e42e7d027a6f509bd4e0"
+    ]
+   },
+   {
+    "id": "M2",
+    "status": "pass",
+    "reason": "consolidated_statement_parent_attribution",
+    "evidence": [
+     "ev_b98000075972e6c75830",
+     "ev_e42e7d027a6f509bd4e0"
+    ]
+   },
+   {
+    "id": "P1",
+    "status": "pass",
+    "reason": "year_header_covers_column",
+    "evidence": [
+     "ev_570c9b95590d992303d8"
+    ]
+   },
+   {
+    "id": "P2",
+    "status": "pass",
+    "reason": "R-DUR-COLUMN",
+    "evidence": [
+     "ev_570c9b95590d992303d8"
+    ]
+   },
+   {
+    "id": "P3",
+    "status": "pass",
+    "reason": "stated_end_date+R-CAL-MONTHEND",
+    "evidence": [
+     "ev_570c9b95590d992303d8"
+    ]
+   },
+   {
+    "id": "U1",
+    "status": "pass",
+    "reason": "usd_stated_in_governing_unit_statement",
+    "evidence": [
+     "ev_4f936dbb4fe07e6200c0"
+    ]
+   },
+   {
+    "id": "U2",
+    "status": "pass",
+    "reason": "R-UNIT-CAPTION",
+    "evidence": [
+     "ev_4f936dbb4fe07e6200c0"
+    ]
+   },
+   {
+    "id": "N1",
+    "status": "pass",
+    "reason": "en_US_separators_parentheses_negative",
+    "evidence": [
+     "ev_a52592990e235a6aa830"
+    ]
+   },
+   {
+    "id": "N2",
+    "status": "pass",
+    "reason": "decimal_multiplication_no_fx_no_annualization",
+    "evidence": [
+     "ev_a52592990e235a6aa830",
+     "ev_4f936dbb4fe07e6200c0"
+    ]
+   },
+   {
+    "id": "C1",
+    "status": "pass",
+    "reason": "no_incompatible_applicable_evidence",
+    "evidence": []
+   }
+  ]
+ },
+ "resolution": {
+  "target_key": "verizon-3q2025:profit_attributable_to_owners:9M:2025",
+  "outcome": "supported",
+  "reason": "unique_supported_semantic_class",
+  "classes": [
+   {
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "14,832",
+     "amount": "14832",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "14832000000",
+     "duration_months": 9,
+     "fiscal_year": 2025,
+     "end_date": "2025-09-30",
+     "start_date": "2025-01-01"
+    },
+    "value_cells": [
+     "ev_a52592990e235a6aa830"
+    ]
+   }
+  ],
+  "candidates": [
+   {
+    "value_cell": "ev_a52592990e235a6aa830",
+    "row_label": "Net income attributable to Verizon",
+    "table": 0,
+    "page": 1,
+    "row": 19,
+    "col": 4,
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "14,832",
+     "amount": "14832",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "14832000000",
+     "duration_months": 9,
+     "fiscal_year": 2025,
+     "end_date": "2025-09-30",
+     "start_date": "2025-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_a52592990e235a6aa830",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_a52592990e235a6aa830",
+      "dst": "page:1",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_e42e7d027a6f509bd4e0",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Net income attributable to Verizon"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_5d8b676a09e36502cfe5",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Operating Expenses"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_b98000075972e6c75830",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Condensed Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-HDR-SPAN",
+      "note": "span [4,5) covers column 4"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-DUR-COLUMN",
+      "note": "9 Mos. Ended 9/30/25"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "9 Mos. Ended 9/30/25"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_4f936dbb4fe07e6200c0",
+      "dst": "ev_a52592990e235a6aa830",
+      "rule": "R-UNIT-CAPTION",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_a52592990e235a6aa830"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_e42e7d027a6f509bd4e0"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "pass",
+      "reason": "consolidated_statement_parent_attribution",
+      "evidence": [
+       "ev_b98000075972e6c75830",
+       "ev_e42e7d027a6f509bd4e0"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-COLUMN",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "pass",
+      "reason": "R-UNIT-CAPTION",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_a52592990e235a6aa830"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "pass",
+      "reason": "decimal_multiplication_no_fx_no_annualization",
+      "evidence": [
+       "ev_a52592990e235a6aa830",
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   },
+   {
+    "value_cell": "ev_bf85ac2b68977a9882ad",
+    "row_label": "Net income attributable to Verizon",
+    "table": 0,
+    "page": 1,
+    "row": 22,
+    "col": 4,
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "$ 3.51",
+     "amount": "3.51",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": null,
+     "duration_months": 9,
+     "fiscal_year": 2025,
+     "end_date": "2025-09-30",
+     "start_date": "2025-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_bf85ac2b68977a9882ad",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_bf85ac2b68977a9882ad",
+      "dst": "page:1",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_239caa471e55f9823899",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Net income attributable to Verizon"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_c2f9756fe08d4dd54911",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Basic Earnings Per Common Share"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_b98000075972e6c75830",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Condensed Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-HDR-SPAN",
+      "note": "span [4,5) covers column 4"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-DUR-COLUMN",
+      "note": "9 Mos. Ended 9/30/25"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "9 Mos. Ended 9/30/25"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_4f936dbb4fe07e6200c0",
+      "dst": "ev_bf85ac2b68977a9882ad",
+      "rule": "R-UNIT-CAPTION",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_bf85ac2b68977a9882ad"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_239caa471e55f9823899"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "fail",
+      "reason": "per_share_section_not_monetary_total",
+      "evidence": [
+       "ev_b98000075972e6c75830",
+       "ev_c2f9756fe08d4dd54911"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-COLUMN",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "fail",
+      "reason": "per_share_exception_excludes_scale",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0",
+       "ev_c2f9756fe08d4dd54911"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_bf85ac2b68977a9882ad"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "unknown",
+      "reason": "operands_not_supported",
+      "evidence": []
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   },
+   {
+    "value_cell": "ev_227434eca767ae0d8a9e",
+    "row_label": "Net income attributable to Verizon",
+    "table": 0,
+    "page": 1,
+    "row": 25,
+    "col": 4,
+    "tuple": {
+     "metric": "profit_attributable_to_owners",
+     "scope": "consolidated",
+     "amount_text": "$ 3.51",
+     "amount": "3.51",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": null,
+     "duration_months": 9,
+     "fiscal_year": 2025,
+     "end_date": "2025-09-30",
+     "start_date": "2025-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_227434eca767ae0d8a9e",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_227434eca767ae0d8a9e",
+      "dst": "page:1",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_4d244adf918c138790af",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Net income attributable to Verizon"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_e0722e01118b1bffa38e",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Diluted Earnings Per Common Share"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_b98000075972e6c75830",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Condensed Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-HDR-SPAN",
+      "note": "span [4,5) covers column 4"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-DUR-COLUMN",
+      "note": "9 Mos. Ended 9/30/25"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_570c9b95590d992303d8",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "9 Mos. Ended 9/30/25"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_4f936dbb4fe07e6200c0",
+      "dst": "ev_227434eca767ae0d8a9e",
+      "rule": "R-UNIT-CAPTION",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_227434eca767ae0d8a9e"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_4d244adf918c138790af"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "fail",
+      "reason": "per_share_section_not_monetary_total",
+      "evidence": [
+       "ev_b98000075972e6c75830",
+       "ev_e0722e01118b1bffa38e"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-COLUMN",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_570c9b95590d992303d8"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "fail",
+      "reason": "per_share_exception_excludes_scale",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0",
+       "ev_e0722e01118b1bffa38e"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_227434eca767ae0d8a9e"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "unknown",
+      "reason": "operands_not_supported",
+      "evidence": []
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   }
+  ],
+  "coverage": []
+ },
+ "boundary": "Certifies satisfaction of documented applicability rules over the registered source; not issuer accounting truth, not a signature.",
+ "content_sha256": "c7d7a0d5dc0422d4281c7f7a74792ec233821dc5679ebfd4d8f59a01bd1938bc"
+}

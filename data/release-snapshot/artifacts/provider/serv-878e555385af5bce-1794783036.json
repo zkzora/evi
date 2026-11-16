@@ -1,0 +1,39 @@
+{
+ "request_sha256": "878e555385af5bceba055c081831e7055f32f37e27d2e58b0809a464409902b7",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdLOdYVsrGivV23qyl5mnPmibgq4",
+  "object": "chat.completion",
+  "created": 1794783034,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2025\",\"field\":\"amount_text\",\"new_value\":\"4,464\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_1c029c500ae4d31b0c15\"],\"rationale_category\":\"wrong_row\",\"rationale\":\"The requested metric corresponds to Net Income Attributable to Common Stock for Second Quarter 2025, with value $4,464 in the table.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:3M:2024\",\"field\":\"amount_text\",\"new_value\":\"3,546\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_5d718d38ef30f2438913\"],\"rationale_category\":\"wrong_row\",\"rationale\":\"The requested metric corresponds to Net Income Attributable to Common Stock for Second Quarter 2024, with value $3,546 in the table.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"field\":\"amount_text\",\"new_value\":\"8,859\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_fe933c465a1069edce06\"],\"rationale_category\":\"wrong_row\",\"rationale\":\"The requested metric corresponds to Net Income Attributable to Common Stock for the Six-Month Period 2025, with value $8,859 in the table.\"},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"field\":\"amount_text\",\"new_value\":\"6,941\",\"evidence_ids\":[\"ev_31c7acf8d99e82ecefcc\",\"ev_c646eb56700669d22a0a\"],\"rationale_category\":\"wrong_row\",\"rationale\":\"The requested metric corresponds to Net Income Attributable to Common Stock for the Six-Month Period 2024, with value $6,941 in the table.\"}],\"mark_unresolved\":[],\"rejected_feedback\":[\"Rejected the apparent need to revise revenue and operating income facts: the cited table evidence supports Total Operating Revenues and Operating Income values in the relevant columns, and the diagnostics only flag an inapplicable extra metric citation rather than the values themselves.\"]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 11873,
+   "completion_tokens": 520,
+   "total_tokens": 12393,
+   "prompt_tokens_details": {
+    "cached_tokens": 6912,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

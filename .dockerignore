@@ -1,0 +1,16 @@
+# Keep secrets, local runtime state, private review material and caches out of the build context.
+**/.env
+**/.env.*
+!**/.env.example
+backend/.venv
+node_modules
+dist
+data/runs
+data/raw
+data/references/review
+data/references/reviewed
+artifacts
+.git
+**/__pycache__
+**/*.sqlite3*
+deploy/production.env

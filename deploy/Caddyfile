@@ -1,0 +1,12 @@
+# Reverse proxy: HTTPS + same-origin routing. The API also serves the built SPA with deep-link fallback.
+{$EVI_DOMAIN} {
+  encode gzip
+  header {
+    Strict-Transport-Security "max-age=31536000"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "same-origin"
+    X-Frame-Options "DENY"
+  }
+  request_body { max_size 64KB }
+  reverse_proxy api:8000
+}

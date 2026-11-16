@@ -1,0 +1,39 @@
+{
+ "request_sha256": "d63e8e2e861381a09b12d865d20e67064e981e68fcf6b8830610351b28d84554",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdRkLEBFCBzpaGk3Nr3PzjAxovov",
+  "object": "chat.completion",
+  "created": 1794783428,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[{\"target_key\":\"verizon-fy2025:revenue:12M:2025\",\"reason\":\"Unsupported by the cited metric evidence IDs in the parent fact; the document evidence supports Total Operating Revenues for 2025, but the deterministic diagnostics indicate the original metric evidence did not apply and the claim was contradicted by the resolver’s unique supported semantic class.\",\"evidence_ids\":[\"ev_744017fdadfd4e83aefe\",\"ev_717d838b0ad5883ce372\",\"ev_cb34403c64cc5032e380\"]},{\"target_key\":\"verizon-fy2025:revenue:12M:2024\",\"reason\":\"Unsupported by the cited metric evidence IDs in the parent fact; the document evidence supports Total Operating Revenues for 2024, but the deterministic diagnostics indicate the original metric evidence did not apply and the claim was contradicted by the resolver’s unique supported semantic class.\",\"evidence_ids\":[\"ev_744017fdadfd4e83aefe\",\"ev_b48b109d32ee4523feb3\",\"ev_cb34403c64cc5032e380\"]}],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5706,
+   "completion_tokens": 258,
+   "total_tokens": 5964,
+   "prompt_tokens_details": {
+    "cached_tokens": 2304,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

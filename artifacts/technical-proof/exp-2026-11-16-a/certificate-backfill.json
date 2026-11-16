@@ -1,0 +1,110 @@
+{
+ "reason": "store_certificates ID collision (INSERT OR IGNORE on identical content across versions); backfilled with evi.certify under binding-v2 before scoring; predictions unchanged",
+ "backfill": [
+  {
+   "version_id": "ver_7f5deb4812a2_2",
+   "check_run_id": "chk_d158395bf04e41e49a60",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_7f5deb4812a2_3",
+   "check_run_id": "chk_957116e13a4c444bb805",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_a74fd1b7d905_2",
+   "check_run_id": "chk_42b27020ca7e45498caa",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_a74fd1b7d905_3",
+   "check_run_id": "chk_ec8dd121c5bc4f708dc6",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_2f9f0b05434c_1",
+   "check_run_id": "chk_739b6d4331814941885b",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_2f9f0b05434c_2",
+   "check_run_id": "chk_705605f0aec54537a2e8",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_2f9f0b05434c_3",
+   "check_run_id": "chk_a2bc2d8c0f564f4da54d",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_63c7ce8b5e69_2",
+   "check_run_id": "chk_e9d56658125748168147",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_63c7ce8b5e69_3",
+   "check_run_id": "chk_594b3089370c486c93ff",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_9a33a103374a_2",
+   "check_run_id": "chk_d60f6a2867bb473298d3",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_9a33a103374a_3",
+   "check_run_id": "chk_46dc0cad4918428d841e",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_b15ed7352811_2",
+   "check_run_id": "chk_d7bf959db8434483bbfd",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_b15ed7352811_3",
+   "check_run_id": "chk_d8a3514b1f8740af8745",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_2137f9cebc48_2",
+   "check_run_id": "chk_170e982fa42c4d2482da",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_2137f9cebc48_3",
+   "check_run_id": "chk_3a0b7b42b8a34e02b8e4",
+   "certificates": 6
+  },
+  {
+   "version_id": "ver_11ac9bea004e_2",
+   "check_run_id": "chk_f8d2c17b3c084d7791a3",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_11ac9bea004e_3",
+   "check_run_id": "chk_bf4c05598c634048ac5a",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_3f60316ec62f_2",
+   "check_run_id": "chk_c6571f3a7e7940a5a7df",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_3f60316ec62f_3",
+   "check_run_id": "chk_695f84c8a88048ccbb8d",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_325e06e62b8c_2",
+   "check_run_id": "chk_42961d3123ff4a4081df",
+   "certificates": 12
+  },
+  {
+   "version_id": "ver_325e06e62b8c_3",
+   "check_run_id": "chk_2d7b4577c20d4b16a7b7",
+   "certificates": 12
+  }
+ ]
+}

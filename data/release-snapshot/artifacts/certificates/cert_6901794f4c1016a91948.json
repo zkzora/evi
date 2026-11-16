@@ -1,0 +1,505 @@
+{
+ "schema": "evi.support-certificate/1",
+ "policy_version": "binding-v3",
+ "source": {
+  "document_id": "verizon-3q2025",
+  "sha256": "8b4249c1ca915374587570b79536c9dd9b46fc1b345a11285f51cbd8518697f4",
+  "source_url": "https://www.verizon.com/about/file/76633/download?token=P8wDXRsG",
+  "bytes_verified": true
+ },
+ "parse": {
+  "parse_id": "parse_5f7328dc81b0f5122762",
+  "cache_key": "5f7328dc81b0f512276299707aa719d89e135ca39eab3c310eb47680d773b3e6",
+  "docling_artifact_sha256": "39c0b9cf4a000a0c4dd288a750ecda56f967d828094979c7a5883d591540bad7",
+  "physical_pages": [
+   1
+  ],
+  "page_numbering": "docling page_no == physical 1-based page (validated)"
+ },
+ "target": {
+  "target_key": "verizon-3q2025:revenue:9M:2024",
+  "document_id": "verizon-3q2025",
+  "metric": "revenue",
+  "duration_months": 9,
+  "fiscal_year": 2024,
+  "policy": "targets-v1"
+ },
+ "fact_ref": {
+  "version_id": "ver_2f9f0b05434c_1",
+  "fact_id": "run_2f9f0b05434c49b9878c:verizon-3q2025:revenue:9M:2024",
+  "fact_sha256": "12d90edf05cfc44687e15d8a85a90dce459417f18692b56627f2e9340f42925d",
+  "version_content_sha256": "59d1474d08c209e1bdfda87b6d704030beeee8084c98ec6ac41f57db2cb07799"
+ },
+ "claim": {
+  "metric": "revenue",
+  "value_cell": "ev_5e37d41e97ab1b210de7",
+  "amount": "99107",
+  "currency": "USD",
+  "unit_scale": "1000000",
+  "duration_months": 9,
+  "fiscal_year": 2024,
+  "end_date": "2024-09-30",
+  "start_date": null,
+  "cited": {
+   "metric_ids": [
+    "ev_bd2842fb801861d5a181"
+   ],
+   "period_ids": [
+    "ev_667ef3c057293f5ca455"
+   ],
+   "unit_ids": [
+    "ev_4f936dbb4fe07e6200c0"
+   ],
+   "value_ids": [
+    "ev_5e37d41e97ab1b210de7"
+   ]
+  }
+ },
+ "claim_outcome": "supported",
+ "field_verdicts": [
+  {
+   "field": "amount",
+   "status": "pass",
+   "reason": "claimed_amount_vs_value_cell"
+  },
+  {
+   "field": "currency",
+   "status": "pass",
+   "reason": "claimed_currency_vs_applicable_context"
+  },
+  {
+   "field": "unit_scale",
+   "status": "pass",
+   "reason": "claimed_unit_scale_vs_applicable_context"
+  },
+  {
+   "field": "duration_months",
+   "status": "pass",
+   "reason": "claimed_duration_months_vs_applicable_context"
+  },
+  {
+   "field": "fiscal_year",
+   "status": "pass",
+   "reason": "claimed_fiscal_year_vs_applicable_context"
+  },
+  {
+   "field": "start_date",
+   "status": "pass",
+   "reason": "derived_by_application"
+  },
+  {
+   "field": "end_date",
+   "status": "pass",
+   "reason": "claimed_end_date_vs_derived"
+  },
+  {
+   "field": "period_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "unit_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  },
+  {
+   "field": "metric_evidence",
+   "status": "pass",
+   "reason": "cited_ids_apply_to_value_cell"
+  }
+ ],
+ "claim_cell_reading": {
+  "value_cell": "ev_5e37d41e97ab1b210de7",
+  "row_label": "Total Operating Revenues",
+  "table": 0,
+  "page": 1,
+  "row": 4,
+  "col": 5,
+  "tuple": {
+   "metric": "revenue",
+   "scope": "consolidated",
+   "amount_text": "99,107",
+   "amount": "99107",
+   "currency": "USD",
+   "unit_scale": "1000000",
+   "normalized_value": "99107000000",
+   "duration_months": 9,
+   "fiscal_year": 2024,
+   "end_date": "2024-09-30",
+   "start_date": "2024-01-01"
+  },
+  "edges": [
+   {
+    "rel": "in_table",
+    "src": "ev_5e37d41e97ab1b210de7",
+    "dst": "table:0",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "on_page",
+    "src": "ev_5e37d41e97ab1b210de7",
+    "dst": "page:1",
+    "rule": "R-STRUCT",
+    "note": ""
+   },
+   {
+    "rel": "row_label_for",
+    "src": "ev_bd2842fb801861d5a181",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-ROW-LEFTMOST",
+    "note": "Total Operating Revenues"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_a3c5f1cf36fe4c4885e4",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-SECTION-PRECEDING",
+    "note": "Operating Revenues"
+   },
+   {
+    "rel": "section_scope_for",
+    "src": "ev_b98000075972e6c75830",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-SCOPE-TITLE",
+    "note": "Condensed Consolidated Statements of Income"
+   },
+   {
+    "rel": "column_header_for",
+    "src": "ev_667ef3c057293f5ca455",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-HDR-SPAN",
+    "note": "span [5,6) covers column 5"
+   },
+   {
+    "rel": "duration_heading_for",
+    "src": "ev_667ef3c057293f5ca455",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-DUR-COLUMN",
+    "note": "9 Mos. Ended 9/30/24"
+   },
+   {
+    "rel": "year_header_for",
+    "src": "ev_667ef3c057293f5ca455",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-YEAR-SPECIFIC",
+    "note": "9 Mos. Ended 9/30/24"
+   },
+   {
+    "rel": "unit_applies_to",
+    "src": "ev_4f936dbb4fe07e6200c0",
+    "dst": "ev_5e37d41e97ab1b210de7",
+    "rule": "R-UNIT-CAPTION",
+    "note": "(dollars in millions, except per share amounts)"
+   }
+  ],
+  "obligations": [
+   {
+    "id": "S1",
+    "status": "pass",
+    "reason": "source_hash_and_parse_ownership",
+    "evidence": []
+   },
+   {
+    "id": "S2",
+    "status": "pass",
+    "reason": "value_cell_amount_readable",
+    "evidence": [
+     "ev_5e37d41e97ab1b210de7"
+    ]
+   },
+   {
+    "id": "M1",
+    "status": "pass",
+    "reason": "row_label_matches_metric_definition",
+    "evidence": [
+     "ev_bd2842fb801861d5a181"
+    ]
+   },
+   {
+    "id": "M2",
+    "status": "pass",
+    "reason": "consolidated_statement",
+    "evidence": [
+     "ev_b98000075972e6c75830",
+     "ev_bd2842fb801861d5a181"
+    ]
+   },
+   {
+    "id": "P1",
+    "status": "pass",
+    "reason": "year_header_covers_column",
+    "evidence": [
+     "ev_667ef3c057293f5ca455"
+    ]
+   },
+   {
+    "id": "P2",
+    "status": "pass",
+    "reason": "R-DUR-COLUMN",
+    "evidence": [
+     "ev_667ef3c057293f5ca455"
+    ]
+   },
+   {
+    "id": "P3",
+    "status": "pass",
+    "reason": "stated_end_date+R-CAL-MONTHEND",
+    "evidence": [
+     "ev_667ef3c057293f5ca455"
+    ]
+   },
+   {
+    "id": "U1",
+    "status": "pass",
+    "reason": "usd_stated_in_governing_unit_statement",
+    "evidence": [
+     "ev_4f936dbb4fe07e6200c0"
+    ]
+   },
+   {
+    "id": "U2",
+    "status": "pass",
+    "reason": "R-UNIT-CAPTION",
+    "evidence": [
+     "ev_4f936dbb4fe07e6200c0"
+    ]
+   },
+   {
+    "id": "N1",
+    "status": "pass",
+    "reason": "en_US_separators_parentheses_negative",
+    "evidence": [
+     "ev_5e37d41e97ab1b210de7"
+    ]
+   },
+   {
+    "id": "N2",
+    "status": "pass",
+    "reason": "decimal_multiplication_no_fx_no_annualization",
+    "evidence": [
+     "ev_5e37d41e97ab1b210de7",
+     "ev_4f936dbb4fe07e6200c0"
+    ]
+   },
+   {
+    "id": "C1",
+    "status": "pass",
+    "reason": "no_incompatible_applicable_evidence",
+    "evidence": []
+   }
+  ]
+ },
+ "resolution": {
+  "target_key": "verizon-3q2025:revenue:9M:2024",
+  "outcome": "supported",
+  "reason": "unique_supported_semantic_class",
+  "classes": [
+   {
+    "tuple": {
+     "metric": "revenue",
+     "scope": "consolidated",
+     "amount_text": "99,107",
+     "amount": "99107",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "99107000000",
+     "duration_months": 9,
+     "fiscal_year": 2024,
+     "end_date": "2024-09-30",
+     "start_date": "2024-01-01"
+    },
+    "value_cells": [
+     "ev_5e37d41e97ab1b210de7"
+    ]
+   }
+  ],
+  "candidates": [
+   {
+    "value_cell": "ev_5e37d41e97ab1b210de7",
+    "row_label": "Total Operating Revenues",
+    "table": 0,
+    "page": 1,
+    "row": 4,
+    "col": 5,
+    "tuple": {
+     "metric": "revenue",
+     "scope": "consolidated",
+     "amount_text": "99,107",
+     "amount": "99107",
+     "currency": "USD",
+     "unit_scale": "1000000",
+     "normalized_value": "99107000000",
+     "duration_months": 9,
+     "fiscal_year": 2024,
+     "end_date": "2024-09-30",
+     "start_date": "2024-01-01"
+    },
+    "edges": [
+     {
+      "rel": "in_table",
+      "src": "ev_5e37d41e97ab1b210de7",
+      "dst": "table:0",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "on_page",
+      "src": "ev_5e37d41e97ab1b210de7",
+      "dst": "page:1",
+      "rule": "R-STRUCT",
+      "note": ""
+     },
+     {
+      "rel": "row_label_for",
+      "src": "ev_bd2842fb801861d5a181",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-ROW-LEFTMOST",
+      "note": "Total Operating Revenues"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_a3c5f1cf36fe4c4885e4",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-SECTION-PRECEDING",
+      "note": "Operating Revenues"
+     },
+     {
+      "rel": "section_scope_for",
+      "src": "ev_b98000075972e6c75830",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-SCOPE-TITLE",
+      "note": "Condensed Consolidated Statements of Income"
+     },
+     {
+      "rel": "column_header_for",
+      "src": "ev_667ef3c057293f5ca455",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-HDR-SPAN",
+      "note": "span [5,6) covers column 5"
+     },
+     {
+      "rel": "duration_heading_for",
+      "src": "ev_667ef3c057293f5ca455",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-DUR-COLUMN",
+      "note": "9 Mos. Ended 9/30/24"
+     },
+     {
+      "rel": "year_header_for",
+      "src": "ev_667ef3c057293f5ca455",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-YEAR-SPECIFIC",
+      "note": "9 Mos. Ended 9/30/24"
+     },
+     {
+      "rel": "unit_applies_to",
+      "src": "ev_4f936dbb4fe07e6200c0",
+      "dst": "ev_5e37d41e97ab1b210de7",
+      "rule": "R-UNIT-CAPTION",
+      "note": "(dollars in millions, except per share amounts)"
+     }
+    ],
+    "obligations": [
+     {
+      "id": "S1",
+      "status": "pass",
+      "reason": "source_hash_and_parse_ownership",
+      "evidence": []
+     },
+     {
+      "id": "S2",
+      "status": "pass",
+      "reason": "value_cell_amount_readable",
+      "evidence": [
+       "ev_5e37d41e97ab1b210de7"
+      ]
+     },
+     {
+      "id": "M1",
+      "status": "pass",
+      "reason": "row_label_matches_metric_definition",
+      "evidence": [
+       "ev_bd2842fb801861d5a181"
+      ]
+     },
+     {
+      "id": "M2",
+      "status": "pass",
+      "reason": "consolidated_statement",
+      "evidence": [
+       "ev_b98000075972e6c75830",
+       "ev_bd2842fb801861d5a181"
+      ]
+     },
+     {
+      "id": "P1",
+      "status": "pass",
+      "reason": "year_header_covers_column",
+      "evidence": [
+       "ev_667ef3c057293f5ca455"
+      ]
+     },
+     {
+      "id": "P2",
+      "status": "pass",
+      "reason": "R-DUR-COLUMN",
+      "evidence": [
+       "ev_667ef3c057293f5ca455"
+      ]
+     },
+     {
+      "id": "P3",
+      "status": "pass",
+      "reason": "stated_end_date+R-CAL-MONTHEND",
+      "evidence": [
+       "ev_667ef3c057293f5ca455"
+      ]
+     },
+     {
+      "id": "U1",
+      "status": "pass",
+      "reason": "usd_stated_in_governing_unit_statement",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "U2",
+      "status": "pass",
+      "reason": "R-UNIT-CAPTION",
+      "evidence": [
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "N1",
+      "status": "pass",
+      "reason": "en_US_separators_parentheses_negative",
+      "evidence": [
+       "ev_5e37d41e97ab1b210de7"
+      ]
+     },
+     {
+      "id": "N2",
+      "status": "pass",
+      "reason": "decimal_multiplication_no_fx_no_annualization",
+      "evidence": [
+       "ev_5e37d41e97ab1b210de7",
+       "ev_4f936dbb4fe07e6200c0"
+      ]
+     },
+     {
+      "id": "C1",
+      "status": "pass",
+      "reason": "no_incompatible_applicable_evidence",
+      "evidence": []
+     }
+    ]
+   }
+  ],
+  "coverage": []
+ },
+ "boundary": "Certifies satisfaction of documented applicability rules over the registered source; not issuer accounting truth, not a signature.",
+ "content_sha256": "6901794f4c1016a919489f0f7f4b0bea9a0e5d1d6f1ba7a915afca6f54791f87"
+}

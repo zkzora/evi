@@ -1,0 +1,1019 @@
+[
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:revenue:3M:2025",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "30847",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "metric_evidence:cited_ids_do_not_apply:ev_6a17a3105a58f39db7bd"
+  ],
+  "v1_semantic_correct": true,
+  "v1_strict_correct": false,
+  "v2_reference_match": true,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:profit_attributable_to_owners:3M:2025",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "4464",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "amount"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: wrong attribution row (common stock instead of parent)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:revenue:3M:2024",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "29797",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "metric_evidence:cited_ids_do_not_apply:ev_6a17a3105a58f39db7bd"
+  ],
+  "v1_semantic_correct": true,
+  "v1_strict_correct": false,
+  "v2_reference_match": true,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:profit_attributable_to_owners:3M:2024",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "3546",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "amount"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: wrong attribution row (common stock instead of parent)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:revenue:6M:2025",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "61473",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "metric_evidence:cited_ids_do_not_apply:ev_6a17a3105a58f39db7bd"
+  ],
+  "v1_semantic_correct": true,
+  "v1_strict_correct": false,
+  "v2_reference_match": true,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:profit_attributable_to_owners:6M:2025",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "8859",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "amount"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: wrong attribution row (common stock instead of parent)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:revenue:6M:2024",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "59825",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "metric_evidence:cited_ids_do_not_apply:ev_6a17a3105a58f39db7bd"
+  ],
+  "v1_semantic_correct": true,
+  "v1_strict_correct": false,
+  "v2_reference_match": true,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-2q2025:profit_attributable_to_owners:6M:2024",
+  "version_id": "ver_63c7ce8b5e69_1",
+  "prediction": {
+   "amount": "6941",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "amount"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: wrong attribution row (common stock instead of parent)"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:revenue:3M:2025",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "30709",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:operating_profit:3M:2025",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "6119",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:profit_attributable_to_owners:3M:2025",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "9314",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:revenue:3M:2024",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "30213",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:operating_profit:3M:2024",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "2116",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:profit_attributable_to_owners:3M:2024",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "-174",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:revenue:9M:2025",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "92182",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:operating_profit:9M:2025",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "18374",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:profit_attributable_to_owners:9M:2025",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "18165",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:revenue:9M:2024",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "90038",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context",
+   "period_evidence:cited_ids_do_not_apply:ev_73bc3aa6d305dc8dcdce"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:operating_profit:9M:2024",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "13723",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context",
+   "period_evidence:cited_ids_do_not_apply:ev_73bc3aa6d305dc8dcdce"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "att-3q2025:profit_attributable_to_owners:9M:2024",
+  "version_id": "ver_a74fd1b7d905_1",
+  "prediction": {
+   "amount": "6868",
+   "currency": "$",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context",
+   "period_evidence:cited_ids_do_not_apply:ev_73bc3aa6d305dc8dcdce"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 1,
+  "target_key": "verizon-fy2024:revenue:12M:2024",
+  "version_id": "ver_9a33a103374a_1",
+  "prediction": {
+   "amount": "134788",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "end_date",
+   "start_date"
+  ],
+  "certificate": "unsupported",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: printed end date omitted"
+ },
+ {
+  "trial": 1,
+  "target_key": "verizon-fy2024:operating_profit:12M:2024",
+  "version_id": "ver_9a33a103374a_1",
+  "prediction": {
+   "amount": "28686",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "end_date",
+   "start_date"
+  ],
+  "certificate": "unsupported",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: printed end date omitted"
+ },
+ {
+  "trial": 1,
+  "target_key": "verizon-fy2024:profit_attributable_to_owners:12M:2024",
+  "version_id": "ver_9a33a103374a_1",
+  "prediction": {
+   "amount": "17506",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "end_date",
+   "start_date"
+  ],
+  "certificate": "unsupported",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: printed end date omitted"
+ },
+ {
+  "trial": 1,
+  "target_key": "verizon-fy2024:revenue:12M:2023",
+  "version_id": "ver_9a33a103374a_1",
+  "prediction": {
+   "amount": "133974",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "end_date",
+   "start_date"
+  ],
+  "certificate": "unsupported",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: printed end date omitted"
+ },
+ {
+  "trial": 1,
+  "target_key": "verizon-fy2024:operating_profit:12M:2023",
+  "version_id": "ver_9a33a103374a_1",
+  "prediction": {
+   "amount": "22877",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "end_date",
+   "start_date"
+  ],
+  "certificate": "unsupported",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: printed end date omitted"
+ },
+ {
+  "trial": 1,
+  "target_key": "verizon-fy2024:profit_attributable_to_owners:12M:2023",
+  "version_id": "ver_9a33a103374a_1",
+  "prediction": {
+   "amount": "11614",
+   "currency": "USD",
+   "end_date": null,
+   "start_date": null
+  },
+  "derived_start": null,
+  "derived_start_basis": "no_claimed_end_or_duration",
+  "fields_not_matching_reference": [
+   "end_date",
+   "start_date"
+  ],
+  "certificate": "unsupported",
+  "certificate_failed_fields": [],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: printed end date omitted"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:revenue:3M:2025",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "33821",
+   "currency": "$",
+   "end_date": "2025-09-30",
+   "start_date": null
+  },
+  "derived_start": "2025-07-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:operating_profit:3M:2025",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "8105",
+   "currency": "$",
+   "end_date": "2025-09-30",
+   "start_date": null
+  },
+  "derived_start": "2025-07-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:profit_attributable_to_owners:3M:2025",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "4950",
+   "currency": "$",
+   "end_date": "2025-09-30",
+   "start_date": null
+  },
+  "derived_start": "2025-07-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:revenue:3M:2024",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "33330",
+   "currency": "$",
+   "end_date": "2024-09-30",
+   "start_date": null
+  },
+  "derived_start": "2024-07-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:operating_profit:3M:2024",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "5926",
+   "currency": "$",
+   "end_date": "2024-09-30",
+   "start_date": null
+  },
+  "derived_start": "2024-07-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:profit_attributable_to_owners:3M:2024",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "3306",
+   "currency": "$",
+   "end_date": "2024-09-30",
+   "start_date": null
+  },
+  "derived_start": "2024-07-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:revenue:9M:2025",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "101810",
+   "currency": "$",
+   "end_date": "2025-09-30",
+   "start_date": null
+  },
+  "derived_start": "2025-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:operating_profit:9M:2025",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "24255",
+   "currency": "$",
+   "end_date": "2025-09-30",
+   "start_date": null
+  },
+  "derived_start": "2025-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:profit_attributable_to_owners:9M:2025",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "14832",
+   "currency": "$",
+   "end_date": "2025-09-30",
+   "start_date": null
+  },
+  "derived_start": "2025-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:revenue:9M:2024",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "99107",
+   "currency": "$",
+   "end_date": "2024-09-30",
+   "start_date": null
+  },
+  "derived_start": "2024-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:operating_profit:9M:2024",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "21265",
+   "currency": "$",
+   "end_date": "2024-09-30",
+   "start_date": null
+  },
+  "derived_start": "2024-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-3q2025:profit_attributable_to_owners:9M:2024",
+  "version_id": "ver_3f60316ec62f_1",
+  "prediction": {
+   "amount": "12501",
+   "currency": "$",
+   "end_date": "2024-09-30",
+   "start_date": null
+  },
+  "derived_start": "2024-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [
+   "currency"
+  ],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "currency:claimed_currency_vs_applicable_context"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": false,
+  "v2_composite": false,
+  "v1_v2_change": "none",
+  "cause": "model output: currency '$' instead of 'USD'"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-fy2025:revenue:12M:2025",
+  "version_id": "ver_2137f9cebc48_1",
+  "prediction": {
+   "amount": "138191",
+   "currency": "USD",
+   "end_date": "2025-12-31",
+   "start_date": null
+  },
+  "derived_start": "2025-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "metric_evidence:cited_ids_do_not_apply:ev_cb34403c64cc5032e380"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": true,
+  "v2_composite": false,
+  "v1_v2_change": "scorer correction: start date derived independently of checker verdict",
+  "cause": "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)"
+ },
+ {
+  "trial": 2,
+  "target_key": "verizon-fy2025:revenue:12M:2024",
+  "version_id": "ver_2137f9cebc48_1",
+  "prediction": {
+   "amount": "134788",
+   "currency": "USD",
+   "end_date": "2024-12-31",
+   "start_date": null
+  },
+  "derived_start": "2024-01-01",
+  "derived_start_basis": "R-CAL-MONTHEND",
+  "fields_not_matching_reference": [],
+  "certificate": "contradicted",
+  "certificate_failed_fields": [
+   "metric_evidence:cited_ids_do_not_apply:ev_cb34403c64cc5032e380"
+  ],
+  "v1_semantic_correct": false,
+  "v1_strict_correct": false,
+  "v2_reference_match": true,
+  "v2_composite": false,
+  "v1_v2_change": "scorer correction: start date derived independently of checker verdict",
+  "cause": "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)"
+ }
+]

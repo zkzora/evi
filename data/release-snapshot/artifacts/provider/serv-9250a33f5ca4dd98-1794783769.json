@@ -1,0 +1,39 @@
+{
+ "request_sha256": "9250a33f5ca4dd9836605c5e644603d3ae1a2963216f9046b1c23efd3b4f82e2",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdXCYl7buLk9YuQgHsZ78kE4OpBx",
+  "object": "chat.completion",
+  "created": 1794783766,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[{\"target_key\":\"att-2q2025:revenue:6M:2025\",\"reason\":\"Six-month period end date is not stated in the evidence; only the column header indicates a six-month period and the diagnostics flag start/end dates as unknown.\",\"evidence_ids\":[\"ev_23d06e2157af7b2fbe60\",\"ev_ab85f79d2cca6b9f29ae\"]},{\"target_key\":\"att-2q2025:operating_profit:6M:2025\",\"reason\":\"Six-month period end date is not stated in the evidence; only the column header indicates a six-month period and the diagnostics flag start/end dates as unknown.\",\"evidence_ids\":[\"ev_23d06e2157af7b2fbe60\",\"ev_ab85f79d2cca6b9f29ae\"]},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2025\",\"reason\":\"Six-month period end date is not stated in the evidence; only the column header indicates a six-month period and the diagnostics flag start/end dates as unknown.\",\"evidence_ids\":[\"ev_23d06e2157af7b2fbe60\",\"ev_ab85f79d2cca6b9f29ae\"]},{\"target_key\":\"att-2q2025:revenue:6M:2024\",\"reason\":\"Six-month period end date is not stated in the evidence; only the column header indicates a six-month period and the diagnostics flag start/end dates as unknown.\",\"evidence_ids\":[\"ev_23d06e2157af7b2fbe60\",\"ev_ba6df5af2986186b4bbf\"]},{\"target_key\":\"att-2q2025:operating_profit:6M:2024\",\"reason\":\"Six-month period end date is not stated in the evidence; only the column header indicates a six-month period and the diagnostics flag start/end dates as unknown.\",\"evidence_ids\":[\"ev_23d06e2157af7b2fbe60\",\"ev_ba6df5af2986186b4bbf\"]},{\"target_key\":\"att-2q2025:profit_attributable_to_owners:6M:2024\",\"reason\":\"Six-month period end date is not stated in the evidence; only the column header indicates a six-month period and the diagnostics flag start/end dates as unknown.\",\"evidence_ids\":[\"ev_23d06e2157af7b2fbe60\",\"ev_ba6df5af2986186b4bbf\"]}],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 10886,
+   "completion_tokens": 566,
+   "total_tokens": 11452,
+   "prompt_tokens_details": {
+    "cached_tokens": 6400,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

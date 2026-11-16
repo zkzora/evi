@@ -1,0 +1,119 @@
+{
+ "experiment_id": "exp-2026-11-16-b",
+ "analysis_version": "analysis-v2",
+ "binding_policy": "binding-v3",
+ "reference_provenance": "builder-drafted, source-reviewed, provisional (not independent human gold)",
+ "by_arm": {
+  "A": {
+   "targets": 96,
+   "executed": 96,
+   "raw_field_match_all": 38,
+   "reference_match": 62,
+   "complete_interval": 42,
+   "reference_interval_known": 48,
+   "certificate_supported": 62,
+   "certificate_supported_exact_dates_unknown": 32,
+   "composite": 62,
+   "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+  },
+  "B": {
+   "targets": 96,
+   "executed": 96,
+   "raw_field_match_all": 38,
+   "reference_match": 62,
+   "complete_interval": 42,
+   "reference_interval_known": 48,
+   "certificate_supported": 62,
+   "certificate_supported_exact_dates_unknown": 32,
+   "composite": 62,
+   "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+  },
+  "C": {
+   "targets": 96,
+   "executed": 96,
+   "raw_field_match_all": 38,
+   "reference_match": 74,
+   "complete_interval": 42,
+   "reference_interval_known": 48,
+   "certificate_supported": 74,
+   "certificate_supported_exact_dates_unknown": 32,
+   "composite": 74,
+   "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+  },
+  "D": {
+   "targets": 96,
+   "executed": 96,
+   "raw_field_match_all": 38,
+   "reference_match": 74,
+   "complete_interval": 42,
+   "reference_interval_known": 48,
+   "certificate_supported": 74,
+   "certificate_supported_exact_dates_unknown": 32,
+   "composite": 74,
+   "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+  }
+ },
+ "paired": {
+  "reference_match:A->C": {
+   "preserved_correct": 62,
+   "unchanged_incorrect": 22,
+   "improvement": 12
+  },
+  "reference_match:A->D": {
+   "preserved_correct": 62,
+   "unchanged_incorrect": 22,
+   "improvement": 12
+  },
+  "reference_match:C->D": {
+   "preserved_correct": 74,
+   "unchanged_incorrect": 22
+  },
+  "composite:A->C": {
+   "preserved_correct": 62,
+   "unchanged_incorrect": 22,
+   "improvement": 12
+  },
+  "composite:A->D": {
+   "preserved_correct": 62,
+   "unchanged_incorrect": 22,
+   "improvement": 12
+  },
+  "composite:C->D": {
+   "preserved_correct": 74,
+   "unchanged_incorrect": 22
+  }
+ },
+ "detector_B": {
+  "TN": 62,
+  "TP": 34
+ },
+ "field_status_A": {
+  "amount": {
+   "match": 92,
+   "mismatch": 4
+  },
+  "currency": {
+   "match": 72,
+   "mismatch": 24
+  },
+  "unit_scale": {
+   "match": 96
+  },
+  "duration_months": {
+   "match": 96
+  },
+  "fiscal_year": {
+   "match": 96
+  },
+  "end_date": {
+   "null_both": 48,
+   "match": 42,
+   "missing": 6
+  },
+  "start_date": {
+   "null_both": 48,
+   "match": 42,
+   "missing": 6
+  }
+ }
+}

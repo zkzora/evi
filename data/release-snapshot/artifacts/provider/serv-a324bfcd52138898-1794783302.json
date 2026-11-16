@@ -1,0 +1,39 @@
+{
+ "request_sha256": "a324bfcd52138898afc025ebd66e039892454c98aeffd93c92f5a220e63bffa9",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdPhRw3481lI6tIVsldD6XYpwwFx",
+  "object": "chat.completion",
+  "created": 1794783301,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[{\"target_key\":\"verizon-fy2025:revenue:12M:2025\",\"reason\":\"Source applicability diagnostics indicate the cited metric evidence does not apply, and the supporting table row for Total Operating Revenues is a different semantic class than the claimed metric. No safe patch to the immutable fact can be made from the available evidence.\",\"evidence_ids\":[\"ev_cb34403c64cc5032e380\",\"ev_744017fdadfd4e83aefe\",\"ev_717d838b0ad5883ce372\"]},{\"target_key\":\"verizon-fy2025:revenue:12M:2024\",\"reason\":\"Source applicability diagnostics indicate the cited metric evidence does not apply, and the supporting table row for Total Operating Revenues is a different semantic class than the claimed metric. No safe patch to the immutable fact can be made from the available evidence.\",\"evidence_ids\":[\"ev_cb34403c64cc5032e380\",\"ev_744017fdadfd4e83aefe\",\"ev_b48b109d32ee4523feb3\"]}],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5302,
+   "completion_tokens": 248,
+   "total_tokens": 5550,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

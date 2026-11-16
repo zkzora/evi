@@ -1,0 +1,39 @@
+{
+ "request_sha256": "37d27e77b7eca4f11c82351d48e9f3ba3a6da4844b8b088a14929501d9b5c8e7",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdFcrcYY8yuQPmSt1tckPNQUiVMu",
+  "object": "chat.completion",
+  "created": 1794782676,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[{\"target_key\":\"att-3q2025:revenue:3M:2025\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_46edee8992310953db6d\"]},{\"target_key\":\"att-3q2025:operating_profit:3M:2025\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_373b01cf685eeea53b65\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:3M:2025\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_851f3260316c9f5a2606\"]},{\"target_key\":\"att-3q2025:revenue:3M:2024\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_bcd67af58853db8c8087\"]},{\"target_key\":\"att-3q2025:operating_profit:3M:2024\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_d61fe849cfd50db6e2eb\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:3M:2024\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_a6215024ce5708603a2d\"]},{\"target_key\":\"att-3q2025:revenue:9M:2025\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_71695e0da18da7b2ff74\"]},{\"target_key\":\"att-3q2025:operating_profit:9M:2025\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_e872bc393133a5e90f35\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:9M:2025\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_73c253b67d65d3c30681\"]},{\"target_key\":\"att-3q2025:revenue:9M:2024\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value. Period evidence for one cited ID is also flagged as not applicable in diagnostics.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_98ec1907caea7c65fbbb\",\"ev_73bc3aa6d305dc8dcdce\"]},{\"target_key\":\"att-3q2025:operating_profit:9M:2024\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value. Period evidence for one cited ID is also flagged as not applicable in diagnostics.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_13546af6d26195899785\",\"ev_73bc3aa6d305dc8dcdce\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:9M:2024\",\"reason\":\"Currency/applicable context mismatch is indicated by diagnostics, but the evidence packet does not provide an alternative supported currency or other corrected attribute value. Period evidence for one cited ID is also flagged as not applicable in diagnostics.\",\"evidence_ids\":[\"ev_1bae6734a03416d41675\",\"ev_0b6538a9b6b094c6e65f\",\"ev_73bc3aa6d305dc8dcdce\"]}],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 12197,
+   "completion_tokens": 1100,
+   "total_tokens": 13297,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}

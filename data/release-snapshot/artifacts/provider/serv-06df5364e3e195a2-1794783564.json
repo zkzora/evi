@@ -1,0 +1,39 @@
+{
+ "request_sha256": "06df5364e3e195a25a914714a6f91ab30260ee73183d92cb3bab6986e602c37e",
+ "model": "gpt-5.4-mini",
+ "http_status": 200,
+ "response": {
+  "id": "chatcmpl-EkdTtvLAwTCtBFTRcKZZCUgIZjQqE",
+  "object": "chat.completion",
+  "created": 1794783561,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"patches\":[],\"mark_unresolved\":[{\"target_key\":\"att-3q2025:revenue:3M:2025\",\"reason\":\"Quarter-end start/end dates are not stated in the provided evidence; only the quarter label and values are supported.\",\"evidence_ids\":[\"ev_f4972ae1a4837cad9caa\",\"ev_4291f9ab076c23f600e4\"]},{\"target_key\":\"att-3q2025:operating_profit:3M:2025\",\"reason\":\"Quarter-end start/end dates are not stated in the provided evidence; only the quarter label and values are supported.\",\"evidence_ids\":[\"ev_f4972ae1a4837cad9caa\",\"ev_4291f9ab076c23f600e4\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:3M:2025\",\"reason\":\"Quarter-end start/end dates are not stated in the provided evidence; only the quarter label and values are supported.\",\"evidence_ids\":[\"ev_f4972ae1a4837cad9caa\",\"ev_4291f9ab076c23f600e4\"]},{\"target_key\":\"att-3q2025:revenue:3M:2024\",\"reason\":\"Quarter-end start/end dates are not stated in the provided evidence; only the quarter label and values are supported.\",\"evidence_ids\":[\"ev_f4972ae1a4837cad9caa\",\"ev_7a670d29980e3f381f19\"]},{\"target_key\":\"att-3q2025:operating_profit:3M:2024\",\"reason\":\"Quarter-end start/end dates are not stated in the provided evidence; only the quarter label and values are supported.\",\"evidence_ids\":[\"ev_f4972ae1a4837cad9caa\",\"ev_7a670d29980e3f381f19\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:3M:2024\",\"reason\":\"Quarter-end start/end dates are not stated in the provided evidence; only the quarter label and values are supported.\",\"evidence_ids\":[\"ev_f4972ae1a4837cad9caa\",\"ev_7a670d29980e3f381f19\"]},{\"target_key\":\"att-3q2025:revenue:9M:2025\",\"reason\":\"Nine-month period start/end dates are not stated in the provided evidence; only the year-to-date label and values are supported.\",\"evidence_ids\":[\"ev_c60d8b40b93b309e7097\",\"ev_73bc3aa6d305dc8dcdce\"]},{\"target_key\":\"att-3q2025:operating_profit:9M:2025\",\"reason\":\"Nine-month period start/end dates are not stated in the provided evidence; only the year-to-date label and values are supported.\",\"evidence_ids\":[\"ev_c60d8b40b93b309e7097\",\"ev_73bc3aa6d305dc8dcdce\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:9M:2025\",\"reason\":\"Nine-month period start/end dates are not stated in the provided evidence; only the year-to-date label and values are supported.\",\"evidence_ids\":[\"ev_c60d8b40b93b309e7097\",\"ev_73bc3aa6d305dc8dcdce\"]},{\"target_key\":\"att-3q2025:revenue:9M:2024\",\"reason\":\"Nine-month period start/end dates are not stated in the provided evidence; only the year-to-date label and values are supported.\",\"evidence_ids\":[\"ev_c60d8b40b93b309e7097\",\"ev_f8ce683c0a7d8f1dcd24\"]},{\"target_key\":\"att-3q2025:operating_profit:9M:2024\",\"reason\":\"Nine-month period start/end dates are not stated in the provided evidence; only the year-to-date label and values are supported.\",\"evidence_ids\":[\"ev_c60d8b40b93b309e7097\",\"ev_f8ce683c0a7d8f1dcd24\"]},{\"target_key\":\"att-3q2025:profit_attributable_to_owners:9M:2024\",\"reason\":\"Nine-month period start/end dates are not stated in the provided evidence; only the year-to-date label and values are supported.\",\"evidence_ids\":[\"ev_c60d8b40b93b309e7097\",\"ev_f8ce683c0a7d8f1dcd24\"]}],\"rejected_feedback\":[]}",
+     "refusal": null,
+     "annotations": []
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 10751,
+   "completion_tokens": 1004,
+   "total_tokens": 11755,
+   "prompt_tokens_details": {
+    "cached_tokens": 5888,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "service_tier": "default"
+ }
+}
