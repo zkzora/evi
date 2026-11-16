@@ -71,7 +71,7 @@ export default function PdfViewer({ report, url, evidence }: { report: Report; u
       : <><div className="pdf-paper" style={{ width: size.width, height: size.height }}><canvas ref={canvas} role="img" aria-label={`${report.issuer_name} original PDF, physical page ${page}`} style={{ width: size.width, height: size.height }} />
         {box && <div className="evidence-highlight" style={{ left: `${box.left}%`, top: `${box.top}%`, width: `${box.width}%`, height: `${box.height}%` }} aria-label="Cited source region"/>}
         {busy && <div className="pdf-loading"><ScanLine size={22}/><span>Rendering original page…</span></div>}</div>
-        <div className="pdf-caption">Original publisher PDF <span>•</span> Physical page {page}</div></>}
+        <div className="pdf-caption">{report.source_kind === 'user_upload' ? 'Your uploaded PDF' : 'Original publisher PDF'} <span>•</span> Physical page {page}</div></>}
     </div>
   </div>
 }
