@@ -28,7 +28,7 @@ export default function PdfViewer({ report, url, evidence }: { report: Report; u
     setDoc(null); setError(''); setBusy(true); setPage(report.source_page); setZoom(100)
     const task = getDocument({ url })
     task.promise.then(value => { if (active) setDoc(value) }).catch(() => { if (active) { setError('This PDF could not be loaded. Retry or open the publisher’s original.'); setBusy(false) } })
-    return () => { active = false; void task.destroy() }
+    return () => { active = false; task.destroy().catch(() => undefined) }  // a cancelled load is not an error
   }, [url, report.source_page, attempt])
   useEffect(() => { if (evidence) setPage(evidence.page_number) }, [evidence])
   useEffect(() => {

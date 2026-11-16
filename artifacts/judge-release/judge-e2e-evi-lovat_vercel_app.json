@@ -45,7 +45,7 @@
   {
    "check": "archive state is explicit; Process disabled with inline reason",
    "pass": true,
-   "detail": "Archive \u00b7 stored results | Archive \u00b7 stored results. This public deployment is a read-only archive: it has no Docling worker and no provider keys, "
+   "detail": "Archive \u00b7 stored results | Archive \u00b7 stored results. New processing is disabled on this server (execution policy)."
   },
   {
    "check": "stored result labelled with original timestamps",
@@ -114,8 +114,8 @@
   },
   {
    "check": "no browser errors",
-   "pass": true,
-   "detail": ""
+   "pass": false,
+   "detail": "Worker was terminated"
   },
   {
    "check": "small screen home: no horizontal page scroll",
