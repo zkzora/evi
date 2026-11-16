@@ -5,7 +5,7 @@
   {
    "check": "health reports capabilities (not connectivity)",
    "pass": true,
-   "detail": "mode=archive extraction=unavailable evaluation=unavailable"
+   "detail": "mode=live extraction=available evaluation=available"
   },
   {
    "check": "unknown API route is a JSON error",
@@ -15,7 +15,7 @@
   {
    "check": "new processing refused server-side when unavailable",
    "pass": true,
-   "detail": "503 b'{\"error\":{\"code\":\"execution_disabled\",\"message\":\"New processing is disabled on this server. Existing results remain avai'"
+   "detail": "skipped: processing is available (no POST sent)"
   },
   {
    "check": "published experiments served",
@@ -43,9 +43,9 @@
    "detail": ""
   },
   {
-   "check": "archive state is explicit; Process disabled with inline reason",
+   "check": "processing available is stated accurately",
    "pass": true,
-   "detail": "Archive \u00b7 stored results | Archive \u00b7 stored results. New processing is disabled on this server (execution policy)."
+   "detail": "Live processing available"
   },
   {
    "check": "stored result labelled with original timestamps",

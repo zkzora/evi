@@ -1,6 +1,6 @@
 # Judge walkthrough (2–3 minutes, no login)
 
-Public site: **https://evi-lovat.vercel.app** (read-only archive of real stored runs; see `docs/LIVE-DEPLOYMENT-STATUS.md`). Press **Try Evi** on Home or any page to follow the same path with a guided card (`?tour=1…5`; reload-safe; *Restart* changes no records).
+Public site: **https://evi-lovat.vercel.app** (real stored runs, plus live processing within a small daily allowance; see `docs/LIVE-DEPLOYMENT-STATUS.md`). Press **Try Evi** on Home or any page to follow the same path with a guided card (`?tour=1…5`; reload-safe; *Restart* changes no records).
 
 | What you see | Kind of evidence |
 |---|---|
@@ -8,7 +8,7 @@ Public site: **https://evi-lovat.vercel.app** (read-only archive of real stored 
 | Workspace facts and versions | **Stored** results of earlier real Docling + SERV runs, shown with their original UTC timestamps. Nothing is re-run. |
 | "Re-verify from source" | **Recomputed now** on the server from the registered PDF bytes and Docling artifact. No provider call. |
 | Reppo evaluations | **Stored** real evaluations (all made 2026-11-15), each linked to the exact version it judged. |
-| New extraction or evaluation | **Not available on this deployment**: no Docling worker and no provider keys. Shown as "Archive · stored results" with the reason. |
+| New extraction or evaluation | **Runs live** (Docling worker + SERV/Reppo, server-side keys) while today's allowance lasts: SERV ≤ 3/day, Reppo ≤ 1/day site-wide. When it is used up, the button is disabled and the reason says so. |
 
 ## 1. Catch a period mismatch (30 s)
 
@@ -18,7 +18,7 @@ Public site: **https://evi-lovat.vercel.app** (read-only archive of real stored 
 
 ## 2. Processing availability (15 s)
 
-- Open https://evi-lovat.vercel.app/workspace?document=verizon-3q2025 — the status reads **"Archive · stored results"**, *Process report* is disabled, and an inline note gives the reason. On a live host the same button queues a real job and shows its actual stages (parse reused or fresh, extraction, checks) with job, run and version IDs.
+- Open https://evi-lovat.vercel.app/workspace?document=att-3q2025 — the status reads **"Live processing available"** (or states why not, e.g. today's allowance is used). *Process report* queues a real job and shows its actual stages (Docling parse reused or fresh, SERV extraction, checks) with job, run and version IDs. Reloading the page mid-job brings back the same job; it is not resubmitted. Each click uses one of the site's daily SERV calls.
 
 ## 3. Inspect the evidence (60 s)
 

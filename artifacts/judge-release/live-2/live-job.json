@@ -1,0 +1,154 @@
+{
+ "base": "https://evi-lovat.vercel.app",
+ "document_id": "att-3q2025",
+ "events": [
+  {
+   "t": "2026-11-16T08:16:59Z",
+   "button_enabled": true
+  },
+  {
+   "t": "2026-11-16T08:17:00Z",
+   "job_id": "job_db0f4f9931a94bb18874"
+  },
+  {
+   "t": "2026-11-16T08:17:02Z",
+   "banner_before_reload": "Queued for Docling parsing.\nParse (Docling) \u00b7 queued \u00b7 Queued for Docling parsing. \u00b7 16 Nov, 15:17\njob_db0f4f9931a94bb18874"
+  },
+  {
+   "t": "2026-11-16T08:17:06Z",
+   "job_banner_after_reload": "job_db0f4f9931a94bb18874"
+  },
+  {
+   "t": "2026-11-16T08:17:06Z",
+   "job_status": {
+    "status": "running",
+    "message": "Calling SERV (gpt-5.4-mini) with the Docling evidence packet.",
+    "stages": [
+     {
+      "job_id": "job_db0f4f9931a94bb18874",
+      "kind": "process_document",
+      "status": "succeeded",
+      "message": "Reused Docling parse parse_d771e78cd7eed0b9750d of page(s) [2]: 186 evidence items, 1 tables. Extraction queued.",
+      "updated_at": "2026-11-16T08:17:00.710+00:00"
+     },
+     {
+      "job_id": "job_610ae168b4374258b267",
+      "kind": "extract_facts",
+      "status": "running",
+      "message": "Calling SERV (gpt-5.4-mini) with the Docling evidence packet.",
+      "updated_at": "2026-11-16T08:17:00.722+00:00"
+     }
+    ],
+    "first_stage_result": {
+     "document_id": "att-3q2025",
+     "pages": [
+      2
+     ],
+     "parse_id": "parse_d771e78cd7eed0b9750d",
+     "parse_reused": true,
+     "run_id": "run_8c37343f480e4b37b967"
+    },
+    "result": null
+   }
+  },
+  {
+   "t": "2026-11-16T08:17:11Z",
+   "job_status": {
+    "status": "succeeded",
+    "message": "Extraction stored as an immutable version; support certificates issued.",
+    "stages": [
+     {
+      "job_id": "job_db0f4f9931a94bb18874",
+      "kind": "process_document",
+      "status": "succeeded",
+      "message": "Reused Docling parse parse_d771e78cd7eed0b9750d of page(s) [2]: 186 evidence items, 1 tables. Extraction queued.",
+      "updated_at": "2026-11-16T08:17:00.710+00:00"
+     },
+     {
+      "job_id": "job_610ae168b4374258b267",
+      "kind": "extract_facts",
+      "status": "succeeded",
+      "message": "Extraction stored as an immutable version; support certificates issued.",
+      "updated_at": "2026-11-16T08:17:11.439+00:00"
+     }
+    ],
+    "first_stage_result": {
+     "document_id": "att-3q2025",
+     "pages": [
+      2
+     ],
+     "parse_id": "parse_d771e78cd7eed0b9750d",
+     "parse_reused": true,
+     "run_id": "run_8c37343f480e4b37b967"
+    },
+    "result": {
+     "run_id": "run_8c37343f480e4b37b967",
+     "version_id": "ver_8c37343f480e_1"
+    }
+   }
+  },
+  {
+   "t": "2026-11-16T08:17:14Z",
+   "post_requests": [
+    [
+     "POST",
+     "https://evi-lovat.vercel.app/api/v1/documents/att-3q2025/parse",
+     202
+    ]
+   ]
+  },
+  {
+   "t": "2026-11-16T08:17:14Z",
+   "page_errors": []
+  }
+ ],
+ "final_job": {
+  "job_id": "job_db0f4f9931a94bb18874",
+  "kind": "process_document",
+  "status": "succeeded",
+  "stage": "extract_facts",
+  "message": "Extraction stored as an immutable version; support certificates issued.",
+  "error": null,
+  "result": {
+   "run_id": "run_8c37343f480e4b37b967",
+   "version_id": "ver_8c37343f480e_1"
+  },
+  "stages": [
+   {
+    "job_id": "job_db0f4f9931a94bb18874",
+    "kind": "process_document",
+    "status": "succeeded",
+    "message": "Reused Docling parse parse_d771e78cd7eed0b9750d of page(s) [2]: 186 evidence items, 1 tables. Extraction queued.",
+    "updated_at": "2026-11-16T08:17:00.710+00:00"
+   },
+   {
+    "job_id": "job_610ae168b4374258b267",
+    "kind": "extract_facts",
+    "status": "succeeded",
+    "message": "Extraction stored as an immutable version; support certificates issued.",
+    "updated_at": "2026-11-16T08:17:11.439+00:00"
+   }
+  ],
+  "document_id": "att-3q2025",
+  "first_stage_result": {
+   "document_id": "att-3q2025",
+   "pages": [
+    2
+   ],
+   "parse_id": "parse_d771e78cd7eed0b9750d",
+   "parse_reused": true,
+   "run_id": "run_8c37343f480e4b37b967"
+  },
+  "attempts": 1,
+  "created_at": "2026-11-16T08:17:00.536+00:00",
+  "updated_at": "2026-11-16T08:17:11.439+00:00"
+ },
+ "post_requests": [
+  [
+   "POST",
+   "https://evi-lovat.vercel.app/api/v1/documents/att-3q2025/parse",
+   202
+  ]
+ ],
+ "page_errors": []
+}

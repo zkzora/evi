@@ -1,0 +1,121 @@
+{
+ "base": "https://evi-lovat.vercel.app",
+ "document_id": "att-3q2025",
+ "events": [
+  {
+   "t": "2026-11-16T08:10:06Z",
+   "button_enabled": true
+  },
+  {
+   "t": "2026-11-16T08:10:07Z",
+   "job_id": "job_4edfcff91b434e92b56e"
+  },
+  {
+   "t": "2026-11-16T08:10:13Z",
+   "banner_before_reload": "Calling SERV (gpt-5.4-mini) with the Docling evidence packet.\nParse (Docling) \u00b7 succeeded \u00b7 Reused Docling parse parse_d771e78cd7eed0b9750d of page(s) [2]: 186 evidence items, 1 tables. Extraction queued. \u00b7 16 Nov, 15:10\nExtract (SERV) + checks \u00b7 running \u00b7 Calling SERV (gpt-5.4-mini) with the Docling evidence packet. \u00b7 16 Nov, 15:10\nReused cached Docling parse of page(s) 2 \u00b7 run run_bc38a804574f43778282\njob_4edfcff91b434e92b56e"
+  },
+  {
+   "t": "2026-11-16T08:10:37Z",
+   "job_banner_after_reload": null
+  },
+  {
+   "t": "2026-11-16T08:10:38Z",
+   "job_status": {
+    "status": "succeeded",
+    "message": "Extraction stored as an immutable version; support certificates issued.",
+    "stages": [
+     {
+      "job_id": "job_4edfcff91b434e92b56e",
+      "kind": "process_document",
+      "status": "succeeded",
+      "message": "Reused Docling parse parse_d771e78cd7eed0b9750d of page(s) [2]: 186 evidence items, 1 tables. Extraction queued.",
+      "updated_at": "2026-11-16T08:10:08.204+00:00"
+     },
+     {
+      "job_id": "job_338b7f4b1aac4d0e8098",
+      "kind": "extract_facts",
+      "status": "succeeded",
+      "message": "Extraction stored as an immutable version; support certificates issued.",
+      "updated_at": "2026-11-16T08:10:21.244+00:00"
+     }
+    ],
+    "first_stage_result": {
+     "document_id": "att-3q2025",
+     "pages": [
+      2
+     ],
+     "parse_id": "parse_d771e78cd7eed0b9750d",
+     "parse_reused": true,
+     "run_id": "run_bc38a804574f43778282"
+    },
+    "result": {
+     "run_id": "run_bc38a804574f43778282",
+     "version_id": "ver_bc38a804574f_1"
+    }
+   }
+  },
+  {
+   "t": "2026-11-16T08:10:41Z",
+   "post_requests": [
+    [
+     "POST",
+     "https://evi-lovat.vercel.app/api/v1/documents/att-3q2025/parse",
+     202
+    ]
+   ]
+  },
+  {
+   "t": "2026-11-16T08:10:41Z",
+   "page_errors": []
+  }
+ ],
+ "final_job": {
+  "job_id": "job_4edfcff91b434e92b56e",
+  "kind": "process_document",
+  "status": "succeeded",
+  "stage": "extract_facts",
+  "message": "Extraction stored as an immutable version; support certificates issued.",
+  "error": null,
+  "result": {
+   "run_id": "run_bc38a804574f43778282",
+   "version_id": "ver_bc38a804574f_1"
+  },
+  "stages": [
+   {
+    "job_id": "job_4edfcff91b434e92b56e",
+    "kind": "process_document",
+    "status": "succeeded",
+    "message": "Reused Docling parse parse_d771e78cd7eed0b9750d of page(s) [2]: 186 evidence items, 1 tables. Extraction queued.",
+    "updated_at": "2026-11-16T08:10:08.204+00:00"
+   },
+   {
+    "job_id": "job_338b7f4b1aac4d0e8098",
+    "kind": "extract_facts",
+    "status": "succeeded",
+    "message": "Extraction stored as an immutable version; support certificates issued.",
+    "updated_at": "2026-11-16T08:10:21.244+00:00"
+   }
+  ],
+  "document_id": "att-3q2025",
+  "first_stage_result": {
+   "document_id": "att-3q2025",
+   "pages": [
+    2
+   ],
+   "parse_id": "parse_d771e78cd7eed0b9750d",
+   "parse_reused": true,
+   "run_id": "run_bc38a804574f43778282"
+  },
+  "attempts": 1,
+  "created_at": "2026-11-16T08:10:07.176+00:00",
+  "updated_at": "2026-11-16T08:10:21.244+00:00"
+ },
+ "post_requests": [
+  [
+   "POST",
+   "https://evi-lovat.vercel.app/api/v1/documents/att-3q2025/parse",
+   202
+  ]
+ ],
+ "page_errors": []
+}
