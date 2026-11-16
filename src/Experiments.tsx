@@ -54,6 +54,7 @@ export default function Experiments() {
         </div>
         <p className="exp-note">{e.historical_scoring_v1.note}. Unknown exact dates can be faithful to the source without being a complete interval.</p>
         {e.evaluations.length > 0 && <details className="exp-evals"><summary>{e.evaluations.length} real Reppo evaluations used by arm D</summary><ul>{e.evaluations.map(v => <li key={v.evaluation_id}>Trial {v.trial} · {v.document_id} · score {v.score ?? 'not returned'} ({v.decision}) · {v.credits_charged} credits · {v.packet} · evaluated <code>{v.evaluated_version_id}</code>{v.workspace_link && <> · <a href={v.workspace_link}>open evaluated version</a></>}</li>)}</ul><p>A Reppo score is an evaluator opinion, not extraction accuracy.</p></details>}
+        {e.evaluations.length === 0 && e.base_experiment && <p className="exp-note">Arm D reused the 10 completed Reppo evaluations of {e.base_experiment} (same evaluated versions), so no new credits were charged.</p>}
         {e.exposure_notes.length > 0 && <details className="exp-evals"><summary>Exposure notes</summary><ul>{e.exposure_notes.map(x => <li key={x}>{x}</li>)}</ul></details>}
         <div className="exp-artifacts">{Object.entries(e.artifacts).map(([name, href]) => <a key={name} href={href} target="_blank" rel="noreferrer">{name} <ExternalLink size={11}/></a>)}</div>
       </article>

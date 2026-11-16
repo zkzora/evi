@@ -317,7 +317,8 @@ def _eval_view(e, c=None) -> dict:
         lineage = {"document_id": r["document_id"] if r else None, "run_id": r["run_id"] if r else None,
                    "version_origin": r["origin"] if r else None,
                    "context": (f"experiment {sess.split(':', 1)[1]}" if sess.startswith("experiment:") else "public session"),
-                   "packet": "reppo-packet-v1 (candidate-cited cells)"}
+                   "packet": ("reppo-packet-v1 (candidate-cited cells)" if sess.startswith("experiment:")
+                              else os.environ.get("EVI_REPPO_PACKET", "reppo-packet-v2"))}
     return {**lineage, "evaluation_id": e["evaluation_id"], "version_id": e["version_id"], "mode": e["mode"], "status": e["status"],
             "eval_id": e["eval_id"], "provider_status": e["provider_status"], "created_at": e["created_at"],
             "updated_at": e["updated_at"], "credits_charged": e["credits_charged"], "payload_bytes": e["payload_bytes"],

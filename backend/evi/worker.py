@@ -92,7 +92,10 @@ def handle(conn, job) -> None:
         if ev["status"] != "created":
             jobs.finish(conn, jid, "succeeded", f"Evaluation already {ev['status']}.", result={"evaluation_id": ev["evaluation_id"]})
             return
-        text = build_input(conn, ev["version_id"])
+        # Public evaluations use the full-context packet by default (v1 omitted alternative rows; docs/REPPO-PAYLOAD-AUDIT.md).
+        packet = os.environ.get("EVI_REPPO_PACKET", "reppo-packet-v2")
+        from .evaluation import build_input_v2
+        text = build_input_v2(conn, ev["version_id"]) if packet == "reppo-packet-v2" else build_input(conn, ev["version_id"])
         with db.tx(conn):
             jobs.spend(conn, "reppo_evals_global", jobs.daily_key(), settings.global_reppo_evals_per_day)
             conn.execute("UPDATE evaluations SET status='submitting', updated_at=? WHERE evaluation_id=?", (db.now(), ev["evaluation_id"]))

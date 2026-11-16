@@ -28,3 +28,9 @@ Legend: ✅ done · ⏳ pending an external dependency · — not applicable. "L
 1. **A human reviewer** (not the label author) completes `data/references/review/review-sheet-references-v1.json` per `docs/REVIEWER-INSTRUCTIONS.md`. Then `python -m evi.review import …` and `analysis.evaluate_reviewed(…)` produce a new reference/analysis version.
 2. **For live processing only:** a host that can run the Docling worker (≥ 4 GB RAM, local persistent volume) and approval of its cost. The public Vercel URL serves stored results only.
 3. **Optional, separate budget approvals** (`docs/BUDGET-SHEET.md`): (a) Reppo packet calibration, ≤ 5,280 credits; (b) the holdout run, ≤ 3,520 credits and ~26 SERV calls, after holdout sources are acquired and registered and references are labelled by someone outside the build loop.
+
+## Update — judge release (2026-11-16)
+
+- Public: https://evi-lovat.vercel.app — capability-based availability, Try Evi walkthrough, evaluation lineage and published experiments. Verified 26/26 from a clean browser (`docs/JUDGE-ACCEPTANCE-REPORT.md`).
+- Acceptance level 1 (inspectable public evidence): **done**. Level 2 (public live processing): **pending** an approved durable host and public-use allowance (`docs/LIVE-DEPLOYMENT-STATUS.md`).
+- New provider calls this release: 0. Holdout freeze is now `holdout-2026-11-16-c`.

@@ -1,0 +1,100 @@
+{
+ "holdout_id": "holdout-2026-11-16-c",
+ "frozen_at": "2026-11-16T05:10:20.445492+00:00",
+ "status": "frozen; no candidate source acquired or opened",
+ "policies": {
+  "extraction": "period-unit-v2",
+  "binding": "binding-v3",
+  "revision": "revision-v3",
+  "targets": "targets-v1",
+  "analysis": "analysis-v2",
+  "replay": "replay-v2",
+  "coverage": "coverage-v1",
+  "reppo_packet": "reppo-packet-v2",
+  "parser": {
+   "docling": "2.150.1",
+   "config": {
+    "do_ocr": false,
+    "do_table_structure": true,
+    "table_mode": "accurate",
+    "do_cell_matching": true
+   }
+  },
+  "model": "gpt-5.4-mini"
+ },
+ "prompt_sha256": {
+  "extract_v2": "2ac5f47082cf68e13c10ea43e49d698f54fb78b25348c4b08a9adbb54955f02e",
+  "revise_v2": "66daadc12432057fd63dfff5fb02ad2356a3560c5c6dcb3472600b9eff86586a"
+ },
+ "code_sha256": {
+  "backend/evi/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "backend/evi/analysis.py": "d2b8feffc172798101a83fed06e77e6858d80f4c88dd1507a4e7cec285087f00",
+  "backend/evi/api.py": "4bf86f2e575d571b048bb8ab202e194e0bf94ee497053de14153213c981af60d",
+  "backend/evi/authorization.py": "5ff50945ec15d03d9d5a5a0f67eed3545596cdeb15969600cb40b59fbcc248b0",
+  "backend/evi/backup.py": "a7da9d927e5670327ae5ea5fe7fe16558ba2692309522e7970fc84ddf4fb1021",
+  "backend/evi/binding.py": "69bf8b06a5ee8662189b8fea228c2cf374c00f657f651c3a37e30f3220b1a32d",
+  "backend/evi/capabilities.py": "185e3b82b36851f16ca506c43a06d6344e861beaf858859ce8e2e8932fc1d520",
+  "backend/evi/certify.py": "7da21c216297e80c807768cedefef81c351684711f160ab325255254e22ba436",
+  "backend/evi/checks.py": "9e5cc6ce4b7082f55c2f88e49839adf89a967b4a451e2ea12d49735b4c237634",
+  "backend/evi/config.py": "5786a935908e37a73784ed669878df30203657aecc00c028431db2fca6df84c5",
+  "backend/evi/corpus.py": "c373e9a00167e79f6745165d7c453eb02edbe570be43f4b427b8a33cd44e0c50",
+  "backend/evi/db.py": "43f97f710cda51ccd03249f44556679c1a4cc3c27e048d9e095e7d26f2846821",
+  "backend/evi/evaluation.py": "75ba06c37ccf7d143380911a3663358dbc0ba43097e2480922fb5fc138d50f0b",
+  "backend/evi/experiment.py": "38479375255d094cfabf377eace21d3cc276169580ceb9ae1d53931e14eeeaeb",
+  "backend/evi/extraction.py": "298efa3a2cf393fa911bb0f9b9051c17e1361afb34e629df2921bc943aefc910",
+  "backend/evi/holdout.py": "7655e160f2f4223906cbf7428501a8816fbc7fefeb6a08e6d4166ecda03b3575",
+  "backend/evi/jobs.py": "c39bb3c13c06558289b16c896c6540add7070009fb24427e6501e406a0693db4",
+  "backend/evi/parsing.py": "09877c54b8ad4264aaa268fb812d5dfef191629f75fe1dcfbd030476457741fa",
+  "backend/evi/providers.py": "f21d0a2bcbc8e7567008a9d585297b760bbf522b1d67b07b50b56bd264b04ff8",
+  "backend/evi/replay.py": "7a496d611ca36e55782c421d0854886889a4129d7e9fcce8fd5fb8073b623ade",
+  "backend/evi/review.py": "af2a786d2a5873c35c9307f3069e59b3c1cf12b3406e1bb523230c09c5ffaec9",
+  "backend/evi/revision.py": "6d3df4f4f69566a9013a455decee5425ed0fbe918776f283e4e2c4f7cab342cc",
+  "backend/evi/scoring.py": "f9e3ac4333569ee720e024f30e782ec2b84e9f916254cbace3f63aa8a95aa377",
+  "backend/evi/targets.py": "47a7da0ada42411c83e6c0bfa852a5720bb802e8f75863fa67394a3b12919875",
+  "backend/evi/worker.py": "d1b9427368604cdfccb67e9db1db8c2e024bca6687d0e1255a61b499c573b22e",
+  "backend/requirements.lock": "f8dd2c753016a8e5c8d313da0197aff9544458a560b3cb00b445be32cbd14daa"
+ },
+ "selection": {
+  "sector": "telecom/connectivity, USD-reporting US issuers",
+  "excluded_issuers": [
+   "Verizon",
+   "AT&T"
+  ],
+  "candidates": [
+   {
+    "issuer": "T-Mobile US",
+    "report": "most recent quarterly (10-Q or IR quarterly financial statements PDF)",
+    "kind": "interim"
+   },
+   {
+    "issuer": "Comcast",
+    "report": "most recent annual report on Form 10-K PDF",
+    "kind": "annual"
+   },
+   {
+    "issuer": "Charter Communications",
+    "report": "most recent quarterly statements PDF",
+    "kind": "interim"
+   },
+   {
+    "issuer": "Lumen Technologies",
+    "report": "most recent annual report on Form 10-K PDF",
+    "kind": "annual"
+   }
+  ],
+  "backups_in_order": [
+   "Altice USA (annual)",
+   "Cogent Communications (interim)"
+  ],
+  "rule": "Take the latest report of the stated kind published on the issuer's own investor-relations host as of the acquisition date. Use it only if it is a PDF whose consolidated statement of income/operations is in USD; otherwise move to the next backup. Do not choose or skip a report because of its layout.",
+  "statement_page": "The physical page holding the consolidated statement of income/operations (plus an adjacent page only if that table continues).",
+  "targets": "targets-v1: annual -> current + prior fiscal year; interim -> current + prior year of the quarter and of the YTD group; 3 metrics.",
+  "eligibility": "All targets are eligible. A metric the page does not explicitly report is kept and scored unresolved; nothing is excluded after inference."
+ },
+ "exposure": {
+  "claim": "These report layouts and results were not used to tune the frozen Evi policy. This is NOT a claim that the public reports are absent from any model's pretraining data.",
+  "registration": "If no one outside the build loop is available, the builder/agent will acquire and register sources; this will be disclosed. Registration must not involve viewing model outputs.",
+  "references": "Labels must come from a person outside the implementation loop who has not seen model outputs; otherwise provenance is reported as builder/agent-drafted and the result as provisional.",
+  "on_unsupported_layout": "Report failure/unknown. Any code change creates a new policy; the affected report becomes development material and a different untouched report is needed for a fresh-test claim."
+ }
+}

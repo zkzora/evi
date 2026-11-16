@@ -23,7 +23,7 @@ Files: `Dockerfile`, `deploy/docker-compose.yml`, `deploy/Caddyfile`, `deploy/en
 | Docling/HF model cache | ~0.5 GB (keep on the `evi-models` volume; not re-downloaded per request) | Measured cache size |
 | Data (DB + immutable artifacts) | 28 MB for 5 reports, 56 versions, 618 certificates | Measured |
 | Image size | Not measured (no Docker on the preparing machine); estimated 2–3 GB with CPU torch | **Estimate** |
-| Suggested host | ≥ 2 vCPU, **≥ 4 GB RAM** (6 GB worker limit in compose), ≥ 10 GB disk | **Estimate** from the measured peak plus headroom |
+| Suggested host | ≥ 2 vCPU, **≥ 4 GB RAM** (compose limits: worker 3 GB, api 768 MB, caddy 128 MB), ≥ 10 GB disk | **Estimate** from the measured peak plus headroom |
 
 A short-lived serverless function is **not** a suitable host for the worker (long CPU-bound Docling runs, a durable lease loop, a local SQLite volume).
 
@@ -63,3 +63,7 @@ The test uses copied state (`python -m evi.backup create` → `restore` into a s
 - `api/index.py` copies `data/release-snapshot` (a verified backup; local session ids scrubbed) to `/tmp` at cold start, rebases the Docling artifact paths, forces `EVI_EXECUTION_ENABLED=false` with blank keys, and serves PDFs from static `/sources/`.
 - Works: browsing, certificates, server-side re-verification, exports. Not available: Docling, the worker, new processing or evaluation (POST returns 503).
 - `.vercelignore` keeps secrets and live state out; `/artifacts` is anchored to the repo root so the snapshot's Docling outputs are included.
+
+## Single-container mode (2026-11-16)
+
+`entrypoint.sh all` runs the worker in the background and the API in the foreground. It is for hosts whose persistent volume attaches to one service (e.g. Railway; HTTPS is provided by the platform, so Caddy is not needed). SIGTERM is forwarded to both; if either dies, the container exits non-zero so the platform restarts it. See `docs/LIVE-DEPLOYMENT-STATUS.md`.

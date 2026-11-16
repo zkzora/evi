@@ -134,6 +134,8 @@ Use [CLAUDE-CODE-VALIDATION-AND-RELEASE-PROMPT.md](CLAUDE-CODE-VALIDATION-AND-RE
 
 ## Public demo
 
+**Start here:** press **Try Evi** on the home page, or follow [docs/JUDGE-WALKTHROUGH.md](docs/JUDGE-WALKTHROUGH.md). Availability is reported per capability: stored results, source re-verification, new extraction and new evaluation. Live processing status: [docs/LIVE-DEPLOYMENT-STATUS.md](docs/LIVE-DEPLOYMENT-STATUS.md).
+
 **https://evi-lovat.vercel.app**: a no-login, read-only archive of the real stored runs (certificates, server-side re-verification, partial-context views, exports). New processing is disabled there: Vercel cannot run the Docling worker, and no provider keys are configured. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Validation and release (2026-11-16)

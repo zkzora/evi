@@ -133,6 +133,7 @@ def test_reppo_crash_mid_submit_becomes_unknown_not_resubmitted(conn, monkeypatc
 
 
 def test_reppo_timeout_is_unknown_outcome(conn, monkeypatch):
+    monkeypatch.setenv("EVI_REPPO_PACKET", "reppo-packet-v1")   # minimal fixture has no Docling artifact for packet v2
     def boom(r):
         raise httpx.ReadTimeout("t", request=r)
     patch_http(monkeypatch, boom)
