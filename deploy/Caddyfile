@@ -10,11 +10,15 @@
   # Only the PDF upload route accepts a large body (the API enforces 10 MiB itself); everything else stays at 64 KB.
   @upload path /api/v1/uploads
   handle @upload {
-    request_body { max_size 11MB }
+    request_body {
+      max_size 11MB
+    }
     reverse_proxy {$EVI_UPSTREAM:api:8000}
   }
   handle {
-    request_body { max_size 64KB }
+    request_body {
+      max_size 64KB
+    }
     reverse_proxy {$EVI_UPSTREAM:api:8000}
   }
 }
