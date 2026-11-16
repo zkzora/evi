@@ -1,48 +1,31 @@
-# Live deployment status (2026-11-16)
+# Live deployment status (updated 2026-11-16, Railway backend)
 
-## What is deployed
+## Current topology
 
-| Item | State |
-|---|---|
-| Public URL | **https://evi-lovat.vercel.app** (Vercel project `zkzoras-projects/evi`, Git-connected to `zkzora/evi`; every push to `main` deploys) |
-| Routing | Vercel static SPA (deep-link fallback to `index.html`) + `/api/*` → Python function `api/index.py` (same origin; HttpOnly session cookie and same-origin write checks unchanged) |
-| Backend mode | **Archive (acceptance level 1 only):** stored results from `data/release-snapshot` (verified backup), certificate re-verification, published experiments. `EVI_EXECUTION_ENABLED` is forced off; no provider keys; **no Docling worker** |
-| Readiness | `/api/v1/health` → `capabilities`: stored results available; source verification available; extraction and evaluation **unavailable** ("read-only archive: no Docling worker and no provider keys"). `/api/v1/ready` → ready |
-| Container image | **Not built** on the preparing machine (Docker is not installed). `Dockerfile` + `deploy/` are prepared; a host that builds Dockerfiles (e.g. Railway) would build it remotely. A non-container production-mode smoke test passed earlier and is not a container test. |
-| New provider calls during this release | **0** (provider-call count 162 before and after; no credits spent) |
+| Layer | Where | State |
+|---|---|---|
+| Public entry (frontend) | **https://evi-lovat.vercel.app** (Vercel `zkzoras-projects/evi`) | SPA; `/api/*` is an external rewrite to Railway (same origin for the browser; HttpOnly SameSite=strict session cookie verified) |
+| Backend | **https://evi-production-0473d93e.up.railway.app** (Railway project `reasonable-benevolence`, service `evi`, created manually by the user) | Dockerfile image built by Railway (first real build of the image); `entrypoint.sh all` = API + Docling worker in one container; volume `evi-volume` at `/data` (DB, artifacts, sources, model cache `HF_HOME=/data/models`) |
+| Stored results | Railway volume | Seeded once from the verified `data/release-snapshot` (56 versions, 618 certificates, 11 evaluations); certificate re-verification passes on the server |
+| Execution policy | Railway variables | `EVI_EXECUTION_ENABLED=false`; no SERV/Reppo keys set; caps SERV 3/day, Reppo 0/day, 1 active job, 2 jobs/session/hour |
+| Readiness | `/api/v1/health`, `/api/v1/ready` | ready; worker **alive**; Docling **installed**; extraction/evaluation **unavailable (execution policy)** |
 
-## Live processing (acceptance level 2): not yet possible
+Verified from a clean browser via the Vercel URL: **26/26** (`artifacts/judge-release/judge-e2e-evi-lovat_vercel_app.json`), and directly on the Railway URL: 26/26. **No new provider calls**; no credits spent.
 
-This needs a host that runs the Docling worker next to the API with one persistent local volume, plus an explicit public-use allowance. No authorized durable host exists:
-- **Railway:** the CLI on this machine is logged in to a different account (not `zkzora`), with one existing project, `steadfast-truth`, of unknown purpose. Nothing was created or changed there.
-- **Docker:** not installed locally.
-- **Vercel:** cannot host the worker.
+## Fixes made while bringing Railway up (all committed)
 
-### Proposed host (needs your approval; nothing purchased)
+1. The image defaults to `all` (API + worker) on `$PORT`; `railway.toml` pins the Dockerfile build, the health check and 1 replica.
+2. Seeding: the snapshot DB was excluded by `.dockerignore` (`**/*.sqlite3*`), which now has an exception. Seeding also runs when the DB has no stored results. Empty pre-seed state is moved aside to `/data/runs.preseed-*`, never deleted.
+3. Line endings: hash-pinned evidence was stored LF by git but hashed as CRLF, so it failed verification on Linux. `.gitattributes` now stores `data/`, `artifacts/` and `public/evidence/` byte-for-byte. Without this, cloners could not replay either.
+4. Cross-OS artifact paths: `backup.restore` did not split Windows paths on Linux. Fixed (`backup.rebase`, idempotent, runs on every boot), with a regression test. This changed frozen code, so the holdout freeze is now **holdout-2026-11-16-d** (a–c superseded; no source acquired).
+5. PDF viewer: a cancelled PDF load (frequent through the proxy) is no longer a browser error.
 
-Railway (Dockerfile build, one service, one volume), using `deploy/entrypoint.sh all`, which runs API and worker in one container so they share the SQLite volume. A Railway volume attaches to one service.
-- **Pricing** (docs.railway.com, read 2026-11-16): Hobby $5/month including $5 of usage; RAM $10/GB-month; CPU $20/vCPU-month; volume $0.15/GB-month.
-- **Estimate:** about 0.6 GB average RAM and a 2 GB volume, roughly **$7–8/month** of usage, so ~$2–3 above the $5 included. This is an estimate until measured on the host; a parse peaks at ~2.3 GB committed for a few minutes.
-- Any other single VM (≥ 4 GB RAM, local disk) with `deploy/docker-compose.yml` works equally.
+## Still pending (needs your decision)
 
-### Proposed public-use allowance (needs your approval; nothing configured)
+- **Live processing (acceptance level 2):** set `SERV_API_KEY` (and optionally `REPPO_API_KEY`) in Railway's variables yourself, then approve an allowance, e.g. 7 days, SERV ≤ 3/day (≈ $0.45 total estimated), Reppo 0–1/day (≤ 440 credits each). Then set `EVI_EXECUTION_ENABLED=true` and `EVI_GLOBAL_REPPO_EVALS_PER_DAY` accordingly. After that I run one real Process job, a reload test and the judge check.
+- Railway cost: usage-based on the account that owns `reasonable-benevolence`; measure after a few days (estimate in the previous section of this file's history: ~$7–8/month of usage).
 
-| Parameter | Proposed |
-|---|---|
-| Duration | 7 days from enablement, then `EVI_EXECUTION_ENABLED=false` |
-| SERV calls | `EVI_GLOBAL_SERV_CALLS_PER_DAY=3` (≤ 21 total) — ≈ $0.02 per extraction at the published gpt-5.4-mini price (~5.6k input / 2.1k output tokens): **≤ $0.45 estimated** |
-| Reppo evaluations | `EVI_GLOBAL_REPPO_EVALS_PER_DAY=1` (≤ 7 × 440 = **≤ 3,080 credits**), packet v2 — or 0 if you prefer no new Reppo spend |
-| Concurrency and per-session limits | `EVI_MAX_ACTIVE_JOBS=1`, `EVI_SESSION_JOBS_PER_HOUR=2`, `EVI_MAX_REVISIONS_PER_RUN=1`, `EVI_MAX_EVALUATIONS_PER_RUN=1` |
-| Verification run (by me, after deploy) | 1 Process job on a registered report (1 SERV call; cached parse reused unless the volume is fresh) + reload/duplicate-click check; optionally 1 evaluation (440 credits) |
+## Rollback
 
-Keys stay in the host's secret store (never in chat, `VITE_` variables or the repo). This allowance is separate from the unexecuted Reppo calibration (≤ 5,280 credits) and the holdout run (≤ 3,520 credits).
-
-## Steps once host and allowance are approved
-
-1. Create the service from `zkzora/evi` (Dockerfile), attach a volume at `/data`, set the start command to `all`, set the secrets and the limits above, and keep `EVI_EXECUTION_ENABLED=false` at first.
-2. Seed state: `python -m evi.backup restore <data/release-snapshot> /data/runs /data/sources` into the empty volume (hash-verified).
-3. Read-only smoke test against the host URL: `scripts/prod_smoke.py`, `scripts/judge_e2e.py`.
-4. Enable execution with the limits; run one Process job; verify stages, reload recovery and no duplicate calls; re-run `judge_e2e.py`.
-5. Routing: either point judges at the host URL, or add a Vercel external rewrite of `/api/(.*)` to the host (`EVI_ALLOWED_ORIGINS` must include `https://evi-lovat.vercel.app`). Change public routing **only after** steps 3–4 pass.
-
-**Rollback:** remove the rewrite or link. The Vercel archive keeps working independently. Backups are created with `python -m evi.backup create` and restored only into an empty directory.
+- **Frontend API routing:** revert `vercel.json`'s `/api/(.*)` destination to `/api/index` (archive function, still in the repo) and push.
+- **Backend:** the Railway volume keeps the state; `python -m evi.backup create` before risky changes; restores go only into an empty directory.

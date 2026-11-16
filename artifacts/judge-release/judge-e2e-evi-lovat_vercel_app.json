@@ -114,8 +114,8 @@
   },
   {
    "check": "no browser errors",
-   "pass": false,
-   "detail": "Worker was terminated"
+   "pass": true,
+   "detail": ""
   },
   {
    "check": "small screen home: no horizontal page scroll",

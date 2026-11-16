@@ -28,9 +28,13 @@ Evidence levels:
 | Worker restart/resumption, idempotent clicks, unknown Reppo submission not resubmitted | local ✅ | `test_faults.py`, `test_pipeline.py`, `test_capabilities.py` (fakes; no provider calls) |
 | **New real Process job on a public host** (Docling + SERV, stages, reload recovery) | **pending** | Needs an approved durable host and public-use allowance (`docs/LIVE-DEPLOYMENT-STATUS.md`) |
 | **New Reppo evaluation from the public UI** | **pending** | Needs a separate allowance (≤ 440 credits per evaluation) |
-| Docker image build | **pending** | Docker not installed; image unbuilt |
+| Docker image build | done (Railway remote build) | Railway deployment `04b6a10`+ SUCCESS; API + worker running; Docling installed |
 | Independent human reference review | **pending** | 0/48 (`data/references/review/review-sheet-references-v1.json`) |
 
 Test totals in this release: backend **140 passed**; frontend **18 passed**; production build OK; public judge-e2e **26/26** (`artifacts/judge-release/judge-e2e-evi-lovat_vercel_app.json`).
 
 Holdout: `holdout-2026-11-16-c` is the current freeze (a and b superseded by code changes before any source was acquired; see `artifacts/holdout/*/SUPERSEDED.md` and `exposure-addendum.md`).
+
+## Update — Railway backend (2026-11-16)
+
+https://evi-lovat.vercel.app now proxies `/api` to the Railway backend (API + Docling worker + persistent volume). Judge e2e 26/26 on the Vercel URL (two consecutive runs) and 26/26 on the Railway URL. Execution remains disabled; level 2 (a new real job) is still **pending** keys and an allowance.
