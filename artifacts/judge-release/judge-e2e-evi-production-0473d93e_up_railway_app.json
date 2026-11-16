@@ -1,0 +1,136 @@
+{
+ "base": "https://evi-production-0473d93e.up.railway.app",
+ "provider_calls_made_by_this_check": 0,
+ "results": [
+  {
+   "check": "health reports capabilities (not connectivity)",
+   "pass": true,
+   "detail": "mode=archive extraction=unavailable evaluation=unavailable"
+  },
+  {
+   "check": "unknown API route is a JSON error",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "new processing refused server-side when unavailable",
+   "pass": true,
+   "detail": "503 b'{\"error\":{\"code\":\"execution_disabled\",\"message\":\"New processing is disabled on this server. Existing results remain avai'"
+  },
+  {
+   "check": "published experiments served",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no provider secrets in served HTML/JS",
+   "pass": true,
+   "detail": "1 bundles scanned"
+  },
+  {
+   "check": "Try Evi opens a real nine-month observation checked as Full year -> mismatch",
+   "pass": true,
+   "detail": "The source reports 9 months, while you selected a full year."
+  },
+  {
+   "check": "same observation checked as 9 months -> match",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "unit mismatch (USD millions vs base USD) -> mismatch",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "archive state is explicit; Process disabled with inline reason",
+   "pass": true,
+   "detail": "Archive \u00b7 stored results | Archive \u00b7 stored results. New processing is disabled on this server (execution policy)."
+  },
+  {
+   "check": "stored result labelled with original timestamps",
+   "pass": true,
+   "detail": "Stored result \u00b7 run created 2026-11-15 22:59 UTC \u00b7 version ver_3f60316ec62f_5 created 2026-11-15 23:10 UTC \u00b7 serv revision (arm D). Shown as recorded, not re-run."
+  },
+  {
+   "check": "certificate re-verifies from registered source on the server",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "revision lineage shown ($ -> USD accepted)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "FY2024 offset-coordinate page: value highlight inside the page at the revenue cell",
+   "pass": true,
+   "detail": "0.654,0.192"
+  },
+  {
+   "check": "AT&T partial context retained (no guessed dates)",
+   "pass": true,
+   "detail": "{'Supported \u00b7 dates not printed'}"
+  },
+  {
+   "check": "deep link restored after reload",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "CSV export keeps provenance and coverage",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Feedback: honest zero state for this revision version",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Feedback: all recorded evaluations with exact evaluated-version links",
+   "pass": true,
+   "detail": "11 rows, 11 lineage links"
+  },
+  {
+   "check": "menu navigation keeps the selected version",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Benchmark shows both experiments and the null Reppo finding",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Benchmark shows provisional references and 0/48 human review",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "experiment b labelled development evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no browser errors",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "small screen home: no horizontal page scroll",
+   "pass": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "check": "small screen workspace: no horizontal page scroll",
+   "pass": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "check": "small screen benchmark: no horizontal page scroll",
+   "pass": true,
+   "detail": "overflow 0px"
+  }
+ ]
+}
