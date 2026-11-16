@@ -1,0 +1,146 @@
+{
+  "schema": "evi.evidence-index/1",
+  "as_of_date": "2026-11-16",
+  "project": {
+    "name": "Evi",
+    "public_url": "https://evi-lovat.vercel.app",
+    "repository": "https://github.com/zkzora/evi",
+    "event": "SERV Hackathon Edition 02",
+    "user": "Analysts comparing financial figures across telecom statements",
+    "failure": "A transcribed value can be correct while its reporting period, monetary unit or parent-attribution scope is wrong",
+    "mechanism": "Derive applicable table context, check the model claim, issue a policy-versioned source-support certificate and gate any field revision"
+  },
+  "reading_order": [
+    "README.md",
+    "backend/evi/binding.py",
+    "artifacts/judge-release/live-2/live-job.json",
+    "artifacts/technical-proof/exp-2026-11-16-a/analysis-v2/summary.json",
+    "artifacts/technical-proof/exp-2026-11-16-b/analysis-v2/summary.json",
+    "docs/PROOF-INTEGRITY-REVIEW.md",
+    "docs/REPPO-PAYLOAD-AUDIT.md"
+  ],
+  "evidence_levels": {
+    "implementation": "Present in inspected source code; does not by itself establish runtime success",
+    "controlled_test": "Isolated test or simulated provider/fault; does not establish a real provider call",
+    "recorded_local": "Saved execution on the local machine",
+    "recorded_public": "Saved execution through the hosted public application",
+    "provisional_measurement": "Measured against builder-drafted, source-reviewed references pending independent review",
+    "pending": "Not established by the linked records"
+  },
+  "claims": [
+    {
+      "id": "context-applicability",
+      "claim": "Evidence existence is insufficient: row, column, interval and unit context must apply to the selected value cell",
+      "levels": ["implementation", "controlled_test", "provisional_measurement"],
+      "paths": ["backend/evi/binding.py", "backend/tests/test_binding.py", "docs/TECHNICAL-DEPTH-IMPLEMENTATION.md"],
+      "limits": ["Documented layouts only", "Not issuer accounting truth"]
+    },
+    {
+      "id": "recomputable-certificate",
+      "claim": "Source-support decisions can be recomputed from source bytes and the stored Docling artifact under their issuing policy",
+      "levels": ["implementation", "controlled_test", "recorded_public"],
+      "paths": ["backend/evi/binding.py", "backend/evi/certify.py", "backend/tests/test_integration_real.py", "docs/JUDGE-ACCEPTANCE-REPORT.md"],
+      "limits": ["Not a signature", "Re-verification does not freshly parse the PDF or call an AI provider"]
+    },
+    {
+      "id": "revision-gate",
+      "claim": "Field proposals cannot change source/target identity, invent evidence or regress supported fields; outcomes create immutable lineage and receipts",
+      "levels": ["implementation", "controlled_test", "recorded_local"],
+      "paths": ["backend/evi/revision.py", "backend/tests/test_revision_gate.py", "docs/TECHNICAL-DEPTH-IMPLEMENTATION.md"],
+      "limits": ["A valid outcome may be no accepted changes"]
+    },
+    {
+      "id": "hosted-new-extraction",
+      "claim": "A new SERV extraction completed through the public website and reload recovered the same job",
+      "levels": ["recorded_public"],
+      "paths": ["artifacts/judge-release/live-2/live-job.json"],
+      "details": {"docling_parse_reused": true, "new_serv_extraction": true, "processing_posts_in_successful_check": 1},
+      "limits": ["Not a fresh hosted Docling parse", "Live processing depends on available allowance and worker readiness"]
+    },
+    {
+      "id": "reppo-evaluation",
+      "claim": "Eleven actual historical Reppo evaluations exist; evaluated-version lineage is inspectable",
+      "levels": ["recorded_local", "recorded_public"],
+      "paths": ["docs/PROOF-REPORT.md", "docs/REPPO-PAYLOAD-AUDIT.md", "docs/JUDGE-ACCEPTANCE-REPORT.md"],
+      "limits": ["Historical packet v1 contained only candidate-cited cells", "A 100/100 evaluation is not measured extraction accuracy", "No incremental Reppo benefit established"]
+    },
+    {
+      "id": "read-only-replay",
+      "claim": "Manifest-derived replay checks required policy, target/version coverage, receipts, source identities and reproduced scores without paid calls or summary writes",
+      "levels": ["implementation", "controlled_test", "recorded_local"],
+      "paths": ["backend/evi/replay.py", "backend/tests/test_replay.py", "docs/PROOF-INTEGRITY-REVIEW.md"],
+      "details": {"required_certificates_per_experiment": 288, "receipts_per_experiment": 20},
+      "limits": ["The 618-certificate historical audit is a separate coverage claim"]
+    },
+    {
+      "id": "spending-allowance",
+      "claim": "Atomic pre-request reservations enforce finite owner-configured totals; unknown submissions are not automatically repeated",
+      "levels": ["implementation", "controlled_test", "recorded_public"],
+      "paths": ["backend/evi/allowance.py", "backend/tests/test_allowance.py", "artifacts/allowance/test-allowance.txt", "artifacts/allowance/health-after-deploy.json"],
+      "details": {"recorded_serv_total_limit": 21, "recorded_reppo_total_limit": 7, "recorded_daily_serv_limit": 3, "recorded_daily_reppo_limit": 1, "automatic_end_date_in_recorded_allowance": null},
+      "limits": ["Configured allowance is distinct from current remaining quota", "No universal exactly-once provider guarantee"]
+    },
+    {
+      "id": "judge-pdf-upload",
+      "claim": "Session-owned PDF upload, preview and one-page processing are implemented; local fresh parsing and partial hosted acceptance are recorded",
+      "levels": ["implementation", "controlled_test", "recorded_local", "recorded_public"],
+      "paths": ["backend/evi/uploads.py", "backend/tests/test_upload.py", "docs/JUDGE-UPLOAD.md", "artifacts/judge-upload/local-integration.json", "artifacts/judge-upload/public-upload-attempt1-docling-disk.json"],
+      "details": {"maximum_bytes": 10485760, "maximum_pdf_pages": 250, "parsed_pages_per_run": 1, "retention_hours": 24, "local_fresh_parse": true, "recorded_hosted_upload_preview_and_session_isolation": true, "successful_hosted_upload_to_serv_completion_recorded": false},
+      "limits": ["First saved public attempt failed during Docling parsing before SERV", "Local test source was already development material", "No automatic sector/language classification claim"]
+    }
+  ],
+  "measurements": {
+    "reference_provenance": "Builder-drafted, source-reviewed, provisional; not independent human gold",
+    "human_reviewed_targets": 0,
+    "fixed_targets": 48,
+    "trials": 2,
+    "observations_per_arm": 96,
+    "pdf_reports": 5,
+    "issuers": 2,
+    "metrics": ["revenue", "operating_profit", "profit_attributable_to_owners"],
+    "experiment_a": {
+      "id": "exp-2026-11-16-a",
+      "design": "Frozen four-arm experiment",
+      "analysis": "analysis-v2",
+      "path": "artifacts/technical-proof/exp-2026-11-16-a/analysis-v2/summary.json",
+      "reference_match": {"A": 62, "B": 62, "C": 62, "D": 62},
+      "composite": {"A": 56, "B": 56, "C": 56, "D": 56},
+      "checker": {"true_positives": 34, "false_positives": 6, "false_negatives": 0}
+    },
+    "experiment_b": {
+      "id": "exp-2026-11-16-b",
+      "design": "Post-hoc development experiment; same saved baselines and Reppo evaluations",
+      "analysis": "analysis-v2",
+      "path": "artifacts/technical-proof/exp-2026-11-16-b/analysis-v2/summary.json",
+      "reference_match": {"A": 62, "B": 62, "C": 74, "D": 74},
+      "composite": {"A": 62, "B": 62, "C": 74, "D": 74},
+      "paired_baseline_to_C": {"improvements": 12, "regressions": 0},
+      "limits": ["All improvements came from one revision branch", "Not unseen-holdout validation"]
+    },
+    "incremental_reppo_benefit_established": false,
+    "metric_definitions": {
+      "reference_match": "All frozen fields agree; start date derives from the model's own end date/duration independently of checker verdict; matching nulls count as faithful absence",
+      "composite": "Reference match AND supported certificate",
+      "complete_interval": "Known start and end matching reference; distinct from matching null dates"
+    },
+    "currency_sensitivity": {"primary_requires": "USD", "dollar_symbol_only_fails_primary_currency_field": true, "baseline_reference_match_if_dollar_sign_accepted": 86, "denominator": 96},
+    "limits": ["Targets and trials are correlated", "AT&T pages were inspected during rule design", "No independently validated general accuracy estimate"]
+  },
+  "source_explorer": {
+    "path": "src/data-manifest.json",
+    "usd_observations": 103644,
+    "core_metric_observations": 4037,
+    "issuer_snapshots": 6,
+    "retrieved_on": "2026-11-15",
+    "count_definition": "Reported observations retaining repeated comparative disclosures; not unique economic facts, processed PDF facts or detected errors"
+  },
+  "commercial_hypothesis": {
+    "buyer": "Financial research or data teams that need auditable PDF-derived figures",
+    "possible_delivery": "Review workspace and source-support API",
+    "validated_demand": false,
+    "reported_revenue": null,
+    "limits": ["No measured willingness to pay, customer adoption or time-saving estimate"]
+  },
+  "published_criteria_source": "https://www.openserv.ai/hackathon-2",
+  "published_criteria": ["creativity", "user readiness", "revenue potential"]
+}
