@@ -1,0 +1,26 @@
+# Small shared VPS (2 GB RAM, other services running): ONE Evi container (API + worker, `all`) + Caddy.
+# The memory cap protects co-located services: if a Docling parse exceeds it, only this container is affected.
+# Measured: fresh Docling parse process peaks ~1.06 GB (docs/DOCLING-MEMORY-RESULTS.md); API ~0.15 GB.
+services:
+  evi:
+    build: { context: .., dockerfile: Dockerfile }
+    image: evi:local
+    command: ["all"]
+    env_file: production.env          # secrets only on the server, never committed
+    environment:
+      HF_HOME: /models/huggingface    # models baked into the image (not on the data volume)
+      PORT: "8000"
+    volumes: [evi-data:/data]
+    restart: unless-stopped
+    stop_grace_period: 60s
+    mem_limit: 1400m
+    memswap_limit: 2400m              # may use up to 1 GB swap rather than be killed during a parse
+  caddy:
+    image: caddy:2
+    ports: ["80:80", "443:443"]
+    volumes: [./Caddyfile:/etc/caddy/Caddyfile:ro, caddy-data:/data]
+    environment: { EVI_DOMAIN: "${EVI_DOMAIN:?set EVI_DOMAIN}", EVI_UPSTREAM: "evi:8000" }
+    depends_on: [evi]
+    restart: unless-stopped
+    mem_limit: 128m
+volumes: { evi-data: {}, caddy-data: {} }
