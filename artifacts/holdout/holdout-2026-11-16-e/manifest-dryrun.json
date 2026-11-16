@@ -1,0 +1,30 @@
+{
+ "holdout_id": "holdout-2026-11-16-e",
+ "kind": "dry-run plan (not executable until stage-run)",
+ "freeze_sha256": "fec90b9cbd850984050c263ab49f559e6a54abdfe5f29ec4244cc81830ed9904",
+ "documents": "4 per selection rule (to be registered)",
+ "trials": 2,
+ "arms": {
+  "A": "Docling + one SERV v2 extraction",
+  "B": "A + binding-v3 certificates",
+  "C": "A + diagnostics + one revision-v3 call (no feedback)",
+  "D": "A + diagnostics + one real Reppo evaluation (reppo-packet-v2) + one revision-v3 call"
+ },
+ "caps": {
+  "serv_calls": 26,
+  "reppo_evals": 8,
+  "reppo_credits_at_440": 3520
+ },
+ "gates": [
+  "no policy drift since freeze",
+  "4 sources registered with URL/hash/page via EVI_SOURCE_REGISTRY",
+  "target columns registered via EVI_TARGET_REGISTRY",
+  "Docling parses exist",
+  "reference file hashed with non-builder provenance (or disclosed)",
+  "approval file bound to the staged manifest",
+  "EVI_ALLOW_PAID_RUNS=1"
+ ],
+ "stopping": "caps, auth/credit failures, unknown Reppo submissions; never on observed results",
+ "failure_handling": "as exp-2026-11-16-a (failed A leaves C/D unexecuted and recorded; provider failure = execution failure)",
+ "reporting": "analysis-v2 metrics per document; replay-v2 must be VERIFIED before any result is reported; not pooled with the historical five-report experiments"
+}

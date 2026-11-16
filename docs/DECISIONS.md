@@ -58,3 +58,5 @@ The server sets an HttpOnly, SameSite=Strict `evi_session` cookie. Jobs are read
 - New sources and targets after a freeze are DATA (`EVI_SOURCE_REGISTRY`, `EVI_TARGET_REGISTRY`), so registration does not change frozen code; historical targets cannot be redefined.
 - Holdout `holdout-2026-11-16-a` predeclares reppo-packet-v2 for arm D; the runner selects the packet from the manifest (v1 remains the historical default).
 - Deployment: a single host, SQLite WAL on a local volume, API + worker sharing it, Caddy in front; the API serves the SPA same-origin. No database migration.
+
+- 2026-11-16 Spending allowance: the owner-approved allowance (host variables `EVI_ALLOWANCE_*`) is the authority for every paid SERV request and Reppo submission, checked and reserved per request in one SQLite write transaction before sending. No allowance → no paid work. The owner removed the 7-day end date because judging lasts longer; the cumulative limits stay at the totals of the original approval (21 SERV, 7 Reppo), so the allowance was not expanded. SERV read timeouts are now unknown outcomes (counted, not retried), the same as Reppo submissions.
