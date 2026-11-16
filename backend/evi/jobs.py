@@ -46,6 +46,14 @@ def claim(conn: sqlite3.Connection, worker_id: str) -> sqlite3.Row | None:
         if not j:
             return None
         recovered = j["status"] == "running"
+        if recovered and j["attempts"] >= settings.job_max_attempts:
+            # The worker died while holding this job repeatedly (e.g. killed for memory during a Docling parse).
+            # Stop the crash loop: fail it with an honest reason instead of leasing it again.
+            msg = ("The processing worker stopped repeatedly while running this job (likely out of memory on this server). "
+                   "It was not retried again. Stored results remain available.")
+            conn.execute("UPDATE jobs SET status='failed', message=?, error_json=?, lease_until=NULL, updated_at=? WHERE job_id=?",
+                         (msg, db.dumps({"code": "worker_crash_loop", "message": msg}), db.now(), j["job_id"]))
+            return None
         conn.execute("UPDATE jobs SET status='running', attempts=attempts+1, lease_until=?, updated_at=?, message=? WHERE job_id=?",
                      (_ts(settings.worker_lease_s), db.now(),
                       "Recovered after a worker restart." if recovered else "Running.", j["job_id"]))
