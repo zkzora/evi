@@ -19,6 +19,8 @@ if [ -f /app/seed-snapshot/MANIFEST.json ]; then
     echo "restored release snapshot into $EVI_DATA_DIR"
   fi
 fi
+# Every boot: repair parse artifact paths recorded on another OS/location (idempotent; only fixes missing files).
+python -m evi.backup rebase "$EVI_DATA_DIR" || true
 case "${1:-all}" in
   api)    exec python -m uvicorn evi.api:app --host 0.0.0.0 --port "${PORT:-8000}" --proxy-headers --forwarded-allow-ips='*' --timeout-graceful-shutdown 20 ;;
   worker) exec python -m evi.worker ;;

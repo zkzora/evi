@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import shutil
 import sqlite3
 import sys
@@ -76,16 +77,34 @@ def restore(bdir: Path, data_dir: Path, sources_dir: Path | None = None) -> dict
         for p in (bdir / "sources").iterdir():
             if not (sources_dir / p.name).exists():
                 shutil.copy2(p, sources_dir / p.name)
-    # Docling artifact paths are absolute in the parses table; rebase them onto the restored location.
+    n = rebase(data_dir, force=True)
     c = sqlite3.connect(data_dir / "evi.sqlite3")
-    rows = c.execute("SELECT parse_id, artifact_path FROM parses").fetchall()
-    for pid, path in rows:
-        new = data_dir / "artifacts" / "parses" / Path(path).name
-        c.execute("UPDATE parses SET artifact_path=? WHERE parse_id=?", (str(new), pid))
-    c.commit()
     ok = c.execute("PRAGMA integrity_check").fetchone()[0]
     c.close()
-    return {"restored_to": str(data_dir), "integrity_check": ok, "parses_rebased": len(rows)}
+    return {"restored_to": str(data_dir), "integrity_check": ok, "parses_rebased": n}
+
+
+def _basename(path: str) -> str:
+    """Basename for paths recorded on ANY OS (a Windows path is not split by PurePosixPath on Linux)."""
+    return re.split(r"[\\/]", path)[-1]
+
+
+def rebase(data_dir: Path, force: bool = False) -> int:
+    """Point parse artifact paths at data_dir/artifacts/parses. Idempotent: without force, only rows whose recorded
+    file is missing AND whose basename exists under data_dir are updated. Returns the number of rows changed."""
+    db_path = data_dir / "evi.sqlite3"
+    if not db_path.exists():
+        return 0
+    c = sqlite3.connect(db_path)
+    changed = 0
+    for pid, path in c.execute("SELECT parse_id, artifact_path FROM parses").fetchall():
+        new = data_dir / "artifacts" / "parses" / _basename(path)
+        if str(new) != path and (force or (not Path(path).exists() and new.exists())):
+            c.execute("UPDATE parses SET artifact_path=? WHERE parse_id=?", (str(new), pid))
+            changed += 1
+    c.commit()
+    c.close()
+    return changed
 
 
 if __name__ == "__main__":
@@ -96,5 +115,7 @@ if __name__ == "__main__":
         bad = verify(Path(a[1]))
         print("VERIFIED" if not bad else f"FAILED: {bad}")
         sys.exit(1 if bad else 0)
+    elif a[0] == "rebase":
+        print(json.dumps({"parses_rebased": rebase(Path(a[1]))}))
     elif a[0] == "restore":
         print(json.dumps(restore(Path(a[1]), Path(a[2]), Path(a[3]) if len(a) > 3 else None), indent=1))

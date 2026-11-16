@@ -77,3 +77,19 @@ def test_backup_and_restore_roundtrip(tmp_path):
         backup.restore(bdir, tmp_path / "restored2")
     with pytest.raises(SystemExit, match="not empty"):
         backup.restore(Path(backup.create(tmp_path / "bk2", data, src)["backup"]), tmp_path / "restored")
+
+
+def test_rebase_handles_windows_paths_on_any_os(tmp_path):
+    import sqlite3
+
+    from evi import backup
+    (tmp_path / "artifacts" / "parses").mkdir(parents=True)
+    (tmp_path / "artifacts" / "parses" / "parse_x.docling.json").write_text("{}")
+    c = sqlite3.connect(tmp_path / "evi.sqlite3")
+    c.execute("CREATE TABLE parses (parse_id TEXT, artifact_path TEXT)")
+    c.execute("INSERT INTO parses VALUES ('p', ?)", (r"C:\Evidence\repo\data\runs\artifacts\parses\parse_x.docling.json",))
+    c.commit(); c.close()
+    assert backup.rebase(tmp_path) == 1
+    row = sqlite3.connect(tmp_path / "evi.sqlite3").execute("SELECT artifact_path FROM parses").fetchone()[0]
+    assert row.endswith("parse_x.docling.json") and "Evidence" not in row
+    assert backup.rebase(tmp_path) == 0          # idempotent
