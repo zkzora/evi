@@ -206,7 +206,16 @@ export default function App() {
       setJob(next)
       if (next.status === 'succeeded') { setToast('Processing completed. Refreshing your results.'); setRefresh(n => n + 1) }
       if (['failed', 'blocked', 'outcome_unknown'].includes(next.status)) setError(next.error?.message || next.message || `Processing status: ${next.status}.`)
-    }).catch(e => { if (active) { setError(messageOf(e)); clearInterval(interval) } }), 4000)
+    }).catch(e => {
+      if (!active) return
+      clearInterval(interval)
+      // 404 = this job no longer exists for this session (e.g. it ran on a previous backend): drop it instead of
+      // showing "running" forever and blocking new processing.
+      if ((e as { status?: number }).status === 404) {
+        try { sessionStorage.removeItem('evi.activeJob') } catch { /* ignore */ }
+        setJob(null); setToast('A previous job is no longer available on this server. You can process again.')
+      } else setError(messageOf(e))
+    }), 4000)
     return () => { active = false; clearInterval(interval) }
   }, [job?.job_id, job?.status])
   // Reload recovery: remember this tab's in-flight job ID (no secrets; ownership is still checked by the session cookie).
