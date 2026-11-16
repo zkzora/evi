@@ -22,6 +22,7 @@ os.environ["SERV_API_KEY"] = ""
 os.environ["REPPO_API_KEY"] = ""
 os.environ["EVI_DATA_DIR"] = str(TMP)
 os.environ["EVI_SOURCES_DIR"] = str(ROOT / "public" / "sources")
+os.environ["EVI_PUBLIC_EVIDENCE"] = str(ROOT / "public" / "evidence" / "experiments.v1.json")
 os.environ.setdefault("EVI_ALLOWED_ORIGINS", ",".join(filter(None, [
     f"https://{os.environ['VERCEL_URL']}" if os.environ.get("VERCEL_URL") else "",
     f"https://{os.environ['VERCEL_PROJECT_PRODUCTION_URL']}" if os.environ.get("VERCEL_PROJECT_PRODUCTION_URL") else ""])))
@@ -49,6 +50,13 @@ def health():
     h["components"].update(docling="not installed (Vercel read-only archive deployment)", worker="not deployed",
                            deployment="vercel-archive")
     h["mode"] = "archive: stored results only; new processing disabled"
+    why = ("This public deployment is a read-only archive: it has no Docling worker and no provider keys, "
+           "so new extraction and evaluation cannot run here.")
+    caps = h.get("capabilities") or {}
+    caps["mode"] = "archive"
+    for k in ("extraction", "evaluation"):
+        if k in caps:
+            caps[k].update(state="unavailable", reason=why)
     return h
 
 

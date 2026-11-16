@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "functions": {
     "api/index.py": {
-      "includeFiles": "{backend/evi/**,data/release-snapshot/**,public/sources/**}",
+      "includeFiles": "{backend/evi/**,data/release-snapshot/**,public/sources/**,public/evidence/**}",
       "maxDuration": 30
     }
   },

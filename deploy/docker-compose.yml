@@ -9,6 +9,7 @@ services:
     volumes: [evi-data:/data, evi-models:/models]
     restart: unless-stopped
     stop_grace_period: 30s
+    deploy: { resources: { limits: { memory: 768m } } }
   worker:
     image: evi:local
     command: ["worker"]
@@ -17,7 +18,9 @@ services:
     depends_on: [api]
     restart: unless-stopped
     stop_grace_period: 60s            # worker finishes/abandons its lease; a crashed lease is reclaimed after EVI_WORKER_LEASE_S
-    deploy: { resources: { limits: { memory: 6g } } }
+    # Measured locally: cold Docling parse peaks at ~1.1 GB working set / 2.3 GB committed. 3 GB limit fits a 4 GB host
+    # (api 768 MB + caddy ~128 MB + OS). Estimate until measured on the target host; raise both together on larger hosts.
+    deploy: { resources: { limits: { memory: 3g } } }
   caddy:
     image: caddy:2
     ports: ["80:80", "443:443"]
@@ -25,4 +28,5 @@ services:
     environment: { EVI_DOMAIN: "${EVI_DOMAIN:?set EVI_DOMAIN}" }
     depends_on: [api]
     restart: unless-stopped
+    deploy: { resources: { limits: { memory: 128m } } }
 volumes: { evi-data: {}, evi-models: {}, caddy-data: {} }

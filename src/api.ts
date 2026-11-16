@@ -25,9 +25,15 @@ export async function request<T>(path: string, schema: z.ZodType<T>, init?: Requ
   return result.data
 }
 const items = <T>(schema: z.ZodType<T>) => z.object({ items: z.array(schema) })
+const capState = z.object({ state: z.enum(['available', 'unavailable', 'busy', 'budget_exhausted']), reason: z.string() }).passthrough()
+export const capabilitiesSchema = z.object({ mode: z.string(), stored_results: z.object({ available: z.boolean() }).passthrough(),
+  source_verification: z.object({ available: z.boolean(), reason: z.string() }).passthrough(), extraction: capState, evaluation: capState }).passthrough()
+export type Capabilities = z.infer<typeof capabilitiesSchema>
 const post = (body: unknown) => ({ method: 'POST', body: JSON.stringify(body) })
 export const api = {
-  health: () => request('/health', z.object({ status: z.enum(['ok', 'ready']), live_execution_enabled: z.boolean().default(false), processing_enabled: z.boolean().default(false) }).passthrough()),
+  health: () => request('/health', z.object({ status: z.enum(['ok', 'ready']), live_execution_enabled: z.boolean().default(false),
+    processing_enabled: z.boolean().default(false), capabilities: capabilitiesSchema.optional() }).passthrough()),
+  experiments: () => request('/experiments', z.object({ schema: z.literal('evi.public-experiments/1') }).passthrough()),
   documents: () => request('/documents', items(documentSchema)),
   runs: (id: string) => request(`/runs?document_id=${encodeURIComponent(id)}`, items(runSchema)),
   version: (id: string) => request(`/versions/${encodeURIComponent(id)}`, versionSchema),

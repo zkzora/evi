@@ -34,7 +34,12 @@ def handle(conn, job) -> None:
     jid = job["job_id"]
 
     if kind == "process_document":
-        jobs.heartbeat(conn, jid, "Parsing the statement pages with Docling.")
+        from .parsing import cache_key
+        drow = db.row(conn, "SELECT sha256, parse_pages FROM documents WHERE document_id=?", payload["document_id"])
+        pages = json.loads(drow["parse_pages"])
+        reused = db.row(conn, "SELECT parse_id FROM parses WHERE cache_key=?", cache_key(drow["sha256"], pages)) is not None
+        jobs.heartbeat(conn, jid, f"Reusing the existing Docling parse of physical page(s) {pages}." if reused
+                       else f"Parsing physical page(s) {pages} with Docling.")
         stop = threading.Event()
 
         def keep_alive():  # Docling can take minutes; keep the lease alive while this process is healthy
@@ -51,8 +56,11 @@ def handle(conn, job) -> None:
         p = db.row(conn, "SELECT * FROM parses WHERE parse_id=?", parse_id)
         with db.tx(conn):
             nxt = _create_run_and_job(conn, payload["document_id"], parse_id, job["session_id"], parent=jid)
-            jobs.finish(conn, jid, "succeeded", f"Parsed: {p['evidence_count']} evidence items, {p['table_count']} tables. "
-                        "Extraction queued.", result={"parse_id": parse_id}, next_job_id=nxt["job_id"])
+            jobs.finish(conn, jid, "succeeded", (f"Reused Docling parse {parse_id}" if reused else f"Fresh Docling parse {parse_id}")
+                        + f" of page(s) {pages}: {p['evidence_count']} evidence items, {p['table_count']} tables. Extraction queued.",
+                        result={"parse_id": parse_id, "parse_reused": reused, "pages": pages, "document_id": payload["document_id"],
+                                "run_id": json.loads(nxt["payload_json"])["run_id"]},
+                        next_job_id=nxt["job_id"])
         return
 
     if kind == "extract_facts":

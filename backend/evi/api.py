@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import secrets
 from datetime import datetime, timedelta, timezone
 
@@ -100,6 +101,8 @@ def _worker_alive(c) -> bool:
 
 @app.get(f"{P}/health")
 def health():
+    import importlib.util
+    from .capabilities import compute
     c = conn()
     worker = _worker_alive(c)
     serv, reppo = bool(settings.serv_api_key), bool(settings.reppo_api_key)
@@ -107,12 +110,14 @@ def health():
     return {"status": "ok", "live_execution_enabled": ex and worker and serv and reppo,
             "processing_enabled": ex and worker and serv, "execution_enabled": ex,
             "components": {"execution": "enabled" if ex else "disabled", "database": "ok", "worker": "alive" if worker else "not_running",
-                           "docling": "available", "serv": "configured" if serv else "not_configured",
+                           "docling": "installed" if importlib.util.find_spec("docling") else "not installed",
+                           "serv": "configured" if serv else "not_configured",
                            "reppo": "configured" if reppo else "not_configured", "serv_model": settings.serv_model},
             "limits": {"session_jobs_per_hour": settings.session_jobs_per_hour,
                        "global_serv_calls_per_day": settings.global_serv_calls_per_day,
                        "global_reppo_evals_per_day": settings.global_reppo_evals_per_day,
-                       "max_revisions_per_run": settings.max_revisions_per_run}}
+                       "max_revisions_per_run": settings.max_revisions_per_run},
+            "capabilities": compute(c)}
 
 
 def _doc_view(c, d) -> dict:
@@ -174,6 +179,15 @@ def _start(request: Request, c, kind: str, payload: dict, idem: str, message: st
     return jobs.public_view(c, db.row(c, "SELECT * FROM jobs WHERE job_id=?", j["job_id"]))
 
 
+def _require_capability(c, which: str) -> None:
+    """Server-side gate for NEW paid work (extraction or evaluation): policy, worker, provider access, queue, budget."""
+    from .capabilities import CapabilityRefused, require
+    try:
+        require(c, which)
+    except CapabilityRefused as e:
+        raise ApiFailure(e.status, e.message, e.code)
+
+
 def _require_worker(c, need_serv=True):
     if not settings.execution_enabled:
         raise ApiFailure(503, "New processing is disabled on this server. Existing results remain available.", "execution_disabled")
@@ -188,13 +202,15 @@ def parse(document_id: str, request: Request, _: Empty):
     """Process report: Docling parse (cached by hash/parser/config/pages) then automatic SERV extraction."""
     c = conn()
     _doc(c, document_id)
-    _require_worker(c)
-    # One in-flight process per session+document; a reload or double click returns the same job.
+    # One in-flight process per session+document; a reload or double click returns the same job (checked BEFORE any
+    # capability refusal so a busy queue never hides the visitor's own running job).
     active = db.row(c, "SELECT j.* FROM jobs j WHERE j.kind='process_document' AND j.session_id=? AND "
                        "json_extract(j.payload_json,'$.document_id')=? ORDER BY created_at DESC LIMIT 1",
                     request.state.session_id, document_id)
     if active and jobs.public_view(c, active)["status"] not in jobs.TERMINAL:
         return jobs.public_view(c, active)
+    _require_worker(c)
+    _require_capability(c, "extraction")
     return _start(request, c, "process_document", {"document_id": document_id},
                   f"process:{request.state.session_id}:{document_id}:{db.new_id('p')}", "Queued for Docling parsing.")
 
@@ -218,6 +234,7 @@ def create_run(body: RunRequest, request: Request):
     if not p:
         raise ApiFailure(409, "The parse_id does not belong to a completed parse of this document.", "invalid_parse")
     _require_worker(c)
+    _require_capability(c, "extraction")
     sid = _session(c=c, request=request)
     with db.tx(c):
         jobs.session_rate_check(c, sid)
@@ -291,8 +308,17 @@ def get_evidence(evidence_id: str):
 
 # ---------------------------------------------------------------- evaluations / revisions
 
-def _eval_view(e) -> dict:
-    return {"evaluation_id": e["evaluation_id"], "version_id": e["version_id"], "mode": e["mode"], "status": e["status"],
+def _eval_view(e, c=None) -> dict:
+    lineage = {}
+    if c is not None:
+        r = db.row(c, "SELECT v.run_id, v.origin, r.document_id FROM versions v JOIN runs r ON r.run_id=v.run_id WHERE v.version_id=?",
+                   e["version_id"])
+        sess = e["session_id"] or ""
+        lineage = {"document_id": r["document_id"] if r else None, "run_id": r["run_id"] if r else None,
+                   "version_origin": r["origin"] if r else None,
+                   "context": (f"experiment {sess.split(':', 1)[1]}" if sess.startswith("experiment:") else "public session"),
+                   "packet": "reppo-packet-v1 (candidate-cited cells)"}
+    return {**lineage, "evaluation_id": e["evaluation_id"], "version_id": e["version_id"], "mode": e["mode"], "status": e["status"],
             "eval_id": e["eval_id"], "provider_status": e["provider_status"], "created_at": e["created_at"],
             "updated_at": e["updated_at"], "credits_charged": e["credits_charged"], "payload_bytes": e["payload_bytes"],
             "result": json.loads(e["result_json"]) if e["result_json"] else None}
@@ -301,7 +327,7 @@ def _eval_view(e) -> dict:
 @app.get(f"{P}/evaluations")
 def list_evaluations():
     c = conn()
-    return {"items": [_eval_view(e) for e in db.rows(c, "SELECT * FROM evaluations ORDER BY created_at DESC LIMIT 100")]}
+    return {"items": [_eval_view(e, c) for e in db.rows(c, "SELECT * FROM evaluations ORDER BY created_at DESC LIMIT 100")]}
 
 
 @app.post(f"{P}/versions/{{version_id}}/evaluations", status_code=202)
@@ -324,6 +350,7 @@ def evaluate(version_id: str, request: Request, _: Empty):
             if j and j["session_id"] == sid:
                 return jobs.public_view(c, j)
             raise ApiFailure(409, "This version already has a Reppo evaluation.", "duplicate_evaluation")
+        _require_capability(c, "evaluation")
         n = db.row(c, "SELECT COUNT(*) n FROM evaluations e JOIN versions v ON v.version_id=e.version_id WHERE v.run_id=?", v["run_id"])["n"]
         if n >= settings.max_evaluations_per_run:
             raise ApiFailure(429, f"Evaluation budget exhausted ({settings.max_evaluations_per_run} per run).", "budget_exhausted")
@@ -384,9 +411,14 @@ def revise(version_id: str, body: ReviseRequest, request: Request):
             raise ApiFailure(409, " ".join(reasons), "revision_not_allowed")
     elif body.evaluation_id:
         raise ApiFailure(400, "Arm C must not receive an evaluation.", "invalid_request")
+    key = f"revise:{version_id}:{arm}:{body.evaluation_id}"
+    existing = db.row(c, "SELECT * FROM jobs WHERE idempotency_key=? AND status NOT IN ('failed','cancelled')", key)
+    if existing:                                   # duplicate click / reload: same job, no new charge
+        return jobs.public_view(c, existing)
     _require_worker(c)
+    _require_capability(c, "extraction")
     return _start(request, c, "revise_facts", {"version_id": version_id, "evaluation_id": body.evaluation_id, "arm": arm},
-                  f"revise:{version_id}:{arm}:{body.evaluation_id}", f"Queued for SERV revision (arm {arm}).")
+                  key, f"Queued for SERV revision (arm {arm}).")
 
 
 @app.get(f"{P}/versions/{{version_id}}/certificates")
@@ -433,6 +465,22 @@ def version_receipt(version_id: str):
     if not r:
         raise ApiFailure(404, "No revision receipt names this version as its child.", "not_found")
     return json.loads(r["body_json"])
+
+
+@app.get(f"{P}/experiments")
+def experiments():
+    """Published, sanitized experiment export (schema evi.public-experiments/1) built from frozen artifacts by
+    scripts/build_public_evidence.py. Missing artifacts produce an explicit error, never an empty benchmark."""
+    from pathlib import Path
+
+    from .config import ROOT
+    path = Path(os.environ.get("EVI_PUBLIC_EVIDENCE", str(ROOT / "public" / "evidence" / "experiments.v1.json")))
+    if not path.exists():
+        raise ApiFailure(503, "The published experiment export is not available on this server.", "evidence_unavailable")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("schema") != "evi.public-experiments/1":
+        raise ApiFailure(500, "The published experiment export has an unexpected schema.", "evidence_invalid")
+    return data
 
 
 @app.get(f"{P}/benchmarks")

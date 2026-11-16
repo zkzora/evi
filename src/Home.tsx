@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Braces, Check, ChevronRight, Database, FileText, Link2, ScanLine, ShieldCheck } from 'lucide-react'
 import { exactAmount, number, sourceManifest } from './source-data'
 
-export default function Home({ openData, openWorkspace }: { openData: (company?: string, sourceCase?: string) => void; openWorkspace: () => void }) {
+export default function Home({ openData, openWorkspace, tryEvi }: { openData: (company?: string, sourceCase?: string) => void; openWorkspace: () => void; tryEvi?: () => void }) {
   const [caseID, setCaseID] = useState(sourceManifest.cases[0].id)
   const [interval, setInterval] = useState<'short' | 'long'>('long')
   const evidence = sourceManifest.cases.find(item => item.id === caseID)!
@@ -12,7 +12,7 @@ export default function Home({ openData, openWorkspace }: { openData: (company?:
       <div className="hero-copy"><p className="overline"><span className="live-square"/> FINANCIAL DATA, IN CONTEXT</p>
         <h1>Before the number<br/>becomes a <em>decision.</em></h1>
         <p className="hero-description">A quarterly figure. A nine-month total. One reporting date. Evi keeps the period, unit, and original evidence attached to every number you review.</p>
-        <div className="hero-buttons"><button className="button primary" onClick={() => openData(evidence.short.company)}>Explore real data <ArrowRight size={17}/></button><button className="hero-secondary" onClick={openWorkspace}>Open PDF workspace <ArrowUpRight size={16}/></button></div>
+        <div className="hero-buttons">{tryEvi && <button className="button primary" onClick={tryEvi}>Try Evi · 2 minutes <ArrowRight size={17}/></button>}<button className={tryEvi ? 'hero-secondary' : 'button primary'} onClick={() => openData(evidence.short.company)}>Explore real data <ArrowRight size={17}/></button><button className="hero-secondary" onClick={openWorkspace}>Open PDF workspace <ArrowUpRight size={16}/></button></div>
         <div className="hero-proof"><ShieldCheck size={15}/><span>Public sources. No sign-in. Every figure traceable.</span></div>
       </div>
       <div className="source-receipt">

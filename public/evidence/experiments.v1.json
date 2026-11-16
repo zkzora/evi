@@ -1,0 +1,868 @@
+{
+ "schema": "evi.public-experiments/1",
+ "generated_from": "artifacts/technical-proof (frozen; unchanged)",
+ "limitations": [
+  "References are builder-drafted and provisional; independent human review is pending.",
+  "Five statements from two issuers; targets and trials are correlated, so results are descriptive only.",
+  "The AT&T 'holdout' was read by the builder while designing rules; experiment b is post-hoc development evidence.",
+  "A Reppo score is an evaluator opinion, not extraction accuracy. Packets v1 contained only candidate-cited cells.",
+  "The fuller reppo-packet-v2 was checked offline only; no paid calibration has run."
+ ],
+ "docs": {
+  "proof_report": "https://github.com/zkzora/evi/blob/main/docs/PROOF-REPORT.md",
+  "integrity_review": "https://github.com/zkzora/evi/blob/main/docs/PROOF-INTEGRITY-REVIEW.md",
+  "reppo_audit": "https://github.com/zkzora/evi/blob/main/docs/REPPO-PAYLOAD-AUDIT.md",
+  "review_packet": "https://github.com/zkzora/evi/blob/main/docs/REFERENCE-REVIEW-PACKET.md"
+ },
+ "experiments": [
+  {
+   "experiment_id": "exp-2026-11-16-a",
+   "created_at": "2026-11-15T22:42:19.805+00:00",
+   "kind": "frozen four-arm experiment",
+   "base_experiment": null,
+   "policies": {
+    "extraction": "period-unit-v2",
+    "binding": "binding-v2",
+    "revision": "revision-v2",
+    "targets": "targets-v1"
+   },
+   "model": "gpt-5.4-mini",
+   "corpus": [
+    {
+     "document_id": "verizon-fy2025",
+     "issuer": "Verizon",
+     "title": "Annual Report on Form 10-K \u2014 2025",
+     "source_url": "https://www.verizon.com/about/sites/default/files/2025-Annual-Report-on-Form-10k.pdf",
+     "sha256": "c804f30d5957b8b4d43d1714b6405c163510cab1e282a2a383b0205d129b1508",
+     "physical_pages": [
+      52
+     ],
+     "split": "development"
+    },
+    {
+     "document_id": "verizon-fy2024",
+     "issuer": "Verizon",
+     "title": "Annual Report on Form 10-K \u2014 2024",
+     "source_url": "https://www.verizon.com/about/sites/default/files/2024-Annual-Report-on-Form-10k.pdf",
+     "sha256": "05ad83ec2279c04683b50878f8aa8ff8c868aad481b205f52e316df63c403318",
+     "physical_pages": [
+      54
+     ],
+     "split": "development"
+    },
+    {
+     "document_id": "verizon-3q2025",
+     "issuer": "Verizon",
+     "title": "3Q 2025 Financial Statements",
+     "source_url": "https://www.verizon.com/about/file/76633/download?token=P8wDXRsG",
+     "sha256": "8b4249c1ca915374587570b79536c9dd9b46fc1b345a11285f51cbd8518697f4",
+     "physical_pages": [
+      1
+     ],
+     "split": "development"
+    },
+    {
+     "document_id": "att-3q2025",
+     "issuer": "AT&T",
+     "title": "3Q 2025 Financial and Operational Schedules",
+     "source_url": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/quarterly-earnings/2025/3Q-2025/3Q25_ATT_Financial_and_Operational_Schedules_and_Non_GAAP_Reconciliations.pdf",
+     "sha256": "064b25a85c218185f10509dec7838b3384351b80ce487b1b0e7c272a1ae8c2d0",
+     "physical_pages": [
+      2
+     ],
+     "split": "holdout"
+    },
+    {
+     "document_id": "att-2q2025",
+     "issuer": "AT&T",
+     "title": "2Q 2025 Financial and Operational Schedules",
+     "source_url": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/quarterly-earnings/2025/2Q-2025/2Q25_ATT_Financial_and_Operational_Schedules_and_Non_GAAP_Reconciliations.pdf",
+     "sha256": "0065aa98bd90d5f59d9b6c05c6921397c97e3fba5f49b3b53e1f6ae3a522450b",
+     "physical_pages": [
+      2
+     ],
+     "split": "holdout"
+    }
+   ],
+   "targets": 48,
+   "trials": 2,
+   "target_observations_per_arm": 96,
+   "exposure_notes": [
+    "The builder read all five statement pages (including the AT&T holdout pages) while designing binding rules (e.g. undated 'Third Quarter' headers) and transcribing references. The holdout is issuer-separated but NOT unseen by the builder; it is unseen only by the model prompts/policy tuning loop, which used Verizon development runs.",
+    "Verizon FY2025/FY2024 were featured in earlier demos; development only."
+   ],
+   "reference": {
+    "version": "references-v1",
+    "sha256": "cb02c74f4f3b0c195f10379c7990482fc90590f0587d2bd7bb1218db22841942",
+    "provenance": "builder-drafted, source-reviewed, provisional (not independent human gold)",
+    "human_review_status": {
+     "pending": 48
+    },
+    "independently_reviewed": false
+   },
+   "arms": {
+    "A": "Docling + one SERV extraction (initial prediction)",
+    "B": "A's prediction + source-binding checker (same prediction as A)",
+    "C": "A + checker diagnostics + one SERV revision, no Reppo",
+    "D": "A + checker diagnostics + real Reppo evaluation + one SERV revision"
+   },
+   "measurements_analysis_v2": {
+    "A": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 62,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 56,
+     "certificate_supported_exact_dates_unknown": 28,
+     "composite": 56,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    },
+    "B": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 62,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 56,
+     "certificate_supported_exact_dates_unknown": 28,
+     "composite": 56,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    },
+    "C": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 62,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 56,
+     "certificate_supported_exact_dates_unknown": 28,
+     "composite": 56,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    },
+    "D": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 62,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 56,
+     "certificate_supported_exact_dates_unknown": 28,
+     "composite": 56,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    }
+   },
+   "paired_analysis_v2": {
+    "reference_match:A->C": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 34
+    },
+    "reference_match:A->D": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 34
+    },
+    "reference_match:C->D": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 34
+    },
+    "composite:A->C": {
+     "unchanged_incorrect": 40,
+     "preserved_correct": 56
+    },
+    "composite:A->D": {
+     "unchanged_incorrect": 40,
+     "preserved_correct": 56
+    },
+    "composite:C->D": {
+     "unchanged_incorrect": 40,
+     "preserved_correct": 56
+    }
+   },
+   "checker_detection_analysis_v2": {
+    "FP": 6,
+    "TN": 56,
+    "TP": 34
+   },
+   "historical_scoring_v1": {
+    "by_arm": {
+     "A": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 56,
+      "semantic_correct": 60,
+      "covered": 96,
+      "certificate_supported": 56
+     },
+     "B": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 56,
+      "semantic_correct": 60,
+      "covered": 96,
+      "certificate_supported": 56
+     },
+     "C": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 56,
+      "semantic_correct": 60,
+      "covered": 96,
+      "certificate_supported": 56
+     },
+     "D": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 56,
+      "semantic_correct": 60,
+      "covered": 96,
+      "certificate_supported": 56
+     }
+    },
+    "detection": {
+     "false_alarm": 4,
+     "correct_pass": 56,
+     "true_detection": 36
+    },
+    "note": "scoring-v1 derived start dates only for checker-approved candidates; analysis-v2 removes that circularity"
+   },
+   "arm_A_error_causes_analysis_v2": {
+    "checker false alarm: section heading cited as metric context not counted as applicable (binding-v2 rule)": 6,
+    "model output: wrong attribution row (common stock instead of parent)": 4,
+    "model output: currency '$' instead of 'USD'": 24,
+    "model output: printed end date omitted": 6
+   },
+   "finding": "Arm D equals arm C on every metric: no incremental benefit from real Reppo feedback is established.",
+   "costs": {
+    "reppo_credits_charged": 4400,
+    "serv_calls": 30,
+    "serv_total_tokens": 255312,
+    "serv_usd": "estimate only; see docs/BUDGET-SHEET.md"
+   },
+   "evaluations": [
+    {
+     "evaluation_id": "evl_2d2c9fa99772414ba7c9",
+     "reppo_eval_id": "cmwif743f000308ifl20mgif8",
+     "trial": 1,
+     "document_id": "verizon-fy2025",
+     "evaluated_version_id": "ver_7f5deb4812a2_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "medium",
+     "route": "review",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 97.1,
+     "recorded_at": "2026-11-15T22:44:22.802+00:00",
+     "workspace_link": "/workspace?document=verizon-fy2025&run=run_7f5deb4812a247b891f0&version=ver_7f5deb4812a2_1"
+    },
+    {
+     "evaluation_id": "evl_9b700b7b51b44b84ace9",
+     "reppo_eval_id": "cmwif9pp2000408ify1gumwm7",
+     "trial": 1,
+     "document_id": "att-3q2025",
+     "evaluated_version_id": "ver_a74fd1b7d905_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 130.5,
+     "recorded_at": "2026-11-15T22:46:55.608+00:00",
+     "workspace_link": "/workspace?document=att-3q2025&run=run_a74fd1b7d90545cdb383&version=ver_a74fd1b7d905_1"
+    },
+    {
+     "evaluation_id": "evl_4ab8819858c846f1be6f",
+     "reppo_eval_id": "cmwifcu73000508ifyq7poasg",
+     "trial": 1,
+     "document_id": "verizon-3q2025",
+     "evaluated_version_id": "ver_2f9f0b05434c_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 85.2,
+     "recorded_at": "2026-11-15T22:48:37.275+00:00",
+     "workspace_link": "/workspace?document=verizon-3q2025&run=run_2f9f0b05434c49b9878c&version=ver_2f9f0b05434c_1"
+    },
+    {
+     "evaluation_id": "evl_542df7ce2a5b4071b6f5",
+     "reppo_eval_id": "cmwiff4re000608ifru1paguu",
+     "trial": 1,
+     "document_id": "att-2q2025",
+     "evaluated_version_id": "ver_63c7ce8b5e69_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 92.7,
+     "recorded_at": "2026-11-15T22:50:31.447+00:00",
+     "workspace_link": "/workspace?document=att-2q2025&run=run_63c7ce8b5e6944d7bd2e&version=ver_63c7ce8b5e69_1"
+    },
+    {
+     "evaluation_id": "evl_1bb6cc8998c743d3a357",
+     "reppo_eval_id": "cmwifhh7w000708if3k6rawyb",
+     "trial": 1,
+     "document_id": "verizon-fy2024",
+     "evaluated_version_id": "ver_9a33a103374a_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 92.9,
+     "recorded_at": "2026-11-15T22:52:20.256+00:00",
+     "workspace_link": "/workspace?document=verizon-fy2024&run=run_9a33a103374a4191977e&version=ver_9a33a103374a_1"
+    },
+    {
+     "evaluation_id": "evl_28306d38fcc14ada88b0",
+     "reppo_eval_id": "cmwifjwde000808if3zkk4nre",
+     "trial": 2,
+     "document_id": "verizon-fy2024",
+     "evaluated_version_id": "ver_b15ed7352811_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 134.5,
+     "recorded_at": "2026-11-15T22:54:53.099+00:00",
+     "workspace_link": "/workspace?document=verizon-fy2024&run=run_b15ed73528114efe9b3e&version=ver_b15ed7352811_1"
+    },
+    {
+     "evaluation_id": "evl_77d32fcd83024188a6c0",
+     "reppo_eval_id": "cmwifn0wh000908ifddbe69h8",
+     "trial": 2,
+     "document_id": "verizon-fy2025",
+     "evaluated_version_id": "ver_2137f9cebc48_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 123.5,
+     "recorded_at": "2026-11-15T22:57:10.181+00:00",
+     "workspace_link": "/workspace?document=verizon-fy2025&run=run_2137f9cebc4847dcaffd&version=ver_2137f9cebc48_1"
+    },
+    {
+     "evaluation_id": "evl_5fd2b5da19ac4134ab13",
+     "reppo_eval_id": "cmwifq348000b08ifln9fs8s1",
+     "trial": 2,
+     "document_id": "att-3q2025",
+     "evaluated_version_id": "ver_11ac9bea004e_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 113.0,
+     "recorded_at": "2026-11-15T22:59:25.307+00:00",
+     "workspace_link": "/workspace?document=att-3q2025&run=run_11ac9bea004e4298a94f&version=ver_11ac9bea004e_1"
+    },
+    {
+     "evaluation_id": "evl_78374beebb594aef9fae",
+     "reppo_eval_id": "cmwifsv0p000008jp1itv8l53",
+     "trial": 2,
+     "document_id": "verizon-3q2025",
+     "evaluated_version_id": "ver_3f60316ec62f_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 35.7,
+     "recorded_at": "2026-11-15T23:00:13.539+00:00",
+     "workspace_link": "/workspace?document=verizon-3q2025&run=run_3f60316ec62f4d0bb449&version=ver_3f60316ec62f_1"
+    },
+    {
+     "evaluation_id": "evl_46c5b4c3c6074bea89f1",
+     "reppo_eval_id": "cmwiftze8000c08ifs2t52jt0",
+     "trial": 2,
+     "document_id": "att-2q2025",
+     "evaluated_version_id": "ver_325e06e62b8c_1",
+     "used_by_arm": "D",
+     "packet": "reppo-packet-v1 (candidate-cited cells only)",
+     "status": "completed",
+     "score": 100.0,
+     "decision": "accept",
+     "confidence": "high",
+     "route": "ship",
+     "rubric": [
+      {
+       "criterion": "safety",
+       "score": 100.0
+      },
+      {
+       "criterion": "completeness",
+       "score": 100.0
+      },
+      {
+       "criterion": "factual_accuracy",
+       "score": 100.0
+      },
+      {
+       "criterion": "instruction_adherence",
+       "score": 100.0
+      }
+     ],
+     "credits_charged": 440,
+     "wait_s": 134.2,
+     "recorded_at": "2026-11-15T23:02:44.750+00:00",
+     "workspace_link": "/workspace?document=att-2q2025&run=run_325e06e62b8c46e58b4d&version=ver_325e06e62b8c_1"
+    }
+   ],
+   "artifacts": {
+    "manifest.json": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-a/manifest.json",
+    "ledger.jsonl": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-a/ledger.jsonl",
+    "summary.json": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-a/summary.json",
+    "report.md": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-a/report.md",
+    "analysis-v2/summary.json": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-a/analysis-v2/summary.json",
+    "analysis-v2/reconciliation.md": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-a/analysis-v2/reconciliation.md"
+   },
+   "artifact_sha256": {
+    "manifest.json": "9e1b451166bc355f2c4070320b04894d69151952a549bbfdcb7f4a136438d2d6",
+    "ledger.jsonl": "6df718071c17af08530ee12d3dc7b1306a54b08963d72080ffb3d9b2c5fe2eef",
+    "summary.json": "5dd106ce083446efa058c749155a42500778081fc67895b3ec0a876548ffbd5e",
+    "analysis-v2/summary.json": "2cb3ea5a424f2e957c7fcbd2fd477cfc1cc79656799b96f88d9f433daed33ca5"
+   }
+  },
+  {
+   "experiment_id": "exp-2026-11-16-b",
+   "created_at": "2026-11-15T23:06:24.451+00:00",
+   "kind": "post-hoc development branch (not a holdout)",
+   "base_experiment": "exp-2026-11-16-a",
+   "policies": {
+    "extraction": "period-unit-v2",
+    "binding": "binding-v3",
+    "revision": "revision-v3",
+    "targets": "targets-v1"
+   },
+   "model": "gpt-5.4-mini",
+   "corpus": [
+    {
+     "document_id": "verizon-fy2025",
+     "issuer": "Verizon",
+     "title": "Annual Report on Form 10-K \u2014 2025",
+     "source_url": "https://www.verizon.com/about/sites/default/files/2025-Annual-Report-on-Form-10k.pdf",
+     "sha256": "c804f30d5957b8b4d43d1714b6405c163510cab1e282a2a383b0205d129b1508",
+     "physical_pages": [
+      52
+     ],
+     "split": "development"
+    },
+    {
+     "document_id": "verizon-fy2024",
+     "issuer": "Verizon",
+     "title": "Annual Report on Form 10-K \u2014 2024",
+     "source_url": "https://www.verizon.com/about/sites/default/files/2024-Annual-Report-on-Form-10k.pdf",
+     "sha256": "05ad83ec2279c04683b50878f8aa8ff8c868aad481b205f52e316df63c403318",
+     "physical_pages": [
+      54
+     ],
+     "split": "development"
+    },
+    {
+     "document_id": "verizon-3q2025",
+     "issuer": "Verizon",
+     "title": "3Q 2025 Financial Statements",
+     "source_url": "https://www.verizon.com/about/file/76633/download?token=P8wDXRsG",
+     "sha256": "8b4249c1ca915374587570b79536c9dd9b46fc1b345a11285f51cbd8518697f4",
+     "physical_pages": [
+      1
+     ],
+     "split": "development"
+    },
+    {
+     "document_id": "att-3q2025",
+     "issuer": "AT&T",
+     "title": "3Q 2025 Financial and Operational Schedules",
+     "source_url": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/quarterly-earnings/2025/3Q-2025/3Q25_ATT_Financial_and_Operational_Schedules_and_Non_GAAP_Reconciliations.pdf",
+     "sha256": "064b25a85c218185f10509dec7838b3384351b80ce487b1b0e7c272a1ae8c2d0",
+     "physical_pages": [
+      2
+     ],
+     "split": "holdout"
+    },
+    {
+     "document_id": "att-2q2025",
+     "issuer": "AT&T",
+     "title": "2Q 2025 Financial and Operational Schedules",
+     "source_url": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/quarterly-earnings/2025/2Q-2025/2Q25_ATT_Financial_and_Operational_Schedules_and_Non_GAAP_Reconciliations.pdf",
+     "sha256": "0065aa98bd90d5f59d9b6c05c6921397c97e3fba5f49b3b53e1f6ae3a522450b",
+     "physical_pages": [
+      2
+     ],
+     "split": "holdout"
+    }
+   ],
+   "targets": 48,
+   "trials": 2,
+   "target_observations_per_arm": 96,
+   "exposure_notes": [
+    "The builder read all five statement pages (including the AT&T holdout pages) while designing binding rules (e.g. undated 'Third Quarter' headers) and transcribing references. The holdout is issuer-separated but NOT unseen by the builder; it is unseen only by the model prompts/policy tuning loop, which used Verizon development runs.",
+    "Verizon FY2025/FY2024 were featured in earlier demos; development only.",
+    "Designed after inspecting exp-2026-11-16-a outcomes (false alarms from section-scope rule; vague diagnostics). No split here is unseen; results are development evidence, not holdout generalization."
+   ],
+   "reference": {
+    "version": "references-v1",
+    "sha256": "cb02c74f4f3b0c195f10379c7990482fc90590f0587d2bd7bb1218db22841942",
+    "provenance": "builder-drafted, source-reviewed, provisional (not independent human gold)",
+    "human_review_status": {
+     "pending": 48
+    },
+    "independently_reviewed": false
+   },
+   "arms": {
+    "A": "Docling + one SERV extraction (initial prediction)",
+    "B": "A's prediction + source-binding checker (same prediction as A)",
+    "C": "A + checker diagnostics + one SERV revision, no Reppo",
+    "D": "A + checker diagnostics + real Reppo evaluation + one SERV revision"
+   },
+   "measurements_analysis_v2": {
+    "A": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 62,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 62,
+     "certificate_supported_exact_dates_unknown": 32,
+     "composite": 62,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    },
+    "B": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 62,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 62,
+     "certificate_supported_exact_dates_unknown": 32,
+     "composite": 62,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    },
+    "C": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 74,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 74,
+     "certificate_supported_exact_dates_unknown": 32,
+     "composite": 74,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    },
+    "D": {
+     "targets": 96,
+     "executed": 96,
+     "raw_field_match_all": 38,
+     "reference_match": 74,
+     "complete_interval": 42,
+     "reference_interval_known": 48,
+     "certificate_supported": 74,
+     "certificate_supported_exact_dates_unknown": 32,
+     "composite": 74,
+     "sensitivity_reference_match_if_dollar_sign_accepted_as_USD": 86
+    }
+   },
+   "paired_analysis_v2": {
+    "reference_match:A->C": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 22,
+     "improvement": 12
+    },
+    "reference_match:A->D": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 22,
+     "improvement": 12
+    },
+    "reference_match:C->D": {
+     "preserved_correct": 74,
+     "unchanged_incorrect": 22
+    },
+    "composite:A->C": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 22,
+     "improvement": 12
+    },
+    "composite:A->D": {
+     "preserved_correct": 62,
+     "unchanged_incorrect": 22,
+     "improvement": 12
+    },
+    "composite:C->D": {
+     "preserved_correct": 74,
+     "unchanged_incorrect": 22
+    }
+   },
+   "checker_detection_analysis_v2": {
+    "TN": 62,
+    "TP": 34
+   },
+   "historical_scoring_v1": {
+    "by_arm": {
+     "A": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 62,
+      "semantic_correct": 62,
+      "covered": 96,
+      "certificate_supported": 62
+     },
+     "B": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 62,
+      "semantic_correct": 62,
+      "covered": 96,
+      "certificate_supported": 62
+     },
+     "C": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 74,
+      "semantic_correct": 74,
+      "covered": 96,
+      "certificate_supported": 74
+     },
+     "D": {
+      "targets": 96,
+      "executed": 96,
+      "strict_correct": 74,
+      "semantic_correct": 74,
+      "covered": 96,
+      "certificate_supported": 74
+     }
+    },
+    "detection": {
+     "correct_pass": 62,
+     "true_detection": 34
+    },
+    "note": "scoring-v1 derived start dates only for checker-approved candidates; analysis-v2 removes that circularity"
+   },
+   "arm_A_error_causes_analysis_v2": {
+    "model output: wrong attribution row (common stock instead of parent)": 4,
+    "model output: currency '$' instead of 'USD'": 24,
+    "model output: printed end date omitted": 6
+   },
+   "finding": "Arm D equals arm C on every metric: no incremental benefit from real Reppo feedback is established.",
+   "costs": {
+    "reppo_credits_charged": 0,
+    "serv_calls": 20,
+    "serv_total_tokens": 166431,
+    "serv_usd": "estimate only; see docs/BUDGET-SHEET.md"
+   },
+   "evaluations": [],
+   "artifacts": {
+    "manifest.json": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-b/manifest.json",
+    "ledger.jsonl": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-b/ledger.jsonl",
+    "summary.json": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-b/summary.json",
+    "report.md": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-b/report.md",
+    "analysis-v2/summary.json": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-b/analysis-v2/summary.json",
+    "analysis-v2/reconciliation.md": "https://github.com/zkzora/evi/blob/main/artifacts/technical-proof/exp-2026-11-16-b/analysis-v2/reconciliation.md"
+   },
+   "artifact_sha256": {
+    "manifest.json": "6f048c685012f6a538021a0634cdb4fffa7a712e7f5ee5203f5b4823aa2e7d78",
+    "ledger.jsonl": "311f5df633abf8f98aafcaaf120691ce0f3923af3f6b6b1c00289883d1b21903",
+    "summary.json": "f9febbc1bf818b00adeeeb1e637c6b1e9a1a921e64fdaf88ac9b38a2654ae5dd",
+    "analysis-v2/summary.json": "2b497e7196ed23489cd43c155f8271619a8a3c1ba7a09abc8441db267a265022"
+   }
+  }
+ ]
+}

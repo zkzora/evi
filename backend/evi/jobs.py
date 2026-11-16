@@ -82,7 +82,10 @@ def public_view(conn, job: sqlite3.Row) -> dict:
     return {"job_id": job["job_id"], "kind": job["kind"], "status": tail["status"], "stage": tail["kind"],
             "message": tail["message"], "error": json.loads(tail["error_json"]) if tail["error_json"] else None,
             "result": json.loads(tail["result_json"]) if tail["result_json"] else None,
-            "stages": [{"job_id": c["job_id"], "kind": c["kind"], "status": c["status"]} for c in chain],
+            "stages": [{"job_id": c["job_id"], "kind": c["kind"], "status": c["status"], "message": c["message"],
+                        "updated_at": c["updated_at"]} for c in chain],
+            "document_id": json.loads(job["payload_json"]).get("document_id"),
+            "first_stage_result": json.loads(job["result_json"]) if job["result_json"] else None,
             "attempts": tail["attempts"], "created_at": job["created_at"], "updated_at": tail["updated_at"]}
 
 

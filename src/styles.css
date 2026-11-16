@@ -519,3 +519,49 @@ del { color: #995442; }
 .badge.partial .status-dot { background: #4a72b8; }
 .cert-badge.partial{background:#eef4ff;color:#2b4f8a}
 .cert-coverage{font-size:12px;margin:6px 0;color:#2b4f8a}
+
+/* ---- judge release: capabilities, walkthrough, experiments (2026-11-16) ---- */
+.connection-pill.live .status-dot { background: var(--green, #1f7a4d); }
+.connection-pill.archive .status-dot { background: #6b7a90; }
+.connection-pill.busy .status-dot { background: #b7791f; }
+.connection-pill.offline .status-dot { background: #b42318; }
+.try-evi { white-space: nowrap; }
+.availability-note, .stored-note { display: flex; gap: 10px; align-items: flex-start; margin: 10px 0; padding: 10px 14px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+.availability-note { background: #f3f6fb; border: 1px solid #d8e1ef; color: #22324d; }
+.availability-note p { margin: 0; flex: 1; }
+.stored-note { background: #fafbfc; border: 1px dashed #d5dce6; color: #4a5a72; font-size: 12px; }
+.job-body { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.job-stages { margin: 2px 0 0; padding-left: 18px; font-size: 12px; }
+.job-stages li.succeeded b { color: var(--green, #1f7a4d); }
+.job-stages li.failed b, .job-stages li.blocked b { color: #b42318; }
+.zero-state { margin: 12px 0; padding: 14px; border-radius: 8px; background: #fafbfc; border: 1px solid #e6ebf2; font-size: 13px; color: #4a5a72; }
+.eval-history, .exp-table-scroll { overflow-x: auto; }
+.exp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.exp-table th, .exp-table td { text-align: left; padding: 7px 8px; border-bottom: 1px solid #edf1f6; vertical-align: top; }
+.exp-table th { font-size: 11px; color: #5b6e86; font-weight: 600; }
+.exp-table small { color: #6b7a90; }
+.cap-list .settings-line span small { display: block; font-size: 11px; color: #6b7a90; margin-top: 2px; max-width: 360px; }
+.experiments { display: flex; flex-direction: column; gap: 16px; }
+.exp-limits { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 12px; color: #4a5a72; }
+.exp-limits li { display: flex; gap: 6px; align-items: flex-start; }
+.exp-card { padding: 18px; }
+.exp-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.exp-head h3 { margin: 4px 0; }
+.exp-head p, .exp-meta, .exp-note { font-size: 12px; color: #5b6e86; }
+.exp-finding { margin: 12px 0; padding: 12px 14px; border-left: 3px solid #2b4f8a; background: #eef4ff; font-size: 14px; }
+.exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; font-size: 12px; }
+.exp-grid h4 { margin: 0 0 4px; font-size: 12px; }
+.exp-grid p { margin: 2px 0; }
+.exp-evals { margin-top: 10px; font-size: 12px; }
+.exp-evals li { margin: 4px 0; overflow-wrap: anywhere; }
+.exp-artifacts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 12px; }
+.tour-card { position: fixed; right: 20px; bottom: 20px; z-index: 60; width: min(380px, calc(100vw - 32px)); background: #fff; border: 1px solid #d8e1ef; border-radius: 12px; box-shadow: 0 12px 32px rgba(16, 32, 64, .16); padding: 14px 16px; }
+.tour-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: .06em; color: #2b4f8a; font-weight: 600; }
+.tour-card h3 { margin: 6px 0; font-size: 16px; }
+.tour-card p { font-size: 13px; line-height: 1.5; color: #33445e; margin: 0 0 10px; }
+.tour-links { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tour-nav { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+@media (max-width: 640px) {
+  .tour-card { left: 16px; right: 16px; bottom: 12px; width: auto; max-height: 55vh; overflow-y: auto; }
+  .heading-actions { flex-wrap: wrap; }
+}

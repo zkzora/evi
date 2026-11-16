@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowDownToLine, ArrowRight, ArrowUpRight, Check, ChevronLeft, ChevronRight, Database, ExternalLink, FileSearch, Info, Loader2, Search, ShieldCheck, TriangleAlert } from 'lucide-react'
 import { download } from './export'
 import { contextCheck, exactAmount, filingURL, number, periodLabel, sourceLabel, sourceManifest, sourcePayloadSchema } from './source-data'
@@ -35,15 +35,25 @@ export default function DataExplorer() {
       if (payload.company !== company.id || payload.rows.length !== company.observation_count) throw new Error('The source snapshot does not match its manifest.')
       if (abort.signal.aborted) return
       setData(payload)
-      const featured = sourceManifest.cases.find(c => c.long.company === company.id)?.long
+      const requestedCase = sourceManifest.cases.find(c => c.id === new URLSearchParams(location.search).get('source_case') && c.long.company === company.id)
+      const featured = (requestedCase ?? sourceManifest.cases.find(c => c.long.company === company.id))?.long
       const annualCase = company.id === 'verizon' && new URLSearchParams(location.search).get('source_case') === 'verizon-fy2025-revenue'
         ? payload.rows.find(r => payload.concepts[r[0]].tag === 'Revenues' && r[2] === '2025-01-01' && r[3] === '2025-12-31' && r[5] === '0000732712-26-000007') : null
       setSelected(annualCase || (featured ? payload.rows.find(r => payload.concepts[r[0]].tag === featured.tag && r[2] === featured.start && r[3] === featured.end && r[5] === featured.accession) || null : payload.rows.find(r => payload.concepts[r[0]].metric === 'revenue' && r[1] === 'USD') || payload.rows.find(r => payload.concepts[r[0]].metric !== null) || payload.rows[0] || null))
     }).catch(e => { if (!abort.signal.aborted) setError(e instanceof Error ? e.message : 'Unable to read this source.') }).finally(() => { if (!abort.signal.aborted) setLoading(false) })
     return () => abort.abort()
   }, [company.id, company.data_path, company.data_sha256, company.observation_count, attempt])
+  const urlCheck = useRef(new URLSearchParams(location.search))
   useEffect(() => {
     if (!selected) return
+    // Deep links (e.g. the Try Evi walkthrough) may preset the intended context once, for the case's own observation.
+    const q = urlCheck.current
+    const caseRow = sourceManifest.cases.find(c => c.id === q.get('source_case'))?.long
+    if (caseRow && q.get('expect_period') && selected[2] === caseRow.start && selected[3] === caseRow.end) {
+      setExpectedPeriod(q.get('expect_period')!); setExpectedUnit(q.get('expect_unit') || selected[1]); setChecked(q.get('check') === '1')
+      urlCheck.current = new URLSearchParams()
+      return
+    }
     setExpectedPeriod(selected[2] ? '12' : 'instant'); setExpectedUnit(selected[1]); setChecked(false)
   }, [selected])
   useEffect(() => { setPage(0) }, [companyID, query, metric, year])
