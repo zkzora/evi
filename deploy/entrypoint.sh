@@ -6,8 +6,12 @@ mkdir -p "$EVI_DATA_DIR" "$EVI_SOURCES_DIR"
 for f in /app/seed-sources/*.pdf; do
   [ -e "$EVI_SOURCES_DIR/$(basename "$f")" ] || cp "$f" "$EVI_SOURCES_DIR/"
 done
-case "${1:-api}" in
-  api)    exec python -m uvicorn evi.api:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips='*' --timeout-graceful-shutdown 20 ;;
+# First boot: restore the verified release snapshot into an empty data dir (never overwrites existing state).
+if [ ! -f "$EVI_DATA_DIR/evi.sqlite3" ] && [ -f /app/seed-snapshot/MANIFEST.json ] && [ -z "$(ls -A "$EVI_DATA_DIR")" ]; then
+  python -m evi.backup restore /app/seed-snapshot "$EVI_DATA_DIR" || { echo "snapshot restore failed" >&2; exit 1; }
+fi
+case "${1:-all}" in
+  api)    exec python -m uvicorn evi.api:app --host 0.0.0.0 --port "${PORT:-8000}" --proxy-headers --forwarded-allow-ips='*' --timeout-graceful-shutdown 20 ;;
   worker) exec python -m evi.worker ;;
   all)
     # Single-container mode for hosts whose persistent volume attaches to ONE service (e.g. Railway):

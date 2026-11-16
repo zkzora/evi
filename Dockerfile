@@ -29,10 +29,13 @@ COPY backend/evi ./evi
 COPY --from=web /app/dist /app/dist
 # Registered public sources are seeded into the volume on first start (see deploy/entrypoint.sh); hashes are verified.
 COPY public/sources /app/seed-sources
+# Verified release snapshot of stored results (hash manifest inside); restored on first boot into an EMPTY data dir.
+COPY data/release-snapshot /app/seed-snapshot
 COPY deploy/entrypoint.sh /app/entrypoint.sh
 RUN chmod 0555 /app/entrypoint.sh && mkdir -p /data /models && chown -R evi:evi /data /models
 USER evi
 EXPOSE 8000
-HEALTHCHECK --interval=30s --timeout=5s --start-period=60s CMD curl -fsS http://127.0.0.1:8000/api/v1/health || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=120s CMD curl -fsS "http://127.0.0.1:${PORT:-8000}/api/v1/health" || exit 1
 ENTRYPOINT ["/usr/bin/tini", "--", "/app/entrypoint.sh"]
-CMD ["api"]
+# Default: API + worker in one container (single-volume hosts such as Railway). Compose passes `api` / `worker` explicitly.
+CMD ["all"]
