@@ -132,6 +132,10 @@ Use [CLAUDE-CODE-PROOF-REPAIR-PROMPT.md](CLAUDE-CODE-PROOF-REPAIR-PROMPT.md) to 
 
 Use [CLAUDE-CODE-VALIDATION-AND-RELEASE-PROMPT.md](CLAUDE-CODE-VALIDATION-AND-RELEASE-PROMPT.md) after the completed proof-integrity repairs. It continues the reference-review/import workflow, freezes fresh-test preparation, prepares full-context Reppo packets and separate budget gates, and builds/verifies a persistent production deployment package. It does not approve the 5,280-credit calibration, new paid holdout runs, or an unspecified public host. Existing experiments and their null Reppo result remain preserved.
 
+## Public demo
+
+**https://evi-lovat.vercel.app**: a no-login, read-only archive of the real stored runs (certificates, server-side re-verification, partial-context views, exports). New processing is disabled there: Vercel cannot run the Docling worker, and no provider keys are configured. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
 ## Validation and release (2026-11-16)
 
 - Release status and remaining dependencies: [docs/RELEASE-READINESS.md](docs/RELEASE-READINESS.md). Judge path: [docs/JUDGE-WALKTHROUGH.md](docs/JUDGE-WALKTHROUGH.md).

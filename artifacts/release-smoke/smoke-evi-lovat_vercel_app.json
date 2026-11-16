@@ -1,0 +1,105 @@
+{
+ "base": "https://evi-lovat.vercel.app",
+ "results": [
+  {
+   "check": "health JSON, execution disabled",
+   "pass": true,
+   "detail": "{\"execution\": \"disabled\", \"database\": \"ok\", \"worker\": \"not deployed\", \"docling\": \"not installed (Vercel read-only archive deployment)\", \"serv\": \"not_configured\", \"reppo\": \"not_configured\", \"serv_model\": \"gpt-5.4-mini\", \"deployment\": \"vercel-archive\"}"
+  },
+  {
+   "check": "readiness reports storage/sources/worker",
+   "pass": true,
+   "detail": "{\"ready\":true,\"checks\":{\"database\":\"ok\",\"sources\":\"ok\",\"worker\":\"not_running\",\"artifact_storage\":\"writable\",\"execution\":\"disabled\"}}"
+  },
+  {
+   "check": "SPA deep link /",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "SPA deep link /workspace?document=att-2q2025",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "SPA deep link /data?company=verizon",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "SPA deep link /benchmark",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "unknown API path is JSON 404, not SPA HTML",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "5 registered USD documents",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "original PDF bytes served",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "new processing refused server-side (execution disabled)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "cross-origin write refused",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "persisted historical version readable with original timestamp",
+   "pass": true,
+   "detail": "created_at 2026-11-15T22:48:52.716+00:00 (original run time, not a fresh run)"
+  },
+  {
+   "check": "persisted Reppo records readable",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Home opens without login; top navigation intact",
+   "pass": true,
+   "detail": "Home | Workspace | Real data | Documents | Feedback | Benchmark"
+  },
+  {
+   "check": "AT&T partial context not shown as complete",
+   "pass": true,
+   "detail": "{'Supported \u00b7 dates not printed'}"
+  },
+  {
+   "check": "certificate re-verifies on the production server",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "CSV export carries coverage and provenance",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Process action explains disabled processing (no job created)",
+   "pass": true,
+   "detail": "Processing connection\nThe service is connected.\n\nSource inspection is available. The server has not enabled new processi"
+  },
+  {
+   "check": "no browser page errors",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no provider calls during smoke test",
+   "pass": true,
+   "detail": "162 -> 162"
+  }
+ ]
+}

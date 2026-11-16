@@ -56,3 +56,10 @@ curl -fsS https://$EVI_DOMAIN/api/v1/ready      # database, sources, artifact st
 ## Local production smoke test (performed)
 
 The test uses copied state (`python -m evi.backup create` → `restore` into a scratch directory), port 8100, `EVI_STATIC_DIR=dist`, execution disabled and keys blank. It runs `scripts/prod_smoke.py`. Results are in `artifacts/release-smoke/smoke.json` and `smoke-quick.json` (after an API and worker restart).
+
+## Vercel read-only archive (deployed 2026-11-16)
+
+- URL: https://evi-lovat.vercel.app (Vercel project `zkzoras-projects/evi`, Git-connected to `zkzora/evi`).
+- `api/index.py` copies `data/release-snapshot` (a verified backup; local session ids scrubbed) to `/tmp` at cold start, rebases the Docling artifact paths, forces `EVI_EXECUTION_ENABLED=false` with blank keys, and serves PDFs from static `/sources/`.
+- Works: browsing, certificates, server-side re-verification, exports. Not available: Docling, the worker, new processing or evaluation (POST returns 503).
+- `.vercelignore` keeps secrets and live state out; `/artifacts` is anchored to the repo root so the snapshot's Docling outputs are included.

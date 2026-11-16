@@ -13,7 +13,8 @@ Legend: ✅ done · ⏳ pending an external dependency · — not applicable. "L
 | Reppo packet v2 (full statement table) | ✅ | ✅ dry run: 11/11 packets complete, 14–24 KB | — | ⏳ **not approved** (calibration ≤ 5,280 credits) | — |
 | Spending gates (approval file + flag; execution switch) | ✅ | ✅ tests; historical runner refuses | — | — | — |
 | Fresh holdout freeze | ✅ | ✅ frozen 2026-11-16T02:45:47Z, no drift | ⏳ (registration and labels by a non-builder) | ⏳ **not approved** (≤ 3,520 credits + ~26 SERV calls) | — |
-| Production package (image, compose, Caddy, env, backups) | ✅ | ✅ production-mode smoke (18/18) + restart + backup/restore on copied state; ⚠️ **Docker image not built here** (Docker unavailable) | — | — | ⏳ **no authorized host** |
+| Production package (image, compose, Caddy, env, backups) | ✅ | ✅ production-mode smoke (18/18) + restart + backup/restore on copied state; ⚠️ **Docker image not built here** (Docker unavailable) | — | — | ⏳ full stack (with worker) not hosted |
+| Vercel read-only archive (frontend + API over stored results) | ✅ `api/index.py`, `vercel.json` | ✅ | — | — | ✅ **https://evi-lovat.vercel.app**: 18/18 clean-browser checks (`artifacts/release-smoke/smoke-evi-lovat_vercel_app.json`); processing disabled, no Docling worker, no provider keys |
 
 ## Facts at this checkpoint
 
@@ -25,5 +26,5 @@ Legend: ✅ done · ⏳ pending an external dependency · — not applicable. "L
 ## Dependencies still needed (in order)
 
 1. **A human reviewer** (not the label author) completes `data/references/review/review-sheet-references-v1.json` per `docs/REVIEWER-INSTRUCTIONS.md`. Then `python -m evi.review import …` and `analysis.evaluate_reviewed(…)` produce a new reference/analysis version.
-2. **An authorized hosting target** (domain + host with ≥ 4 GB RAM and a local persistent volume) and approval of its cost. Then build the image, deploy with `EVI_EXECUTION_ENABLED=false`, and verify from a clean browser.
+2. **For live processing only:** a host that can run the Docling worker (≥ 4 GB RAM, local persistent volume) and approval of its cost. The public Vercel URL serves stored results only.
 3. **Optional, separate budget approvals** (`docs/BUDGET-SHEET.md`): (a) Reppo packet calibration, ≤ 5,280 credits; (b) the holdout run, ≤ 3,520 credits and ~26 SERV calls, after holdout sources are acquired and registered and references are labelled by someone outside the build loop.

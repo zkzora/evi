@@ -108,5 +108,6 @@ if not QUICK:
 
 calls_after = sqlite3.connect(DATA / "evi.sqlite3").execute("SELECT COUNT(*) FROM provider_calls").fetchone()[0]
 check("no provider calls during smoke test", calls_before == calls_after, f"{calls_before} -> {calls_after}")
-(OUT / ("smoke-quick.json" if QUICK else "smoke.json")).write_text(json.dumps({"base": BASE, "results": results}, indent=1))
+tag = "" if "127.0.0.1" in BASE or "localhost" in BASE else "-" + BASE.split("//")[1].split("/")[0].replace(".", "_")
+(OUT / (("smoke-quick" if QUICK else "smoke") + tag + ".json")).write_text(json.dumps({"base": BASE, "results": results}, indent=1))
 sys.exit(0 if all(r["pass"] for r in results) else 1)
