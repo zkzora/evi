@@ -1,6 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink, FileWarning, Minus, Plus, RotateCw, ScanLine } from 'lucide-react'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
+
+// PDF.js can reject internal fetch promises with "Worker was terminated" after we cancel a load (navigation, a
+// changed report). That is our own cancellation, not a failure; real load errors are still shown in the viewer.
+if (typeof window !== 'undefined') {
+  window.addEventListener('unhandledrejection', e => {
+    const msg = String((e.reason as { message?: string } | undefined)?.message ?? e.reason ?? '')
+    if (msg === 'Worker was terminated') e.preventDefault()
+  })
+}
 import type { PDFDocumentProxy, RenderTask } from 'pdfjs-dist'
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import type { Evidence, Report } from './types'

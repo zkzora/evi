@@ -53,9 +53,12 @@ check("health reports capabilities (not connectivity)", s == 200 and caps.get("e
       f"mode={caps.get('mode')} extraction={caps.get('extraction', {}).get('state')} evaluation={caps.get('evaluation', {}).get('state')}")
 s, ct, b = http("/api/v1/nope")
 check("unknown API route is a JSON error", s == 404 and "application/json" in ct)
-s, ct, b = http("/api/v1/documents/att-2q2025/parse", "POST", BASE)
-check("new processing refused server-side when unavailable", (caps.get("extraction", {}).get("state") == "available") or (s in (403, 429, 503) and "application/json" in ct),
-      f"{s} {b[:120]!r}")
+if caps.get("extraction", {}).get("state") == "available":
+    # Never POST a parse here when processing is live: it would start a real, paid SERV job.
+    check("new processing refused server-side when unavailable", True, "skipped: processing is available (no POST sent)")
+else:
+    s, ct, b = http("/api/v1/documents/att-2q2025/parse", "POST", BASE)
+    check("new processing refused server-side when unavailable", s in (403, 429, 503) and "application/json" in ct, f"{s} {b[:120]!r}")
 s, ct, b = http("/api/v1/experiments")
 check("published experiments served", s == 200 and json.loads(b)["schema"] == "evi.public-experiments/1")
 s, ct, index = http("/")
