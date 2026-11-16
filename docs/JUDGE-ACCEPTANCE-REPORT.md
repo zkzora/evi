@@ -57,3 +57,15 @@ The approved allowance is now the server-side authority for every paid request (
 | `EVI_ALLOWANCE_REPPO_EVALS` | 7 in total (1/day × 7 days; at most 3,080 credits) |
 
 The daily caps (SERV 3, Reppo 1) still apply. Each SERV request and Reppo submission reserves one unit in a `BEGIN IMMEDIATE` SQLite transaction **before** the HTTP request. Only a provable connect failure releases it. A read timeout, a dropped connection, or a reservation left open by a crash is an unknown outcome: it counts, and the job ends `outcome_unknown` without being repeated. When the allowance is used up (or a future end date passes), new paid work is refused with 403 and the UI shows "Processing allowance used / ended · stored results available" with the reason. Stored results and source re-verification are unaffected. Provider calls made in this step: **0**.
+
+## Update — judge PDF upload (2026-11-16)
+
+| Criterion | Status | Evidence |
+|---|---|---|
+| Public upload, physical-page preview, explicit page confirmation | public ✅ | `artifacts/judge-upload/public-upload.json`, `01-upload-dialog.png`, `02-page-selected-preview.png` |
+| Limits through Vercel → Railway (9.5 MiB accepted, 12 MiB and 329 pages refused) | public ✅ | curl probes recorded in `docs/JUDGE-UPLOAD.md` |
+| Second session cannot reach the upload or derivatives | public ✅ (source/parses/runs/list) + local ✅ (all routes) | `public-upload.json`; `backend/tests/test_upload.py` (16) |
+| Fresh local Docling parse of an uploaded copy: hash, page and column mapping | local ✅ | `artifacts/judge-upload/local-integration.json` (development report copy; not a benchmark) |
+| **Uploaded page processed end to end on the public host** | **not achieved** | Docling parse on Railway restarts the container (likely memory); 0 SERV calls; crash loop now stopped (`dc469d2`). Needs a larger instance (owner decision) |
+
+Tests: backend 167 passed, frontend 20 passed, production build OK. Holdout freeze `holdout-2026-11-16-f`.

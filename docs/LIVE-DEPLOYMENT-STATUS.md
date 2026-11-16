@@ -34,3 +34,7 @@ Verified from a clean browser via the Vercel URL in live mode: **26/26**, three 
 
 - **Frontend API routing:** revert `vercel.json`'s `/api/(.*)` destination to `/api/index` (archive function, still in the repo) and push.
 - **Backend:** the Railway volume keeps the state; `python -m evi.backup create` before risky changes; restores go only into an empty directory.
+
+## Judge PDF upload (2026-11-16)
+
+Upload/preview/ownership live (`docs/JUDGE-UPLOAD.md`). Docling models are now baked into the image (`HF_HOME=/models/huggingface`; the 500 MB volume could not hold them). A fresh Docling parse still restarts the container on the current Railway instance (likely memory), so uploaded-page processing is **not working publicly**; registered reports with stored parses are unaffected. One-time pre-migration backup in `/data/backups`.

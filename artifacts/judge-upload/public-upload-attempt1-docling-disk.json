@@ -1,0 +1,149 @@
+{
+ "base": "https://evi-lovat.vercel.app",
+ "file": "copy of registered development report verizon-fy2024.pdf (renamed on upload)",
+ "selected_physical_page": 54,
+ "paid_run_attempted": true,
+ "events": [
+  {
+   "t": "2026-11-16T09:48:11Z",
+   "upload_dialog_rules": "Supported input: an English-language telecom financial report in USD with an income statement (annual or interim). Evi reads three metrics: consolidated revenue, operating profit (operating income) and net income attributable to the parent.\nLimits: one unencrypted PDF, at most 10 MiB and 250 pages.\nWhat is sent where: uploading only stores the file and counts its pages. When you press Process, Docling parses the one page you selected on Evi\u2019s server, and that page\u2019s text and table cells are sent to SERV for extraction. Reppo is never called automatically.\nPrivacy and retention: the PDF and its"
+  },
+  {
+   "t": "2026-11-16T09:48:19Z",
+   "document_id": "upl_f84a86ae7fd717f09110"
+  },
+  {
+   "t": "2026-11-16T09:48:19Z",
+   "upload_bar": "Your uploaded PDF \u00b7 my-telecom-annual-report.pdf \u00b7 116 physical pages \u00b7 SHA-256 05ad83ec2279\u2026\nVisible only in this browser session; deleted at 17 Nov, 16:48. The label is yours and is never used as evidence."
+  },
+  {
+   "t": "2026-11-16T09:48:19Z",
+   "process_disabled_before_confirm": true
+  },
+  {
+   "t": "2026-11-16T09:48:23Z",
+   "viewer_caption": "PDF page number\n/ 116\n100%\nYour uploaded PDF\n\u2022\nPhysical page 54"
+  },
+  {
+   "t": "2026-11-16T09:48:26Z",
+   "second_session": {
+    "/api/v1/documents/upl_f84a86ae7fd717f09110/source": 404,
+    "/api/v1/documents/upl_f84a86ae7fd717f09110/parses": 404,
+    "/api/v1/runs?document_id=upl_f84a86ae7fd717f09110": 404,
+    "listed": false
+   }
+  },
+  {
+   "t": "2026-11-16T09:48:27Z",
+   "owner_source": [
+    200,
+    "private, no-store"
+   ]
+  },
+  {
+   "t": "2026-11-16T09:48:29Z",
+   "job_id": "job_7d79432903454d3590c4"
+  },
+  {
+   "t": "2026-11-16T09:48:32Z",
+   "banner_before_reload": "Queued for Docling parsing of physical page 54.\nParse (Docling) \u00b7 queued \u00b7 Queued for Docling parsing of physical page 54. \u00b7 16 Nov, 16:48\njob_7d79432903454d3590c4"
+  },
+  {
+   "t": "2026-11-16T09:48:36Z",
+   "job_after_reload": "job_7d79432903454d3590c4"
+  },
+  {
+   "t": "2026-11-16T09:48:36Z",
+   "job": {
+    "status": "running",
+    "message": "Parsing physical page(s) [54] with Docling.",
+    "stages": [
+     {
+      "job_id": "job_7d79432903454d3590c4",
+      "kind": "process_document",
+      "status": "running",
+      "message": "Parsing physical page(s) [54] with Docling.",
+      "updated_at": "2026-11-16T09:48:29.790+00:00"
+     }
+    ],
+    "first_stage_result": null,
+    "result": null
+   }
+  },
+  {
+   "t": "2026-11-16T09:48:56Z",
+   "job": {
+    "status": "failed",
+    "message": "Internal error: RuntimeError.",
+    "stages": [
+     {
+      "job_id": "job_7d79432903454d3590c4",
+      "kind": "process_document",
+      "status": "failed",
+      "message": "Internal error: RuntimeError.",
+      "updated_at": "2026-11-16T09:48:52.326+00:00"
+     }
+    ],
+    "first_stage_result": null,
+    "result": null
+   }
+  },
+  {
+   "t": "2026-11-16T09:48:56Z",
+   "post_requests": [
+    [
+     "POST",
+     "/api/v1/uploads",
+     201
+    ],
+    [
+     "POST",
+     "/api/v1/uploads/upl_f84a86ae7fd717f09110/process",
+     202
+    ]
+   ]
+  },
+  {
+   "t": "2026-11-16T09:48:56Z",
+   "page_errors": []
+  }
+ ],
+ "final_job": {
+  "job_id": "job_7d79432903454d3590c4",
+  "kind": "process_document",
+  "status": "failed",
+  "stage": "process_document",
+  "message": "Internal error: RuntimeError.",
+  "error": {
+   "message": "Internal error: RuntimeError."
+  },
+  "result": null,
+  "stages": [
+   {
+    "job_id": "job_7d79432903454d3590c4",
+    "kind": "process_document",
+    "status": "failed",
+    "message": "Internal error: RuntimeError.",
+    "updated_at": "2026-11-16T09:48:52.326+00:00"
+   }
+  ],
+  "document_id": "upl_f84a86ae7fd717f09110",
+  "first_stage_result": null,
+  "attempts": 1,
+  "created_at": "2026-11-16T09:48:27.855+00:00",
+  "updated_at": "2026-11-16T09:48:52.326+00:00"
+ },
+ "post_requests": [
+  [
+   "POST",
+   "/api/v1/uploads",
+   201
+  ],
+  [
+   "POST",
+   "/api/v1/uploads/upl_f84a86ae7fd717f09110/process",
+   202
+  ]
+ ],
+ "page_errors": []
+}
