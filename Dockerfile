@@ -17,7 +17,8 @@ RUN npm run build
 FROM python:3.12-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
     EVI_DATA_DIR=/data/runs EVI_SOURCES_DIR=/data/sources EVI_STATIC_DIR=/app/dist \
-    HF_HOME=/models/huggingface EVI_EXECUTION_ENABLED=false
+    HF_HOME=/models/huggingface EVI_EXECUTION_ENABLED=false \
+    EVI_PUBLIC_EVIDENCE=/app/dist/evidence/experiments.v1.json
 RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 tini curl \
     && rm -rf /var/lib/apt/lists/* \
     && useradd --system --uid 10001 --home /app evi

@@ -6,9 +6,18 @@ mkdir -p "$EVI_DATA_DIR" "$EVI_SOURCES_DIR"
 for f in /app/seed-sources/*.pdf; do
   [ -e "$EVI_SOURCES_DIR/$(basename "$f")" ] || cp "$f" "$EVI_SOURCES_DIR/"
 done
-# First boot: restore the verified release snapshot into an empty data dir (never overwrites existing state).
-if [ ! -f "$EVI_DATA_DIR/evi.sqlite3" ] && [ -f /app/seed-snapshot/MANIFEST.json ] && [ -z "$(ls -A "$EVI_DATA_DIR")" ]; then
-  python -m evi.backup restore /app/seed-snapshot "$EVI_DATA_DIR" || { echo "snapshot restore failed" >&2; exit 1; }
+# First boot: restore the verified release snapshot when the data dir holds NO stored results.
+# A database without any version (e.g. created by an earlier boot) is moved aside, never deleted; real state is never touched.
+if [ -f /app/seed-snapshot/MANIFEST.json ]; then
+  STORED=$(python -c "import sqlite3,sys,os;p=os.path.join(sys.argv[1],'evi.sqlite3');print(sqlite3.connect(p).execute('SELECT COUNT(*) FROM versions').fetchone()[0] if os.path.exists(p) else 0)" "$EVI_DATA_DIR" 2>/dev/null || echo 0)
+  if [ "$STORED" = "0" ]; then
+    if [ -n "$(ls -A "$EVI_DATA_DIR")" ]; then
+      ASIDE="$EVI_DATA_DIR.preseed-$(date -u +%Y%m%dT%H%M%SZ)"; mv "$EVI_DATA_DIR" "$ASIDE"; mkdir -p "$EVI_DATA_DIR"
+      echo "moved empty pre-seed state to $ASIDE"
+    fi
+    python -m evi.backup restore /app/seed-snapshot "$EVI_DATA_DIR" || { echo "snapshot restore failed" >&2; exit 1; }
+    echo "restored release snapshot into $EVI_DATA_DIR"
+  fi
 fi
 case "${1:-all}" in
   api)    exec python -m uvicorn evi.api:app --host 0.0.0.0 --port "${PORT:-8000}" --proxy-headers --forwarded-allow-ips='*' --timeout-graceful-shutdown 20 ;;
