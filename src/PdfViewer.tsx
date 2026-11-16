@@ -1,15 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink, FileWarning, Minus, Plus, RotateCw, ScanLine } from 'lucide-react'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
-
-// PDF.js can reject internal fetch promises with "Worker was terminated" after we cancel a load (navigation, a
-// changed report). That is our own cancellation, not a failure; real load errors are still shown in the viewer.
-if (typeof window !== 'undefined') {
-  window.addEventListener('unhandledrejection', e => {
-    const msg = String((e.reason as { message?: string } | undefined)?.message ?? e.reason ?? '')
-    if (msg === 'Worker was terminated') e.preventDefault()
-  })
-}
 import type { PDFDocumentProxy, RenderTask } from 'pdfjs-dist'
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import type { Evidence, Report } from './types'
@@ -37,7 +28,9 @@ export default function PdfViewer({ report, url, evidence }: { report: Report; u
     setDoc(null); setError(''); setBusy(true); setPage(report.source_page); setZoom(100)
     const task = getDocument({ url })
     task.promise.then(value => { if (active) setDoc(value) }).catch(() => { if (active) { setError('This PDF could not be loaded. Retry or open the publisher’s original.'); setBusy(false) } })
-    return () => { active = false; task.destroy().catch(() => undefined) }  // a cancelled load is not an error
+    // Destroying a loading task mid-parse makes the PDF.js worker throw "Worker was terminated" inside the worker
+    // thread. Let an in-flight load settle (its result is ignored via `active`), then release it.
+    return () => { active = false; task.promise.then(() => task.destroy(), () => undefined).catch(() => undefined) }
   }, [url, report.source_page, attempt])
   useEffect(() => { if (evidence) setPage(evidence.page_number) }, [evidence])
   useEffect(() => {
