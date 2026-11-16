@@ -16,6 +16,7 @@ from .evaluation import build_input, map_result
 from .extraction import OutputRejected, RevisionNotAllowed, run_extraction, run_extraction_v2
 from .revision import RevisionRefused, run_revision_v2
 from .parsing import parse_document
+from .allowance import AllowanceRefused
 from .providers import ProviderError, reppo_get, reppo_submit
 
 log = logging.getLogger("evi.worker")
@@ -104,6 +105,9 @@ def handle(conn, job) -> None:
         except ProviderError as e:
             conn.execute("UPDATE evaluations SET status=?, updated_at=? WHERE evaluation_id=?",
                          ("submission_unknown" if e.outcome_unknown else "failed" if not e.retryable else "created", db.now(), ev["evaluation_id"]))
+            raise
+        except AllowanceRefused:   # refused before anything was sent: not an unknown submission
+            conn.execute("UPDATE evaluations SET status='failed', updated_at=? WHERE evaluation_id=?", (db.now(), ev["evaluation_id"]))
             raise
         d = sub["data"]
         conn.execute("UPDATE evaluations SET status='pending', eval_id=?, provider_status=?, payload_sha256=?, payload_bytes=?, "

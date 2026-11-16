@@ -10,8 +10,18 @@ from typing import Any
 
 import httpx
 
-from . import db
+from . import allowance, db
 from .config import settings
+
+# Request provably never left the machine: the reserved allowance unit is released and a retry is safe.
+NOT_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
+
+
+def _reserve(conn, provider: str, purpose: str, job_id: str | None) -> str:
+    try:
+        return allowance.reserve(conn, provider, purpose, job_id)
+    except allowance.UnknownPriorSubmission as e:
+        raise ProviderError(str(e), retryable=False, code="submission_unknown", outcome_unknown=True) from e
 
 
 class ProviderError(Exception):
@@ -77,19 +87,32 @@ def serv_chat(conn: sqlite3.Connection, *, purpose: str, messages: list[dict], s
             "response_format": {"type": "json_schema", "json_schema": {"name": schema_name, "strict": True, "schema": schema}}}
     raw_body = json.dumps(body, ensure_ascii=False)
     req_hash = hashlib.sha256(raw_body.encode()).hexdigest()
+    rid = _reserve(conn, "serv", purpose, job_id)
+    sent, call_id = True, None
     started = time.monotonic()
     try:
-        with httpx.Client(timeout=settings.serv_timeout_s, transport=transport) as client:
-            resp = client.post(f"{settings.serv_base_url}/chat/completions", content=raw_body.encode(),
-                               headers={"Authorization": f"Bearer {settings.serv_api_key}", "Content-Type": "application/json"})
-    except httpx.TimeoutException as e:
-        _record(conn, provider="serv", purpose=purpose, run_id=run_id, job_id=job_id, request_sha256=req_hash,
-                outcome="timeout", latency_ms=int((time.monotonic() - started) * 1000))
-        raise ProviderError("SERV request timed out.", retryable=True, code="provider_timeout") from e
-    except httpx.HTTPError as e:
-        _record(conn, provider="serv", purpose=purpose, run_id=run_id, job_id=job_id, request_sha256=req_hash,
-                outcome="transport_error", latency_ms=int((time.monotonic() - started) * 1000))
-        raise ProviderError(f"SERV transport error: {type(e).__name__}.", retryable=True, code="provider_transport") from e
+        try:
+            with httpx.Client(timeout=settings.serv_timeout_s, transport=transport) as client:
+                resp = client.post(f"{settings.serv_base_url}/chat/completions", content=raw_body.encode(),
+                                   headers={"Authorization": f"Bearer {settings.serv_api_key}", "Content-Type": "application/json"})
+        except NOT_SENT as e:
+            sent = False
+            call_id = _record(conn, provider="serv", purpose=purpose, run_id=run_id, job_id=job_id, request_sha256=req_hash,
+                              outcome="connect_error", latency_ms=int((time.monotonic() - started) * 1000))
+            raise ProviderError(f"SERV connection failed: {type(e).__name__}.", retryable=True, code="provider_transport") from e
+        except httpx.HTTPError as e:   # read/write timeout or dropped connection: SERV may have processed and charged it
+            call_id = _record(conn, provider="serv", purpose=purpose, run_id=run_id, job_id=job_id, request_sha256=req_hash,
+                              outcome="outcome_unknown", latency_ms=int((time.monotonic() - started) * 1000))
+            raise ProviderError(f"SERV request outcome unknown ({type(e).__name__}); it may have been charged, so it is not "
+                                "repeated automatically.", retryable=False, code="submission_unknown", outcome_unknown=True) from e
+        result = _serv_finish(conn, resp, purpose=purpose, run_id=run_id, job_id=job_id, req_hash=req_hash, started=started)
+        call_id = result.call_id
+        return result
+    finally:   # always settle: a reservation left open would (correctly) block this job as an unknown outcome
+        allowance.settle(conn, rid, call_id, sent=sent)
+
+
+def _serv_finish(conn, resp, *, purpose, run_id, job_id, req_hash, started) -> ServResult:
     latency = int((time.monotonic() - started) * 1000)
     try:
         data = resp.json()
@@ -100,6 +123,7 @@ def serv_chat(conn: sqlite3.Connection, *, purpose: str, messages: list[dict], s
     if resp.status_code >= 400:
         _record(conn, provider="serv", purpose=purpose, run_id=run_id, job_id=job_id, request_sha256=req_hash,
                 http_status=resp.status_code, outcome="http_error", latency_ms=latency, response_path=path)
+        # A known HTTP error is a known outcome; a retry is a NEW request and reserves its own allowance unit.
         retry = resp.status_code in (408, 429) or resp.status_code >= 500
         raise ProviderError(f"SERV returned HTTP {resp.status_code}.", retryable=retry,
                             code="provider_auth" if resp.status_code in (401, 403) else "provider_http")
@@ -134,29 +158,35 @@ def reppo_submit(conn, *, input_text: str, job_id: str, transport=None) -> dict:
                             retryable=False, code="payload_too_large")
     body = {"taskType": "response", "input": input_text}
     req_hash = hashlib.sha256(json.dumps(body, ensure_ascii=False).encode()).hexdigest()
+    rid = _reserve(conn, "reppo", "submit", job_id)
+    sent, call_id = True, None
     started = time.monotonic()
     try:
-        with httpx.Client(timeout=settings.reppo_timeout_s, transport=transport) as client:
-            resp = client.post(f"{settings.reppo_base_url}/agents/evals", json=body,
-                               headers={"Authorization": f"Bearer {settings.reppo_api_key}"})
-    except (httpx.TimeoutException, httpx.RemoteProtocolError, httpx.ReadError) as e:
-        _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, outcome="outcome_unknown",
-                latency_ms=int((time.monotonic() - started) * 1000))
-        raise ProviderError("The Reppo submission may have reached the provider; its outcome is unknown and it will not be resubmitted automatically.",
-                            retryable=False, code="submission_unknown", outcome_unknown=True) from e
-    except httpx.HTTPError as e:  # connect errors: request never left
-        _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, outcome="connect_error")
-        raise ProviderError(f"Reppo connection failed: {type(e).__name__}.", retryable=True, code="provider_transport") from e
-    latency = int((time.monotonic() - started) * 1000)
-    data = _json(resp)
-    path = _save_raw(f"reppo-submit-{req_hash[:16]}-{int(time.time())}.json", {"http_status": resp.status_code, "response": data})
-    if resp.status_code >= 400:
-        _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, http_status=resp.status_code,
-                outcome="http_error", latency_ms=latency, response_path=path)
-        raise ProviderError(f"Reppo returned HTTP {resp.status_code}.", retryable=resp.status_code == 502,
-                            code={401: "provider_auth", 402: "insufficient_credits"}.get(resp.status_code, "provider_http"))
-    _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, http_status=resp.status_code,
-            outcome="ok", upstream_id=data.get("id"), latency_ms=latency, response_path=path)
+        try:
+            with httpx.Client(timeout=settings.reppo_timeout_s, transport=transport) as client:
+                resp = client.post(f"{settings.reppo_base_url}/agents/evals", json=body,
+                                   headers={"Authorization": f"Bearer {settings.reppo_api_key}"})
+        except NOT_SENT as e:  # request never left
+            sent = False
+            call_id = _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, outcome="connect_error")
+            raise ProviderError(f"Reppo connection failed: {type(e).__name__}.", retryable=True, code="provider_transport") from e
+        except httpx.HTTPError as e:
+            call_id = _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, outcome="outcome_unknown",
+                              latency_ms=int((time.monotonic() - started) * 1000))
+            raise ProviderError("The Reppo submission may have reached the provider; its outcome is unknown and it will not be resubmitted automatically.",
+                                retryable=False, code="submission_unknown", outcome_unknown=True) from e
+        latency = int((time.monotonic() - started) * 1000)
+        data = _json(resp)
+        path = _save_raw(f"reppo-submit-{req_hash[:16]}-{int(time.time())}.json", {"http_status": resp.status_code, "response": data})
+        if resp.status_code >= 400:
+            call_id = _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, http_status=resp.status_code,
+                              outcome="http_error", latency_ms=latency, response_path=path)
+            raise ProviderError(f"Reppo returned HTTP {resp.status_code}.", retryable=resp.status_code == 502,
+                                code={401: "provider_auth", 402: "insufficient_credits"}.get(resp.status_code, "provider_http"))
+        call_id = _record(conn, provider="reppo", purpose="submit", job_id=job_id, request_sha256=req_hash, http_status=resp.status_code,
+                          outcome="ok", upstream_id=data.get("id"), latency_ms=latency, response_path=path)
+    finally:
+        allowance.settle(conn, rid, call_id, sent=sent)
     if not data.get("id"):
         raise ProviderError("Reppo accepted the request but returned no evaluation id.", retryable=False,
                             code="submission_unknown", outcome_unknown=True)

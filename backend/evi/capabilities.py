@@ -12,7 +12,7 @@ import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import db
+from . import allowance, db
 from .config import settings
 from .corpus import source_path
 
@@ -51,34 +51,43 @@ def compute(c) -> dict:
     serv, reppo = bool(settings.serv_api_key), bool(settings.reppo_api_key)
     active = active_jobs(c)
     serv_used, reppo_used = _used_today(c, "serv_calls_global"), _used_today(c, "reppo_evals_global")
-    serv_left = max(settings.global_serv_calls_per_day - serv_used, 0)
-    reppo_left = max(settings.global_reppo_evals_per_day - reppo_used, 0)
+    al = allowance.status(c)
+    serv_total_left = al["serv"].get("left", 0) if al["configured"] else 0
+    reppo_total_left = al["reppo"].get("left", 0) if al["configured"] else 0
+    serv_left = min(max(settings.global_serv_calls_per_day - serv_used, 0), serv_total_left)
+    reppo_left = min(max(settings.global_reppo_evals_per_day - reppo_used, 0), reppo_total_left)
 
-    def state(provider_ok: bool, provider: str, left: int) -> tuple[str, str]:
+    def state(provider_ok: bool, provider: str, key: str, daily_left: int) -> tuple[str, str, str | None]:
         if not ex:
-            return "unavailable", "New processing is disabled on this server (execution policy)."
+            return "unavailable", "New processing is disabled on this server (execution policy).", "execution_disabled"
+        a = al[key]
+        if a["state"] == "refused":   # the owner-approved allowance is the authority for all paid work
+            st = "budget_exhausted" if a["code"] == "allowance_exhausted" else "unavailable"
+            return st, a["reason"], a["code"]
         if not worker:
-            return "unavailable", "No processing worker is running."
+            return "unavailable", "No processing worker is running.", "worker_unavailable"
         if not provider_ok:
-            return "unavailable", f"{provider} access is not configured on the server."
-        if left <= 0:
-            return "budget_exhausted", f"Today's {provider} allowance on this server has been used."
+            return "unavailable", f"{provider} access is not configured on the server.", "provider_not_configured"
+        if daily_left <= 0:
+            return "budget_exhausted", f"Today's {provider} allowance on this server has been used.", "daily_limit"
         if active >= max_active_jobs():
-            return "busy", "Other jobs are running; try again shortly. Stored results remain available."
-        return "available", f"{provider} calls are allowed within today's server allowance."
+            return "busy", "Other jobs are running; try again shortly. Stored results remain available.", "busy"
+        return "available", f"{provider} calls are allowed within the approved server allowance.", None
 
-    ext_state, ext_reason = state(serv, "SERV", serv_left)
-    ev_state, ev_reason = state(reppo, "Reppo", reppo_left)
+    ext_state, ext_reason, ext_code = state(serv, "SERV", "serv", max(settings.global_serv_calls_per_day - serv_used, 0))
+    ev_state, ev_reason, ev_code = state(reppo, "Reppo", "reppo", max(settings.global_reppo_evals_per_day - reppo_used, 0))
     return {
         "mode": "live" if ex else "archive",
         "stored_results": {"available": versions > 0, "versions": versions},
         "source_verification": {"available": sources_ok and artifacts_ok,
                                 "reason": "Recomputes certificates from registered PDF bytes and Docling artifacts; no provider call."
                                 if sources_ok and artifacts_ok else "Registered source or Docling artifact files are missing."},
-        "extraction": {"state": ext_state, "reason": ext_reason, "active_jobs": active, "max_active_jobs": max_active_jobs(),
-                       "serv_calls_left_today": serv_left},
-        "evaluation": {"state": ev_state, "reason": ev_reason, "reppo_evaluations_left_today": reppo_left,
-                       "credits_per_evaluation": REPPO_CREDITS_PER_EVAL},
+        "extraction": {"state": ext_state, "reason": ext_reason, "code": ext_code, "active_jobs": active,
+                       "max_active_jobs": max_active_jobs(), "serv_calls_left_today": serv_left,
+                       "serv_calls_left_total": serv_total_left},
+        "evaluation": {"state": ev_state, "reason": ev_reason, "code": ev_code, "reppo_evaluations_left_today": reppo_left,
+                       "reppo_evaluations_left_total": reppo_total_left, "credits_per_evaluation": REPPO_CREDITS_PER_EVAL},
+        "allowance": {k: v for k, v in al.items() if k != "reason"},
     }
 
 
@@ -86,8 +95,10 @@ def require(c, which: str) -> None:
     """Server-side gate for new paid work. Raises (status, code, message) via ValueError tuple semantics."""
     cap = compute(c)[which]
     if cap["state"] != "available":
-        code = {"busy": "busy", "budget_exhausted": "budget_exhausted"}.get(cap["state"], "execution_disabled")
-        status = 429 if code in ("busy", "budget_exhausted") else 503
+        code = cap.get("code") or {"busy": "busy", "budget_exhausted": "budget_exhausted"}.get(cap["state"], "execution_disabled")
+        if code == "daily_limit":
+            code = "budget_exhausted"   # unchanged public code for the daily cap
+        status = 429 if code in ("busy", "budget_exhausted") else 403 if code.startswith("allowance_") or code == "no_allowance" else 503
         raise CapabilityRefused(status, code, cap["reason"])
 
 

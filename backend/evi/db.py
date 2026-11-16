@@ -51,6 +51,11 @@ CREATE TABLE IF NOT EXISTS evaluations (
 CREATE TABLE IF NOT EXISTS budget_ledger (
   entry_id TEXT PRIMARY KEY, scope TEXT NOT NULL, key TEXT NOT NULL, units INTEGER NOT NULL, created_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS worker_heartbeats (worker_id TEXT PRIMARY KEY, seen_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS allowance_reservations (
+  reservation_id TEXT PRIMARY KEY, allowance_id TEXT NOT NULL, provider TEXT NOT NULL, purpose TEXT NOT NULL,
+  job_id TEXT, units INTEGER NOT NULL, status TEXT NOT NULL, call_id TEXT, created_at TEXT NOT NULL, settled_at TEXT);
+CREATE UNIQUE INDEX IF NOT EXISTS allowance_reservations_call ON allowance_reservations(allowance_id, call_id) WHERE call_id IS NOT NULL;
+CREATE TABLE IF NOT EXISTS allowance_backfills (allowance_id TEXT PRIMARY KEY, backfilled_calls INTEGER NOT NULL, created_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS certificates (
   certificate_id TEXT PRIMARY KEY, version_id TEXT, fact_id TEXT, fact_sha256 TEXT, document_id TEXT NOT NULL,
   parse_id TEXT NOT NULL, target_key TEXT NOT NULL, policy_version TEXT NOT NULL, claim_outcome TEXT NOT NULL,

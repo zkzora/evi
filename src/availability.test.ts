@@ -17,6 +17,15 @@ describe('capability-based availability', () => {
     expect(capabilityLabel('connected', caps('budget_exhausted')).text).toMatch(/allowance used/)
     expect(capabilityLabel('offline').text).toMatch(/offline/)
   })
+  it('states why paid processing stopped (allowance used, ended, or absent) and keeps stored results', () => {
+    const withCode = (state: Capabilities['extraction']['state'], code: string) => {
+      const c = caps(state); c.extraction = { ...c.extraction, code } as Capabilities['extraction']; return c
+    }
+    expect(capabilityLabel('connected', withCode('budget_exhausted', 'allowance_exhausted')).text).toBe('Processing allowance used · stored results available')
+    expect(capabilityLabel('connected', withCode('unavailable', 'allowance_expired')).text).toBe('Processing allowance ended · stored results available')
+    expect(capabilityLabel('connected', withCode('unavailable', 'no_allowance')).text).toMatch(/No processing allowance/)
+    expect(capabilityLabel('connected', withCode('budget_exhausted', 'daily_limit')).text).toBe('Processing allowance used today')
+  })
   it('walkthrough deep links point at stored records and a real nine-month case', () => {
     expect(tourLinks.periodFullYear).toContain('expect_period=12')
     expect(tourLinks.periodNine).toContain('expect_period=9')
