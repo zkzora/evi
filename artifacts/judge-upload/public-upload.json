@@ -5,65 +5,65 @@
  "paid_run_attempted": true,
  "events": [
   {
-   "t": "2026-11-16T09:56:42Z",
+   "t": "2026-11-16T12:01:47Z",
    "upload_dialog_rules": "Supported input: an English-language telecom financial report in USD with an income statement (annual or interim). Evi reads three metrics: consolidated revenue, operating profit (operating income) and net income attributable to the parent.\nLimits: one unencrypted PDF, at most 10 MiB and 250 pages.\nWhat is sent where: uploading only stores the file and counts its pages. When you press Process, Docling parses the one page you selected on Evi\u2019s server, and that page\u2019s text and table cells are sent to SERV for extraction. Reppo is never called automatically.\nPrivacy and retention: the PDF and its"
   },
   {
-   "t": "2026-11-16T09:56:48Z",
-   "document_id": "upl_1c93bcbf2130dd3e3b58"
+   "t": "2026-11-16T12:01:49Z",
+   "document_id": "upl_89fe94f593c16005b6b8"
   },
   {
-   "t": "2026-11-16T09:56:48Z",
-   "upload_bar": "Your uploaded PDF \u00b7 my-telecom-annual-report.pdf \u00b7 116 physical pages \u00b7 SHA-256 05ad83ec2279\u2026\nVisible only in this browser session; deleted at 17 Nov, 16:56. The label is yours and is never used as evidence."
+   "t": "2026-11-16T12:01:49Z",
+   "upload_bar": "Your uploaded PDF \u00b7 my-telecom-annual-report.pdf \u00b7 116 physical pages \u00b7 SHA-256 05ad83ec2279\u2026\nVisible only in this browser session; deleted at 17 Nov, 19:01. The label is yours and is never used as evidence."
   },
   {
-   "t": "2026-11-16T09:56:48Z",
+   "t": "2026-11-16T12:01:49Z",
    "process_disabled_before_confirm": true
   },
   {
-   "t": "2026-11-16T09:56:52Z",
+   "t": "2026-11-16T12:01:53Z",
    "viewer_caption": "PDF page number\n/ 116\n100%\nYour uploaded PDF\n\u2022\nPhysical page 54"
   },
   {
-   "t": "2026-11-16T09:56:56Z",
+   "t": "2026-11-16T12:01:54Z",
    "second_session": {
-    "/api/v1/documents/upl_1c93bcbf2130dd3e3b58/source": 404,
-    "/api/v1/documents/upl_1c93bcbf2130dd3e3b58/parses": 404,
-    "/api/v1/runs?document_id=upl_1c93bcbf2130dd3e3b58": 404,
+    "/api/v1/documents/upl_89fe94f593c16005b6b8/source": 404,
+    "/api/v1/documents/upl_89fe94f593c16005b6b8/parses": 404,
+    "/api/v1/runs?document_id=upl_89fe94f593c16005b6b8": 404,
     "listed": false
    }
   },
   {
-   "t": "2026-11-16T09:56:56Z",
+   "t": "2026-11-16T12:01:54Z",
    "owner_source": [
     200,
     "private, no-store"
    ]
   },
   {
-   "t": "2026-11-16T09:56:57Z",
-   "job_id": "job_19180f2f7f8741a28669"
+   "t": "2026-11-16T12:01:55Z",
+   "job_id": "job_7d47582cfc2f49d28a6f"
   },
   {
-   "t": "2026-11-16T09:57:00Z",
-   "banner_before_reload": "Queued for Docling parsing of physical page 54.\nParse (Docling) \u00b7 queued \u00b7 Queued for Docling parsing of physical page 54. \u00b7 16 Nov, 16:56\njob_19180f2f7f8741a28669"
+   "t": "2026-11-16T12:01:58Z",
+   "banner_before_reload": "Queued for Docling parsing of physical page 54.\nParse (Docling) \u00b7 queued \u00b7 Queued for Docling parsing of physical page 54. \u00b7 16 Nov, 19:01\njob_7d47582cfc2f49d28a6f"
   },
   {
-   "t": "2026-11-16T09:57:05Z",
-   "job_after_reload": "job_19180f2f7f8741a28669"
+   "t": "2026-11-16T12:02:00Z",
+   "job_after_reload": "job_7d47582cfc2f49d28a6f"
   },
   {
-   "t": "2026-11-16T09:57:05Z",
+   "t": "2026-11-16T12:02:00Z",
    "job": {
     "status": "running",
     "message": "Parsing physical page(s) [54] with Docling.",
     "stages": [
      {
-      "job_id": "job_19180f2f7f8741a28669",
+      "job_id": "job_7d47582cfc2f49d28a6f",
       "kind": "process_document",
       "status": "running",
       "message": "Parsing physical page(s) [54] with Docling.",
-      "updated_at": "2026-11-16T09:56:58.839+00:00"
+      "updated_at": "2026-11-16T12:01:57.128+00:00"
      }
     ],
     "first_stage_result": null,
@@ -71,7 +71,80 @@
    }
   },
   {
-   "t": "2026-11-16T10:27:06Z",
+   "t": "2026-11-16T12:02:31Z",
+   "job": {
+    "status": "running",
+    "message": "Calling SERV (gpt-5.4-mini) with the Docling evidence packet.",
+    "stages": [
+     {
+      "job_id": "job_7d47582cfc2f49d28a6f",
+      "kind": "process_document",
+      "status": "succeeded",
+      "message": "Fresh Docling parse parse_348367a0899d7ba580e6 of page(s) [54]: 106 evidence items, 1 tables. Extraction queued.",
+      "updated_at": "2026-11-16T12:02:27.270+00:00"
+     },
+     {
+      "job_id": "job_5711a433692143e589c4",
+      "kind": "extract_facts",
+      "status": "running",
+      "message": "Calling SERV (gpt-5.4-mini) with the Docling evidence packet.",
+      "updated_at": "2026-11-16T12:02:27.289+00:00"
+     }
+    ],
+    "first_stage_result": {
+     "document_id": "upl_89fe94f593c16005b6b8",
+     "pages": [
+      54
+     ],
+     "parse_id": "parse_348367a0899d7ba580e6",
+     "parse_reused": false,
+     "run_id": "run_2d4aa8659aaf4d7c8cf7"
+    },
+    "result": null
+   }
+  },
+  {
+   "t": "2026-11-16T12:02:41Z",
+   "job": {
+    "status": "succeeded",
+    "message": "Extraction stored as an immutable version; support certificates issued.",
+    "stages": [
+     {
+      "job_id": "job_7d47582cfc2f49d28a6f",
+      "kind": "process_document",
+      "status": "succeeded",
+      "message": "Fresh Docling parse parse_348367a0899d7ba580e6 of page(s) [54]: 106 evidence items, 1 tables. Extraction queued.",
+      "updated_at": "2026-11-16T12:02:27.270+00:00"
+     },
+     {
+      "job_id": "job_5711a433692143e589c4",
+      "kind": "extract_facts",
+      "status": "succeeded",
+      "message": "Extraction stored as an immutable version; support certificates issued.",
+      "updated_at": "2026-11-16T12:02:35.412+00:00"
+     }
+    ],
+    "first_stage_result": {
+     "document_id": "upl_89fe94f593c16005b6b8",
+     "pages": [
+      54
+     ],
+     "parse_id": "parse_348367a0899d7ba580e6",
+     "parse_reused": false,
+     "run_id": "run_2d4aa8659aaf4d7c8cf7"
+    },
+    "result": {
+     "run_id": "run_2d4aa8659aaf4d7c8cf7",
+     "version_id": "ver_2d4aa8659aaf_1"
+    }
+   }
+  },
+  {
+   "t": "2026-11-16T12:02:48Z",
+   "viewer_after_select": "PDF page number\n/ 116\n100%\nYour uploaded PDF\n\u2022\nPhysical page 54"
+  },
+  {
+   "t": "2026-11-16T12:02:49Z",
    "post_requests": [
     [
      "POST",
@@ -80,39 +153,115 @@
     ],
     [
      "POST",
-     "/api/v1/uploads/upl_1c93bcbf2130dd3e3b58/process",
+     "/api/v1/uploads/upl_89fe94f593c16005b6b8/process",
      202
     ]
    ]
   },
   {
-   "t": "2026-11-16T10:27:06Z",
+   "t": "2026-11-16T12:02:49Z",
    "page_errors": []
   }
  ],
  "final_job": {
-  "job_id": "job_19180f2f7f8741a28669",
+  "job_id": "job_7d47582cfc2f49d28a6f",
   "kind": "process_document",
-  "status": "running",
-  "stage": "process_document",
-  "message": "Parsing physical page(s) [54] with Docling.",
+  "status": "succeeded",
+  "stage": "extract_facts",
+  "message": "Extraction stored as an immutable version; support certificates issued.",
   "error": null,
-  "result": null,
+  "result": {
+   "run_id": "run_2d4aa8659aaf4d7c8cf7",
+   "version_id": "ver_2d4aa8659aaf_1"
+  },
   "stages": [
    {
-    "job_id": "job_19180f2f7f8741a28669",
+    "job_id": "job_7d47582cfc2f49d28a6f",
     "kind": "process_document",
-    "status": "running",
-    "message": "Parsing physical page(s) [54] with Docling.",
-    "updated_at": "2026-11-16T10:26:02.812+00:00"
+    "status": "succeeded",
+    "message": "Fresh Docling parse parse_348367a0899d7ba580e6 of page(s) [54]: 106 evidence items, 1 tables. Extraction queued.",
+    "updated_at": "2026-11-16T12:02:27.270+00:00"
+   },
+   {
+    "job_id": "job_5711a433692143e589c4",
+    "kind": "extract_facts",
+    "status": "succeeded",
+    "message": "Extraction stored as an immutable version; support certificates issued.",
+    "updated_at": "2026-11-16T12:02:35.412+00:00"
    }
   ],
-  "document_id": "upl_1c93bcbf2130dd3e3b58",
-  "first_stage_result": null,
-  "attempts": 5,
-  "created_at": "2026-11-16T09:56:57.649+00:00",
-  "updated_at": "2026-11-16T10:26:02.812+00:00"
+  "document_id": "upl_89fe94f593c16005b6b8",
+  "first_stage_result": {
+   "document_id": "upl_89fe94f593c16005b6b8",
+   "pages": [
+    54
+   ],
+   "parse_id": "parse_348367a0899d7ba580e6",
+   "parse_reused": false,
+   "run_id": "run_2d4aa8659aaf4d7c8cf7"
+  },
+  "attempts": 1,
+  "created_at": "2026-11-16T12:01:55.524+00:00",
+  "updated_at": "2026-11-16T12:02:35.412+00:00"
  },
+ "fact_rows": [
+  "Revenue | Total Operating Revenues | \t | 134788 | USD million | \t | 12 months | Years Ended December 31, 2024 | \t | Checks passed",
+  "Operating profit | Operating Income | \t | 28686 | USD million | \t | 12 months | Years Ended December 31, 2024 | \t | Checks passed",
+  "Profit attributable to owners | Net income attributable to Verizon | \t | 17506 | USD million | \t | 12 months | Years Ended December 31, 2024 | \t | Checks passed",
+  "Revenue | Total Operating Revenues | \t | 133974 | USD million | \t | 12 months | Years Ended December 31, 2023 | \t | Checks passed",
+  "Operating profit | Operating Income | \t | 22877 | USD million | \t | 12 months | Years Ended December 31, 2023 | \t | Checks passed",
+  "Profit attributable to owners | Net income attributable to Verizon | \t | 11614 | USD million | \t | 12 months | Years Ended December 31, 2023 | \t | Checks passed"
+ ],
+ "version": {
+  "version_id": "ver_2d4aa8659aaf_1",
+  "policy_version": "period-unit-v2",
+  "source_kind": "user_upload",
+  "source_pages": [
+   54
+  ],
+  "facts": 6
+ },
+ "certificates": [
+  {
+   "target_key": "upl_89fe94f593c16005b6b8:revenue:12M:2024",
+   "claim": "supported",
+   "resolution": "supported"
+  },
+  {
+   "target_key": "upl_89fe94f593c16005b6b8:operating_profit:12M:2024",
+   "claim": "supported",
+   "resolution": "supported"
+  },
+  {
+   "target_key": "upl_89fe94f593c16005b6b8:profit_attributable_to_owners:12M:2024",
+   "claim": "supported",
+   "resolution": "supported"
+  },
+  {
+   "target_key": "upl_89fe94f593c16005b6b8:revenue:12M:2023",
+   "claim": "supported",
+   "resolution": "supported"
+  },
+  {
+   "target_key": "upl_89fe94f593c16005b6b8:operating_profit:12M:2023",
+   "claim": "supported",
+   "resolution": "supported"
+  },
+  {
+   "target_key": "upl_89fe94f593c16005b6b8:profit_attributable_to_owners:12M:2023",
+   "claim": "supported",
+   "resolution": "supported"
+  }
+ ],
+ "highlight_visible": true,
+ "reverify": {
+  "certificate_id": "cert_4fa24b9bfc6b95958076",
+  "verified": true,
+  "problems": [],
+  "checked_at": "2026-11-16T12:02:49.704+00:00"
+ },
+ "second_session_version_status": 404,
+ "second_session_certificates_status": 404,
  "post_requests": [
   [
    "POST",
@@ -121,7 +270,7 @@
   ],
   [
    "POST",
-   "/api/v1/uploads/upl_1c93bcbf2130dd3e3b58/process",
+   "/api/v1/uploads/upl_89fe94f593c16005b6b8/process",
    202
   ]
  ],

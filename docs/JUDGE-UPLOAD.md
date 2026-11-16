@@ -1,6 +1,6 @@
 # Upload your own PDF (judges)
 
-> **Status 2026-11-16:** upload, page preview, page confirmation, limits and session isolation are verified on the public site. **A fresh Docling parse of an uploaded page does not currently complete on the Railway host:** the container is restarted mid-parse (consistent with running out of memory; it never reached SERV, so no paid call was made). A job that repeatedly stops the worker now fails with that reason instead of looping. Processing an uploaded page end to end needs more server memory (a hosting plan change for the owner to decide). Evidence: `artifacts/judge-upload/public-upload*.json`.
+> **Status 2026-11-16 (VPS backend):** verified end to end on the public site: upload → fresh Docling parse of the selected page → one SERV extraction → 6/6 supported certificates, highlights on the original page, re-verification, reload recovery and second-session isolation (`artifacts/judge-upload/public-upload.json`). The earlier Railway attempts failed on its 1 GB memory limit (`public-upload-attempt*.json`).
 
 Public site: **https://evi-lovat.vercel.app**. No login and no API key.
 

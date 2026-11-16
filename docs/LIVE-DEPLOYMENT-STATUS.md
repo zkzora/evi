@@ -38,3 +38,10 @@ Verified from a clean browser via the Vercel URL in live mode: **26/26**, three 
 ## Judge PDF upload (2026-11-16)
 
 Upload/preview/ownership live (`docs/JUDGE-UPLOAD.md`). Docling models are now baked into the image (`HF_HOME=/models/huggingface`; the 500 MB volume could not hold them). A fresh Docling parse still restarts the container on the current Railway instance (likely memory), so uploaded-page processing is **not working publicly**; registered reports with stored parses are unaffected. One-time pre-migration backup in `/data/backups`.
+
+## Backend moved to the VPS (2026-11-16)
+
+`/api` on https://evi-lovat.vercel.app now proxies to **https://101-32-244-48.sslip.io** (owner's 2 GB VPS, `/opt/evi`, `deploy/docker-compose.vps.yml`: one Evi container capped at 1400 MB + swap, plus Caddy with an 11 MB body limit for the upload route only). Railway stays running as rollback (revert `vercel.json`).
+- Started from the verified release snapshot (Railway's two 2026-11-16 AT&T smoke runs stay on Railway). Allowance carried over: `public-2026-11-16-vps`, 19 SERV (21 − 2 used on Railway), 7 Reppo; daily SERV cap set to 1 for 2026-11-16 (restore to 3 afterwards).
+- Fresh Docling parse in the container: load 12 s + page 16 s, process peak 1,110 MB, cgroup at the 1,400 MB cap with swap, **0 OOM kills**.
+- Judge e2e via Vercel: 26/26. Full upload run: `artifacts/judge-upload/public-upload.json` — fresh Docling parse of physical page 54, one SERV extraction, 6 facts, 6/6 certificates supported, re-verification true, highlight visible, same job after reload, second session 404.
